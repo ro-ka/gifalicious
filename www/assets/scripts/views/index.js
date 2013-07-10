@@ -24,11 +24,6 @@ App.IndexView = Backbone.View.extend({
    */
   onViewChange: function() {
     if (App.settings.get('view') === this.view) {
-      if (App.loggedin()) {
-        App.router.navigate('/collection', {trigger: true});
-        return;
-      }
-
       this.$el.show();
     } else {
       this.$el.hide();

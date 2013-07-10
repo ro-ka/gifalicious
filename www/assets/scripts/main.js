@@ -19,18 +19,17 @@ App.Main = Backbone.View.extend({
 
     Backbone.connect();
     App.hoodie = Backbone.hoodie;
-    App.hoodie.account.authenticate()
-      .then(this.handleUserAuthenticated, this.handleUserUnauthenticated);
+    App.hoodie.account.authenticate();
 
     App.settings = new App.Settings();
     App.gifs = new App.Gifs();
 
-    App.router = new App.Router();
-    Backbone.history.start();
-
     this.initTemplates();
     this.initViews();
     this.initEvents();
+
+    App.router = new App.Router();
+    Backbone.history.start();
   },
 
   /**
@@ -62,7 +61,13 @@ App.Main = Backbone.View.extend({
     App.hoodie.account
       .on('signin', this.handleUserAuthenticated);
     App.hoodie.account
+      .on('signin', this.handleUserAuthenticated);
+    App.hoodie.account
       .on('signout', this.handleUserUnauthenticated);
+    App.hoodie.account
+      .on('authenticate', this.handleUserAuthenticated);
+    App.hoodie.account
+      .on('unauthenticated', this.handleUserUnauthenticated);
     App.hoodie
       .on('account:error:unauthenticated remote:error:unauthenticated', this.handleUserAuthenticationError);
   },
@@ -72,34 +77,24 @@ App.Main = Backbone.View.extend({
    * @param  {String} username The username
    */
   handleUserAuthenticated: function(username) {
-    this.setAccountStatus('signedin');
-    App.navbar.setUsername(App.hoodie.account.username);
-    App.router.navigate('/', {trigger: true});
+    App.router.navigate('/collection', {trigger: true});
+    App.navbar.setAccountStatus('signedin');
   },
 
   /**
    * Handle it, when the user got unauthenticated
    */
   handleUserUnauthenticated: function() {
-    this.setAccountStatus('signedout');
     App.router.navigate('/', {trigger: true});
+    App.navbar.setAccountStatus('signedout');
   },
 
   /**
    * Handle it, when there was an authentication error
    */
   handleUserAuthenticationError: function() {
-    this.setAccountStatus('error');
-    App.navbar.setUsername(App.hoodie.account.username);
     App.router.navigate('/signin', {trigger: true});
-  },
-
-  /**
-   * Set the account status to the app
-   * @param  {String} status The status
-   */
-  setAccountStatus: function(status) {
-    $('html').attr('data-hoodie-account-status', status);
+    App.navbar.setAccountStatus('error');
   }
 });
 new App.Main();

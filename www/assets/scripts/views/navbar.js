@@ -16,6 +16,15 @@ App.NavbarView = Backbone.View.extend({
    */
   initialize: function() {
     _.bindAll(this);
+
+    this.$accountStati = this.$('.hoodie-account-status');
+    this.$username = this.$('.hoodie-username');
+
+    if (App.loggedin()) {
+      this.setAccountStatus('signedin');
+    } else {
+      this.setAccountStatus('signedout');
+    }
   },
 
   /**
@@ -40,10 +49,12 @@ App.NavbarView = Backbone.View.extend({
   },
 
   /**
-   * Set the username in the header
-   * @param  {String} username The username
+   * Set the account status in the header
+   * @param  {String} status The current status
    */
-  setUsername: function(username) {
-    this.$el.find('.hoodie-username').text(username);
+  setAccountStatus: function(status) {
+    this.$accountStati.hide();
+    this.$username.text(App.hoodie.account.username);
+    this.$el.find('.hoodie-account-' + status).show();
   }
 });

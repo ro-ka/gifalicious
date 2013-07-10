@@ -18,6 +18,11 @@ App.Router = Backbone.Router.extend({
    * Show the index page
    */
   showIndex: function() {
+    if (App.loggedin()) {
+      App.router.navigate('/collection', {trigger: true, replace: true});
+      return;
+    }
+
     App.settings.set('view', 'index');
   },
 
@@ -25,6 +30,11 @@ App.Router = Backbone.Router.extend({
    * Show the user page
    */
   showUser: function() {
+    if (!App.loggedin()) {
+      App.router.navigate('/', {trigger: true, replace: true});
+      return;
+    }
+
     App.settings.set('view', 'user');
   },
 
@@ -32,6 +42,11 @@ App.Router = Backbone.Router.extend({
    * Show the collection
    */
   showCollection: function() {
+    if (!App.loggedin()) {
+      App.router.navigate('/', {trigger: true, replace: true});
+      return;
+    }
+
     App.settings.set('view', 'collection');
   },
 
@@ -40,6 +55,11 @@ App.Router = Backbone.Router.extend({
    * @param  {String} id The id of the gif
    */
   showGif: function(id) {
+    if (!App.loggedin()) {
+      App.router.navigate('/', {trigger: true, replace: true});
+      return;
+    }
+
     var gif = App.gifs.get(id);
 
     App.settings.set('view', 'gif');
@@ -50,6 +70,11 @@ App.Router = Backbone.Router.extend({
    * Show the signup page
    */
   showSignup: function() {
+    if (App.loggedin()) {
+      App.router.navigate('/collection', {trigger: true, replace: true});
+      return;
+    }
+
     App.settings.set('view', 'signup');
   },
 
@@ -57,6 +82,11 @@ App.Router = Backbone.Router.extend({
    * Show the signin page
    */
   showSignin: function() {
+    if (App.loggedin()) {
+      App.router.navigate('/collection', {trigger: true, replace: true});
+      return;
+    }
+
     App.settings.set('view', 'signin');
   }
 });

@@ -24,11 +24,6 @@ App.GifView = Backbone.View.extend({
    */
   onViewChange: function() {
     if (App.settings.get('view') === this.view) {
-      if (!App.loggedin()) {
-        App.router.navigate('/', {trigger: true});
-        return;
-      }
-
       this.$el.show();
     } else {
       this.$el.hide();
