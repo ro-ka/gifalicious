@@ -1,124 +1,155 @@
 <!DOCTYPE html>
 <html class="no-js">
   <head>
+    <title>gifalicious</title>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>gifalicious</title>
-    <meta name="description" content="">
+    <meta name="description" content="It's delicious for your favorite animated gifs.">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/vendor/prism/prism.css">
-    <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="assets/stylesheets/vendor/normalize.css">
+    <link rel="stylesheet" href="assets/stylesheets/vendor/tuktuk.css">
+    <link rel="stylesheet" href="assets/stylesheets/vendor/tuktuk.theme.css">
+    <link rel="stylesheet" href="assets/stylesheets/vendor/tuktuk.icons.css">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
   </head>
   <body>
-    <div class="container">
-      <div class="hero-unit">
-        <h1>gifalicious</h1>
-        <p>
-          hoodie playground.
-        </p>
-
-        <div class="hoodie-accountbar">
-
+    <header id="navbar" class="bck dark">
+      <div class="row">
+        <h3 class="column_4 thin text">gifalicious</h3>
+        <nav class="column_8 text right">
           <div class="hoodie-account-signedout">
-            <span class="btn-group">
-              <button class="btn btn-small btn-inverse" data-hoodie-action="signup">Sign Up</button>
-              <button class="btn btn-small dropdown-toggle btn-inverse" data-toggle="dropdown">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu pull-right">
-                <li><a href="#" data-hoodie-action="signin">Sign In</a></li>
-                <li><a href="#" data-hoodie-action="resetpassword">Reset Password</a></li>
-                <li><a href="#" data-hoodie-action="destroy">Clear local data</a></li>
-              </ul>
-            </span>
-          </div><!-- /.hoodie-account-signedout -->
+            <button class="button small navbar__signup">Sign Up</button>
+            <button class="button small secondary navbar__signin">Sign In</button>
+            <!-- <button class="button small secondary" class="navbar__resetpassword">Reset Password</button> -->
+          </div>
 
           <div class="hoodie-account-signedin">
-            Hello,
-            <span class="hoodie-username"><!-- usern name will be filled in here --></span>
-            <span class="btn-group">
-              <button class="btn btn-small btn-inverse" data-hoodie-action="signout">Sign Out</button>
-              <button class="btn btn-small dropdown-toggle btn-inverse" data-toggle="dropdown">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu pull-right">
-                <li><a href="#" data-hoodie-action="changepassword">Change Password</a></li>
-                <li><a href="#" data-hoodie-action="changeusername">Change Username</a></li>
-                <li><a href="#" data-hoodie-action="destroy">Destroy Account</a></li>
-              </ul>
-            </span>
-          </div><!-- /.hoodie-account-signedin -->
+            <h4 class="hoodie-username text inline"></h4>
+            <button class="button secondary small navbar__signout">Sign Out</button>
+            <!-- <button class="button small secondary" data-hoodie-action="changepassword">Change Password</button> -->
+            <!-- <button class="button small secondary" data-hoodie-action="changeusername">Change Username</button> -->
+            <!-- <button class="button small alert" data-hoodie-action="destroy">Destroy Account</button> -->
+          </div>
 
           <div class="hoodie-account-error">
-            Hello,
-            <span class="hoodie-username"><!-- usern name will be filled in here --></span>.
-            <span class="btn-group">
-              <button class="btn btn-small btn-danger" data-hoodie-action="signin">Authentication error: Sign in again</button>
-              <button class="btn btn-small dropdown-toggle btn-danger" data-toggle="dropdown">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu pull-right">
-                <li><a href="#" data-hoodie-action="signout">Sign out</a></li>
-              </ul>
-            </span>
-          </div><!-- /.hoodie-account-error -->
-        </div><!--/hoodieAccountBar -->
+            <h4 class="hoodie-username text inline"></h4>
+            <!-- <button class="button small alert" data-hoodie-action="signin">Authentication error: Sign in again</button> -->
+            <!-- <button class="button small secondary" data-hoodie-action="signout">Sign out</button> -->
+          </div>
+        </nav>
       </div>
+    </header>
 
-      <div class="content">
-        <ul id="todolist"></ul>
+    <div id="index-view" class="hide">
+      <section class="padding bck light">
+        <div class="row text center book">
+          <div class="column_12">
+            <h1 class="color default">A new kid on the block</h1>
+          </div>
+        </div>
+      </section>
+    </div>
 
-        <input type="text" id="todoinput"  placeholder="new todo ↵" />
-      </div>
+    <div id="collection-view" class="hide">
+      <section class="padding bck light">
+        <div class="row text center book">
+          <div class="column_12">
+            <h1 class="color default">Collection</h1>
+          </div>
+        </div>
+      </section>
+    </div>
 
-      <div class="code">
-<pre class="language-javascript"><code class="language-javascript">
-var hoodie  = new Hoodie()
+    <div id="gif-view" class="hide">
+      <section class="padding bck light">
+        <div class="row text center book">
+          <div class="column_12">
+            <h1 class="color default">Gif</h1>
+          </div>
+        </div>
+      </section>
+    </div>
 
-// initial load of all todo items from the store
-hoodie.store.findAll('todo').then( function(todos) {
-  todos.sort( sortByCreatedAt ).forEach( addTodo )
-})
+    <div id="user-view" class="hide">
+      <section class="padding bck light">
+        <div class="row text center book">
+          <div class="column_12">
+            <h1 class="color default">User</h1>
+          </div>
+        </div>
+      </section>
+    </div>
 
-// when a new todo gets stored, add it to the UI
-hoodie.store.on('add:todo', addTodo)
-// clear todo list when the get wiped from store
-hoodie.store.on('clear', clearTodos)
+    <div id="signup-view" class="hide">
+      <section class="padding">
+        <div class="row">
+          <div class="column_12 margin-bottom">
+            <h1>Sign Up</h1>
+          </div>
+          <p class="column_12 margin-bottom">
+            Join gifalicious!
+          </p>
+        </div>
+        <form class="row">
+          <div class="column_12">
+            <label for="signup__username">Username</label>
+            <input type="text" name="username" id="signup__username" required>
+          </div>
+          <div class="column_12">
+            <label for="signup__password">Password</label>
+            <input type="password" name="password" id="signup__password" required>
+          </div>
+          <div class="column_12 margin-top">
+            <button type="submit" class="button">Sign Up</button>
+            <button type="button" class="button secondary signup-view__cancel">Cancel</button>
+          </div>
+        </form>
+      </section>
+    </div>
 
-// handle creating a new task
-console.log($('#todoinput').length)
-$('#todoinput').on('keypress', function(event) {
-  if (event.keyCode == 13) { // ENTER
-    hoodie.store.add('todo', {title: event.target.value});
-    event.target.value = '';
-  }
-})
+    <div id="signin-view" class="hide">
+      <section class="padding">
+        <div class="row">
+          <div class="column_12 margin-bottom">
+            <h1>Sign In</h1>
+          </div>
+        </div>
+        <form class="row">
+          <div class="column_12">
+            <label for="signin__username">Username</label>
+            <input type="text" name="username" id="signin__username" required>
+          </div>
+          <div class="column_12">
+            <label for="signin__password">Password</label>
+            <input type="password" name="password" id="signin__password" required>
+          </div>
+          <div class="column_12 margin-top">
+            <button type="submit" class="button">Sign In</button>
+            <button type="button" class="button secondary signin-view__cancel">Cancel</button>
+          </div>
+        </form>
+      </section>
+    </div>
 
-function addTodo( todo ) { 
-  $('#todolist').append('&lt;li&gt;'+todo.title+'&lt;/li&gt;');
-}
-function clearTodos() {
-  $('#todolist').html();
-}
-function sortByCreatedAt(a, b) { 
-  return a.createdAt > b.createdAt
-}
-</code></pre>
-      </div><!-- /.code -->
-
-      <footer class="copy">
-        <p>&hearts; hood.ie 2013</p>
-      </footer>
-    </div> <!-- /.container -->
-
-    <script src="assets/vendor/jquery-1.9.1.js"></script>
-    <script src="assets/vendor/bootstrap/bootstrap.js"></script>
-    <script src="assets/vendor/prism/prism.js"></script>
-    <script src="assets/vendor/hoodie.js"></script>
-    <script src="assets/vendor/hoodie.accountbar.bootstrap.js"></script>
-    <script src="assets/vendor/bootstrap.modalform.js"></script>
-    <script src="assets/main.js"></script>
+    <script src="assets/scripts/vendor/lodash.min.js"></script>
+    <script src="assets/scripts/vendor/jquery2.min.js"></script>
+    <script src="assets/scripts/vendor/backbone.min.js"></script>
+    <script src="assets/scripts/vendor/tuktuk.js"></script>
+    <script src="assets/scripts/vendor/hoodie.js"></script>
+    <script src="assets/scripts/vendor/backbone-hoodie.js"></script>
+    <script src="assets/scripts/models/gif.js"></script>
+    <script src="assets/scripts/models/settings.js"></script>
+    <script src="assets/scripts/collections/gifs.js"></script>
+    <script src="assets/scripts/views/gif.js"></script>
+    <script src="assets/scripts/views/user.js"></script>
+    <script src="assets/scripts/views/index.js"></script>
+    <script src="assets/scripts/views/signup.js"></script>
+    <script src="assets/scripts/views/signin.js"></script>
+    <script src="assets/scripts/views/navbar.js"></script>
+    <script src="assets/scripts/views/collection.js"></script>
+    <script src="assets/scripts/routers/router.js"></script>
+    <script src="assets/scripts/main.js"></script>
   </body>
 </html>
