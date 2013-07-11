@@ -8,6 +8,7 @@
     <meta name="description" content="It's delicious for your favorite animated gifs.">
     <meta name="viewport" content="width=device-width">
 
+    <link href="http://fonts.googleapis.com/css?family=Grand+Hotel|Open+Sans:300,400,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/stylesheets/vendor/normalize.css">
     <link rel="stylesheet" href="assets/stylesheets/vendor/tuktuk.css">
     <link rel="stylesheet" href="assets/stylesheets/vendor/tuktuk.theme.css">
@@ -15,22 +16,26 @@
     <link rel="stylesheet" href="assets/stylesheets/main.css">
   </head>
   <body>
-    <header id="navbar" class="bck dark">
+    <header id="navbar" class="bck dark padding color white">
       <div class="row">
-        <h3 class="column_4 thin text">gifalicious</h3>
-        <nav class="column_8 text right">
+        <div class="column_4">
+          <a href="#" class="logo">gifalicious</a>
+        </div>
+        <nav class="column_8 text right bold">
           <div class="hoodie-account-status hoodie-account-signedout hide">
+            <a href="#signin" class="navbar__signin">Login</a>
             <button class="button small navbar__signup">Sign Up</button>
-            <button class="button small secondary navbar__signin">Sign In</button>
-            <!-- <button class="button small secondary" class="navbar__resetpassword">Reset Password</button> -->
           </div>
 
           <div class="hoodie-account-status hoodie-account-signedin hide">
-            <h4 class="hoodie-username text inline"></h4>
-            <button class="button secondary small navbar__signout">Sign Out</button>
-            <!-- <button class="button small secondary" data-hoodie-action="changepassword">Change Password</button> -->
-            <!-- <button class="button small secondary" data-hoodie-action="changeusername">Change Username</button> -->
-            <!-- <button class="button small alert" data-hoodie-action="destroy">Destroy Account</button> -->
+            <a href="#user" class="navbar__user">
+              <span class="icon user"></span>
+              <span class="hoodie-username"></span>
+            </a>
+            <a href="#signout" class="navbar__signout">
+              <span class="icon signout"></span>
+              Sign Out
+            </a>
           </div>
 
           <div class="hoodie-account-status hoodie-account-error hide">
@@ -53,11 +58,25 @@
     </div>
 
     <div id="collection-view" class="hide">
-      <section class="padding bck light">
-        <div class="row text center book">
-          <div class="column_12">
-            <h1 class="color default">Collection</h1>
+      <section class="padding">
+        <form class="collection__add-form row margin-bottom">
+          <div class="column_8 collection__title">
+            <h1>Collection</h1>
           </div>
+          <div class="column_8 collection__add hide">
+            <input type="url" class="collection__add__input" name="collection__add__input" id="collection__add__input" required placeholder="Enter a url to an animated gif and press ↵">
+          </div>
+          <div class="column_4 text right">
+            <button type="button" class="button large collection__add-button">
+              <span class="icon plus"></span>
+              Add GIF
+            </button>
+          </div>
+        </form>
+        <div class="row margin-top margin-bottom">
+        </div>
+        <div class="row collection__list">
+          GIFS
         </div>
       </section>
     </div>
@@ -77,6 +96,9 @@
         <div class="row text center book">
           <div class="column_12">
             <h1 class="color default">User</h1>
+            <!-- <button class="button small secondary" data-hoodie-action="changepassword">Change Password</button> -->
+            <!-- <button class="button small secondary" data-hoodie-action="changeusername">Change Username</button> -->
+            <!-- <button class="button small alert" data-hoodie-action="destroy">Destroy Account</button> -->
           </div>
         </div>
       </section>
@@ -95,11 +117,11 @@
         <form class="row">
           <div class="column_12">
             <label for="signup__username">Username</label>
-            <input type="text" name="username" id="signup__username" required>
+            <input type="text" name="signup__username" id="signup__username" required>
           </div>
           <div class="column_12">
             <label for="signup__password">Password</label>
-            <input type="password" name="password" id="signup__password" required>
+            <input type="password" name="signup__password" id="signup__password" required>
           </div>
           <div class="column_12 margin-top">
             <button type="submit" class="button">Sign Up</button>
@@ -119,16 +141,17 @@
         <form class="row">
           <div class="column_12">
             <label for="signin__username">Username</label>
-            <input type="text" name="username" id="signin__username" required>
+            <input type="text" name="signin__username" id="signin__username" required>
           </div>
           <div class="column_12">
             <label for="signin__password">Password</label>
-            <input type="password" name="password" id="signin__password" required>
+            <input type="password" name="signin__password" id="signin__password" required>
           </div>
           <div class="column_12 margin-top">
             <button type="submit" class="button">Sign In</button>
             <button type="button" class="button secondary signin-view__cancel">Cancel</button>
           </div>
+          <!-- <button class="button small secondary" class="navbar__resetpassword">Reset Password</button> -->
         </form>
       </section>
     </div>

@@ -8,7 +8,8 @@ App.NavbarView = Backbone.View.extend({
   events: {
     'click .navbar__signup': 'signup',
     'click .navbar__signin': 'signin',
-    'click .navbar__signout': 'signout'
+    'click .navbar__signout': 'signout',
+    'click .navbar__user': 'user'
   },
 
   /**
@@ -29,23 +30,42 @@ App.NavbarView = Backbone.View.extend({
 
   /**
    * Navigate to signup
+   * @param {JQueryEvent} event The JQuery Event
    */
-  signup: function() {
+  signup: function(event) {
+    event.preventDefault();
+
     App.router.navigate('/signup', {trigger: true});
   },
 
   /**
    * Navigate to signin
+   * @param {JQueryEvent} event The JQuery Event
    */
-  signin: function() {
+  signin: function(event) {
+    event.preventDefault();
+
     App.router.navigate('/signin', {trigger: true});
   },
 
   /**
    * Sign out
+   * @param {JQueryEvent} event The JQuery Event
    */
-  signout: function() {
+  signout: function(event) {
+    event.preventDefault();
+
     App.hoodie.account.signOut();
+  },
+
+  /**
+   * Go to user
+   * @param {JQueryEvent} event The JQuery Event
+   */
+  user: function(event) {
+    event.preventDefault();
+
+    App.router.navigate('/user', {trigger: true});
   },
 
   /**
