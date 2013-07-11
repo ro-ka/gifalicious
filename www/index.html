@@ -10,6 +10,7 @@
 
     <link href="http://fonts.googleapis.com/css?family=Grand+Hotel|Open+Sans:300,400,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/stylesheets/vendor/normalize.css">
+    <link rel="stylesheet" href="assets/stylesheets/vendor/foundation.css">
     <link rel="stylesheet" href="assets/stylesheets/vendor/tuktuk.css">
     <link rel="stylesheet" href="assets/stylesheets/vendor/tuktuk.theme.css">
     <link rel="stylesheet" href="assets/stylesheets/vendor/tuktuk.icons.css">
@@ -18,10 +19,10 @@
   <body>
     <header id="navbar" class="bck dark padding color white">
       <div class="row">
-        <div class="column_4">
+        <div class="small-4 columns">
           <a href="#" class="logo">gifalicious</a>
         </div>
-        <nav class="column_8 text right bold">
+        <nav class="small-8 columns text right bold">
           <div class="hoodie-account-status hoodie-account-signedout hide">
             <a href="#signin" class="navbar__signin">Login</a>
             <button class="button small navbar__signup">Sign Up</button>
@@ -56,7 +57,7 @@
     <div id="index-view" class="hide">
       <section class="padding bck light">
         <div class="row text center book">
-          <div class="column_12">
+          <div class="small-12 columns">
             <h1 class="color default">A new kid on the block</h1>
           </div>
         </div>
@@ -66,21 +67,19 @@
     <div id="collection-view" class="hide">
       <section class="padding">
         <form class="collection__add-form row margin-bottom">
-          <div class="column_8 collection__title">
+          <div class="small-8 columns collection__title">
             <h1>Collection</h1>
           </div>
-          <div class="column_8 collection__add hide">
+          <div class="small-8 columns collection__add hide">
             <input type="url" class="collection__add__input" name="collection__add__input" id="collection__add__input" required placeholder="Enter a url to an animated gif and press ↵">
           </div>
-          <div class="column_4 text right">
+          <div class="small-4 columns text right">
             <button type="button" class="button large collection__add-button">
               <span class="icon plus"></span>
               Add GIF
             </button>
           </div>
         </form>
-        <div class="row margin-top margin-bottom">
-        </div>
         <div class="row collection__list">
         </div>
       </section>
@@ -89,7 +88,7 @@
     <div id="gif-view" class="hide">
       <section class="padding bck light">
         <div class="row text center book">
-          <div class="column_12">
+          <div class="small-12 columns">
             <h1 class="color default">Gif</h1>
           </div>
         </div>
@@ -99,7 +98,7 @@
     <div id="user-view" class="hide">
       <section class="padding bck light">
         <div class="row text center book">
-          <div class="column_12">
+          <div class="small-12 columns">
             <h1 class="color default">User</h1>
             <!-- <button class="button small secondary" data-hoodie-action="changepassword">Change Password</button> -->
             <!-- <button class="button small secondary" data-hoodie-action="changeusername">Change Username</button> -->
@@ -112,23 +111,23 @@
     <div id="signup-view" class="hide">
       <section class="padding">
         <div class="row">
-          <div class="column_12 margin-bottom">
+          <div class="small-12 columns margin-bottom">
             <h1>Sign Up</h1>
           </div>
-          <p class="column_12 margin-bottom">
+          <p class="small-12 columns margin-bottom">
             Join gifalicious!
           </p>
         </div>
         <form class="row">
-          <div class="column_12">
+          <div class="small-12 columns">
             <label for="signup__username">Username</label>
             <input type="text" name="signup__username" id="signup__username" required>
           </div>
-          <div class="column_12">
+          <div class="small-12 columns">
             <label for="signup__password">Password</label>
             <input type="password" name="signup__password" id="signup__password" required>
           </div>
-          <div class="column_12 margin-top">
+          <div class="small-12 columns margin-top">
             <button type="submit" class="button">Sign Up</button>
             <button type="button" class="button secondary signup-view__cancel">Cancel</button>
           </div>
@@ -139,20 +138,20 @@
     <div id="signin-view" class="hide">
       <section class="padding">
         <div class="row">
-          <div class="column_12 margin-bottom">
+          <div class="small-12 columns margin-bottom">
             <h1>Sign In</h1>
           </div>
         </div>
         <form class="row">
-          <div class="column_12">
+          <div class="small-12 columns">
             <label for="signin__username">Username</label>
             <input type="text" name="signin__username" id="signin__username" required>
           </div>
-          <div class="column_12">
+          <div class="small-12 columns">
             <label for="signin__password">Password</label>
             <input type="password" name="signin__password" id="signin__password" required>
           </div>
-          <div class="column_12 margin-top">
+          <div class="small-12 columns margin-top">
             <button type="submit" class="button">Sign In</button>
             <button type="button" class="button secondary signin-view__cancel">Cancel</button>
           </div>
@@ -162,7 +161,7 @@
     </div>
 
     <script id="template__collection__list__gif" type="text/x-handlebars-template">
-      <a href="#gif/{{id}}" class="column_6 collection__list__gif-link">
+      <a href="#gif/{{id}}" class="small-12 large-6 columns collection__list__gif-link">
         <img src="{{url}}" alt="" class="collection__list__gif-link__image">
       </a>
     </script>
