@@ -33,7 +33,8 @@ App.CollectionView = Backbone.View.extend({
    */
   render: function() {
     var data = {
-        gifs: App.gifs.toJSON()
+        gifs: App.gifs.toJSON(),
+        gifCount: App.gifs.size()
       },
       html = App.template.collection(data);
 

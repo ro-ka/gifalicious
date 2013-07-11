@@ -8,6 +8,7 @@ App.SigninView = Backbone.View.extend({
   events: {
     'submit form': 'signin',
     'click .signin-view__cancel': 'cancel'
+    // 'click .signin-view__resetpassword': 'resetpassword'
   },
 
   /**
@@ -46,8 +47,18 @@ App.SigninView = Backbone.View.extend({
 
   /**
    * Navigate to index
+   * @param {JQueryEvent} event The triggered event
    */
   cancel: function() {
     App.router.navigate('/', {trigger: true});
+  },
+
+  /**
+   * Reset the password
+   */
+  resetpassword: function(event) {
+    event.preventDefault();
+
+    // hoodie.account.resetPassword('joe@example.com');
   }
 });
