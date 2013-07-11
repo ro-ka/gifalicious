@@ -21,10 +21,14 @@ App.CollectionView = Backbone.View.extend({
     this.$addForm = this.$('.collection__add');
     this.$addFormTitle = this.$('.collection__title');
     this.$addFormInput = this.$('.collection__add__input');
+    this.$list = this.$('.collection__list');
 
     this.addFormVisible = false;
 
+    App.gifs.each(this.addGif);
+
     this.listenTo(App.settings, 'change:view', this.onViewChange);
+    this.listenTo(App.gifs, 'add', this.addGif);
   },
 
   /**
@@ -76,8 +80,24 @@ App.CollectionView = Backbone.View.extend({
   submitAddForm: function() {
     var url = this.$addFormInput.val();
 
-    console.log(url);
+    App.gifs.create({
+        url: url
+      }, {
+        wait: true
+      }
+    );
+
     this.hideAddForm();
+  },
+
+  /**
+   * Add a gif to the collection view
+   * @param  {ModelGif} gif The gif to add
+   */
+  addGif: function(gif) {
+    var $gif = $('<img>').attr('src', gif.get('url'));
+
+    this.$list.prepend($gif);
   },
 
   /**

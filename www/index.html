@@ -40,8 +40,14 @@
 
           <div class="hoodie-account-status hoodie-account-error hide">
             <h4 class="hoodie-username text inline"></h4>
-            <!-- <button class="button small alert" data-hoodie-action="signin">Authentication error: Sign in again</button> -->
-            <!-- <button class="button small secondary" data-hoodie-action="signout">Sign out</button> -->
+            <a href="#signin" class="navbar__signin">
+              <span class="icon signin"></span>
+              Error: Login again
+            </a>
+            <a href="#signout" class="navbar__signout">
+              <span class="icon signout"></span>
+              Sign Out
+            </a>
           </div>
         </nav>
       </div>
@@ -76,7 +82,6 @@
         <div class="row margin-top margin-bottom">
         </div>
         <div class="row collection__list">
-          GIFS
         </div>
       </section>
     </div>
@@ -157,6 +162,7 @@
     </div>
 
     <script src="assets/scripts/vendor/lodash.min.js"></script>
+    <script src="assets/scripts/vendor/handlebars.js"></script>
     <script src="assets/scripts/vendor/jquery2.min.js"></script>
     <script src="assets/scripts/vendor/backbone.min.js"></script>
     <script src="assets/scripts/vendor/tuktuk.js"></script>

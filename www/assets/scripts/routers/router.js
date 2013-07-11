@@ -82,11 +82,6 @@ App.Router = Backbone.Router.extend({
    * Show the signin page
    */
   showSignin: function() {
-    if (App.loggedin()) {
-      App.router.navigate('/collection', {trigger: true, replace: true});
-      return;
-    }
-
     App.settings.set('view', 'signin');
   }
 });
