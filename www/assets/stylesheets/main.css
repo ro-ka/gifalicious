@@ -4,11 +4,18 @@
   font-size: 3em
 }
 
-.collection__list__gif-link {
-  height: 20em;
-  overflow: hidden;
+#navbar a {
+  color: #fff;
 }
 
-.collection__list__gif-link__image {
-  width: 100%;
+.collection_list_item {
+  padding: 1em;
+  background: 50% 50% no-repeat url(/assets/images/loading.gif);
+}
+
+.collection__list__gif {
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 20em;
 }

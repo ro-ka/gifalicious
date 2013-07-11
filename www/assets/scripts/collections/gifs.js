@@ -11,5 +11,5 @@ App.Gifs = Backbone.Collection.extend({
    * What to sort for
    * @type {String}
    */
-  comparator: 'createdAt'
+  comparator: '-createdAt'
 });

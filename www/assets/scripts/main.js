@@ -26,8 +26,9 @@ App.Main = Backbone.View.extend({
     App.settings = new App.Settings();
     App.gifs = new App.Gifs();
 
+    App.navbar = new App.NavbarView({ el: this.$('#navbar') });
+
     this.initTemplates();
-    this.initViews();
     this.initEvents();
 
     App.router = new App.Router();
@@ -44,23 +45,8 @@ App.Main = Backbone.View.extend({
       index: Handlebars.compile($('#template__index').html()),
       signup: Handlebars.compile($('#template__signup').html()),
       signin: Handlebars.compile($('#template__signin').html()),
-      collection: Handlebars.compile($('#template__collection').html()),
-      collectionListGif: Handlebars.compile($('#template__collection__list__gif').html())
+      collection: Handlebars.compile($('#template__collection').html())
     };
-  },
-
-  /**
-   * Initialize views
-   */
-  initViews: function() {
-    App.navbar = new App.NavbarView({ el: this.$('#navbar') });
-
-    // App.gif = new App.GifView({ el: this.$('#gif-view') });
-    // App.user = new App.UserView({ el: this.$('#user-view') });
-    // App.index = new App.IndexView({ el: this.$('#index-view') });
-    // App.signup = new App.SignupView({ el: this.$('#signup-view') });
-    // App.signin = new App.SigninView({ el: this.$('#signin-view') });
-    // App.collection = new App.CollectionView({ el: this.$('#collection-view') });
   },
 
   /**

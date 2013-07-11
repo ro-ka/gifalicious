@@ -75,7 +75,9 @@ App.Router = Backbone.Router.extend({
     var gif = App.gifs.get(id);
 
     this.currentView.remove();
-    this.currentView = new App.GifView();
+    this.currentView = new App.GifView({
+      model: gif
+    });
   },
 
   /**
