@@ -84,40 +84,40 @@ hr {
   display:inline-block
 }
 .margin-none {
-  margin:0
+  margin:0 !important
 }
 .margin {
-  margin:1em
+  margin:1em !important
 }
 .margin-left {
-  margin-left:1em
+  margin-left:1em !important
 }
 .margin-right {
-  margin-right:1em
+  margin-right:1em !important
 }
 .margin-top {
-  margin-top:1em
+  margin-top:1em !important
 }
 .margin-bottom {
-  margin-bottom:1em
+  margin-bottom:1em !important
 }
 .padding-none {
-  padding:0
+  padding:0 !important
 }
 .padding {
-  padding:1em
+  padding:1em !important
 }
 .padding-left {
-  padding-left:1em
+  padding-left:1em !important
 }
 .padding-right {
-  padding-right:1em
+  padding-right:1em !important
 }
 .padding-top {
-  padding-top:1em
+  padding-top:1em !important
 }
 .padding-bottom {
-  padding-bottom:1em
+  padding-bottom:1em !important
 }
 .antialiased {
   -webkit-font-smoothing: antialiased;
@@ -296,9 +296,6 @@ body > header nav a:last-child {
   .small-offset-10 {
     position: relative;
     margin-left: 83.33333%;
-  }
-  [class*="column"] +[class*="column"]:last-child {
-    float: right;
   }
   [class*="column"] +[class*="column"].end {
     float: left;

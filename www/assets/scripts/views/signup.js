@@ -20,6 +20,8 @@ App.SignupView = Backbone.View.extend({
 
     this.$username = this.$('#signup__username');
     this.$password = this.$('#signup__password');
+
+    this.$username.focus();
   },
 
   /**

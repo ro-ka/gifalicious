@@ -207,7 +207,27 @@ table td.highlight {
   font-size: 3em
 }
 
-.collection_list_item {
+.collection__add {
+  position: relative;
+}
+
+.collection__add__button {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+.collection__add__input-wrapper {
+  position: absolute;
+  left: 0;
+  right: 12em;
+  top: 0em;
+  height: 100%;
+  background: #fff;
+  padding: 1.5em;
+}
+
+.collection__list__item {
   padding: 1em;
   background: 50% 50% no-repeat url(/assets/images/loading.gif);
 }

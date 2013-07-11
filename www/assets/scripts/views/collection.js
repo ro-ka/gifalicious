@@ -6,8 +6,8 @@ App.CollectionView = Backbone.View.extend({
    * @type {Object}
    */
   events: {
-    'click .collection__add-button': 'onAddButtonClick',
-    'submit .collection__add-form': 'onAddFormSubmit'
+    'click .collection__add__button': 'onAddButtonClick',
+    'submit .collection__add': 'onAddFormSubmit'
   },
 
   /**
@@ -21,8 +21,8 @@ App.CollectionView = Backbone.View.extend({
     this.render();
 
     this.$addForm = this.$('.collection__add');
-    this.$addFormTitle = this.$('.collection__title');
     this.$addFormInput = this.$('.collection__add__input');
+    this.$addFormInputWrapper = this.$('.collection__add__input-wrapper');
     this.$list = this.$('.collection__list');
 
     this.listenTo(App.gifs, 'add remove change', this.render);
@@ -69,8 +69,7 @@ App.CollectionView = Backbone.View.extend({
    * Show the add input
    */
   showAddForm: function() {
-    this.$addForm.show();
-    this.$addFormTitle.hide();
+    this.$addFormInputWrapper.show();
     this.$addFormInput.val('').focus();
     this.addFormVisible = true;
   },
@@ -79,8 +78,7 @@ App.CollectionView = Backbone.View.extend({
    * Hide the add input
    */
   hideAddForm: function() {
-    this.$addForm.hide();
-    this.$addFormTitle.show();
+    this.$addFormInputWrapper.hide();
     this.addFormVisible = false;
   },
 
