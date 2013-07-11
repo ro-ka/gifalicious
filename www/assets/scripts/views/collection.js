@@ -16,19 +16,28 @@ App.CollectionView = Backbone.View.extend({
   initialize: function() {
     _.bindAll(this);
 
-    this.view = 'collection';
+    this.addFormVisible = false;
+
+    this.render();
 
     this.$addForm = this.$('.collection__add');
     this.$addFormTitle = this.$('.collection__title');
     this.$addFormInput = this.$('.collection__add__input');
     this.$list = this.$('.collection__list');
 
-    this.addFormVisible = false;
-
     App.gifs.each(this.addGif);
 
-    this.listenTo(App.settings, 'change:view', this.onViewChange);
     this.listenTo(App.gifs, 'add', this.addGif);
+  },
+
+  /**
+   * Render the view
+   */
+  render: function() {
+    var html = App.template.collection();
+
+    this.$el.html(html);
+    App.$content.html(this.$el);
   },
 
   /**
@@ -97,19 +106,6 @@ App.CollectionView = Backbone.View.extend({
   addGif: function(gif) {
     var html = App.template.collectionListGif(gif.toJSON());
 
-    // var $gif = $('<img>').attr('src', gif.get('url'));
-
     this.$list.prepend(html);
-  },
-
-  /**
-   * When the view in the app got changed
-   */
-  onViewChange: function() {
-    if (App.settings.get('view') === this.view) {
-      this.$el.show();
-    } else {
-      this.$el.hide();
-    }
   }
 });

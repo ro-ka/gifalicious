@@ -21,6 +21,8 @@ App.Main = Backbone.View.extend({
     App.hoodie = Backbone.hoodie;
     App.hoodie.account.authenticate();
 
+    App.$content = this.$('#content');
+
     App.settings = new App.Settings();
     App.gifs = new App.Gifs();
 
@@ -37,6 +39,12 @@ App.Main = Backbone.View.extend({
    */
   initTemplates: function() {
     App.template = {
+      gif: Handlebars.compile($('#template__gif').html()),
+      user: Handlebars.compile($('#template__user').html()),
+      index: Handlebars.compile($('#template__index').html()),
+      signup: Handlebars.compile($('#template__signup').html()),
+      signin: Handlebars.compile($('#template__signin').html()),
+      collection: Handlebars.compile($('#template__collection').html()),
       collectionListGif: Handlebars.compile($('#template__collection__list__gif').html())
     };
   },
@@ -45,13 +53,14 @@ App.Main = Backbone.View.extend({
    * Initialize views
    */
   initViews: function() {
-    App.gif = new App.GifView({ el: this.$('#gif-view') });
-    App.user = new App.UserView({ el: this.$('#user-view') });
     App.navbar = new App.NavbarView({ el: this.$('#navbar') });
-    App.index = new App.IndexView({ el: this.$('#index-view') });
-    App.signup = new App.SignupView({ el: this.$('#signup-view') });
-    App.signin = new App.SigninView({ el: this.$('#signin-view') });
-    App.collection = new App.CollectionView({ el: this.$('#collection-view') });
+
+    // App.gif = new App.GifView({ el: this.$('#gif-view') });
+    // App.user = new App.UserView({ el: this.$('#user-view') });
+    // App.index = new App.IndexView({ el: this.$('#index-view') });
+    // App.signup = new App.SignupView({ el: this.$('#signup-view') });
+    // App.signin = new App.SigninView({ el: this.$('#signin-view') });
+    // App.collection = new App.CollectionView({ el: this.$('#collection-view') });
   },
 
   /**

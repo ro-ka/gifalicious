@@ -15,6 +15,15 @@ App.Router = Backbone.Router.extend({
   },
 
   /**
+   * Initialize
+   */
+  initialize: function() {
+    _.bindAll(this);
+
+    this.currentView = new App.IndexView();
+  },
+
+  /**
    * Show the index page
    */
   showIndex: function() {
@@ -23,7 +32,8 @@ App.Router = Backbone.Router.extend({
       return;
     }
 
-    App.settings.set('view', 'index');
+    this.currentView.remove();
+    this.currentView = new App.IndexView();
   },
 
   /**
@@ -35,7 +45,8 @@ App.Router = Backbone.Router.extend({
       return;
     }
 
-    App.settings.set('view', 'user');
+    this.currentView.remove();
+    this.currentView = new App.UserView();
   },
 
   /**
@@ -47,7 +58,8 @@ App.Router = Backbone.Router.extend({
       return;
     }
 
-    App.settings.set('view', 'collection');
+    this.currentView.remove();
+    this.currentView = new App.CollectionView();
   },
 
   /**
@@ -62,8 +74,8 @@ App.Router = Backbone.Router.extend({
 
     var gif = App.gifs.get(id);
 
-    App.settings.set('view', 'gif');
-    // App.settings.trigger('show:reservation', id);
+    this.currentView.remove();
+    this.currentView = new App.GifView();
   },
 
   /**
@@ -75,13 +87,15 @@ App.Router = Backbone.Router.extend({
       return;
     }
 
-    App.settings.set('view', 'signup');
+    this.currentView.remove();
+    this.currentView = new App.SignupView();
   },
 
   /**
    * Show the signin page
    */
   showSignin: function() {
-    App.settings.set('view', 'signin');
+    this.currentView.remove();
+    this.currentView = new App.SigninView();
   }
 });

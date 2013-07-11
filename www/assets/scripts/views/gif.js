@@ -14,19 +14,16 @@ App.GifView = Backbone.View.extend({
   initialize: function() {
     _.bindAll(this);
 
-    this.view = 'gif';
-
-    this.listenTo(App.settings, 'change:view', this.onViewChange);
+    this.render();
   },
 
   /**
-   * When the view in the app got changed
+   * Render the view
    */
-  onViewChange: function() {
-    if (App.settings.get('view') === this.view) {
-      this.$el.show();
-    } else {
-      this.$el.hide();
-    }
+  render: function() {
+    var html = App.template.gif();
+
+    this.$el.html(html);
+    App.$content.html(this.$el);
   }
 });

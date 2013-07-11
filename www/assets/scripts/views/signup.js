@@ -16,23 +16,20 @@ App.SignupView = Backbone.View.extend({
   initialize: function() {
     _.bindAll(this);
 
-    this.view = 'signup';
+    this.render();
 
     this.$username = this.$('#signup__username');
     this.$password = this.$('#signup__password');
-
-    this.listenTo(App.settings, 'change:view', this.onViewChange);
   },
 
   /**
-   * When the view in the app got changed
+   * Render the view
    */
-  onViewChange: function() {
-    if (App.settings.get('view') === this.view) {
-      this.$el.show();
-    } else {
-      this.$el.hide();
-    }
+  render: function() {
+    var html = App.template.signup();
+
+    this.$el.html(html);
+    App.$content.html(this.$el);
   },
 
   /**

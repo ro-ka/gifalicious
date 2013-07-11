@@ -16,23 +16,20 @@ App.SigninView = Backbone.View.extend({
   initialize: function() {
     _.bindAll(this);
 
-    this.view = 'signin';
+    this.render();
 
     this.$username = this.$('#signin__username');
     this.$password = this.$('#signin__password');
-
-    this.listenTo(App.settings, 'change:view', this.onViewChange);
   },
 
   /**
-   * When the view in the app got changed
+   * Render the view
    */
-  onViewChange: function() {
-    if (App.settings.get('view') === this.view) {
-      this.$el.show();
-    } else {
-      this.$el.hide();
-    }
+  render: function() {
+    var html = App.template.signin();
+
+    this.$el.html(html);
+    App.$content.html(this.$el);
   },
 
   /**

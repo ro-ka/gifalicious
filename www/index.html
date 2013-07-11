@@ -54,7 +54,20 @@
       </div>
     </header>
 
-    <div id="index-view" class="hide">
+    <div id="content">
+
+    </div>
+
+    <footer class="row">
+      <div class="small-12 columns">
+        A project by
+        <a href="http://katzki.de">Robert Katzki</a>
+        at
+        <a href="http://ubilabs.net">Ubilabs</a>
+      </div>
+    </footer>
+
+    <script id="template__index" type="text/x-handlebars-template">
       <section class="padding bck light">
         <div class="row text center book">
           <div class="small-12 columns">
@@ -62,9 +75,9 @@
           </div>
         </div>
       </section>
-    </div>
+    </script>
 
-    <div id="collection-view" class="hide">
+    <script id="template__collection" type="text/x-handlebars-template">
       <section class="padding">
         <form class="collection__add-form row margin-bottom">
           <div class="small-8 columns collection__title">
@@ -83,9 +96,9 @@
         <div class="row collection__list">
         </div>
       </section>
-    </div>
+    </script>
 
-    <div id="gif-view" class="hide">
+    <script id="template__gif" type="text/x-handlebars-template">
       <section class="padding bck light">
         <div class="row text center book">
           <div class="small-12 columns">
@@ -93,9 +106,9 @@
           </div>
         </div>
       </section>
-    </div>
+    </script>
 
-    <div id="user-view" class="hide">
+    <script id="template__user" type="text/x-handlebars-template">
       <section class="padding bck light">
         <div class="row text center book">
           <div class="small-12 columns">
@@ -106,9 +119,9 @@
           </div>
         </div>
       </section>
-    </div>
+    </script>
 
-    <div id="signup-view" class="hide">
+    <script id="template__signup" type="text/x-handlebars-template">
       <section class="padding">
         <div class="row">
           <div class="small-12 columns margin-bottom">
@@ -133,9 +146,9 @@
           </div>
         </form>
       </section>
-    </div>
+    </script>
 
-    <div id="signin-view" class="hide">
+    <script id="template__signin" type="text/x-handlebars-template">
       <section class="padding">
         <div class="row">
           <div class="small-12 columns margin-bottom">
@@ -158,7 +171,7 @@
           <!-- <button class="button small secondary" class="navbar__resetpassword">Reset Password</button> -->
         </form>
       </section>
-    </div>
+    </script>
 
     <script id="template__collection__list__gif" type="text/x-handlebars-template">
       <a href="#gif/{{id}}" class="small-12 large-6 columns collection__list__gif-link">
