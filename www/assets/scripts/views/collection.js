@@ -95,9 +95,11 @@ App.CollectionView = Backbone.View.extend({
    * @param  {ModelGif} gif The gif to add
    */
   addGif: function(gif) {
-    var $gif = $('<img>').attr('src', gif.get('url'));
+    var html = App.template.collectionListGif(gif.toJSON());
 
-    this.$list.prepend($gif);
+    // var $gif = $('<img>').attr('src', gif.get('url'));
+
+    this.$list.prepend(html);
   },
 
   /**

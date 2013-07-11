@@ -7,3 +7,12 @@
   font-weight: 400;
   font-size: 3em
 }
+
+.collection__list__gif-link {
+  height: 20em;
+  overflow: hidden;
+}
+
+.collection__list__gif-link__image {
+  width: 100%;
+}

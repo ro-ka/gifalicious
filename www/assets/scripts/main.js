@@ -37,7 +37,7 @@ App.Main = Backbone.View.extend({
    */
   initTemplates: function() {
     App.template = {
-      // notification: Handlebars.compile($('#template__notifications').html()),
+      collectionListGif: Handlebars.compile($('#template__collection__list__gif').html())
     };
   },
 
