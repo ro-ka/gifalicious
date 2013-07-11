@@ -6,11 +6,6 @@
     "hoodie-app": "git://github.com/hoodiehq/hoodie-server.git",
     "hoodie-worker-users": "git://github.com/hoodiehq/worker-users.git"
   },
-  "subdomain": "hoodie-gifalicious",
-  "domains": [
-    "admin.hoodie-gifalicious.jit.su",
-    "couch.hoodie-gifalicious.jit.su"
-  ],
   "scripts": {
     "start": "node node_modules/hoodie-app/bin/start"
   }
