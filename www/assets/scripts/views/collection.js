@@ -120,6 +120,7 @@ App.CollectionView = Backbone.View.extend({
    * Show the add input
    */
   showAddForm: function() {
+    this.$addFormError.hide();
     this.$addFormInputWrapper.show();
     this.$addFormInput.val('').focus();
     this.addFormVisible = true;
@@ -140,7 +141,9 @@ App.CollectionView = Backbone.View.extend({
     var url = this.$addFormInput.val();
 
     if (!this.isAnimatedGif(url)) {
-      this.$addFormError.text('This is not an animated GIF! Shame on you!');
+      this.$addFormError
+        .text('This is not an animated GIF! Shame on you!')
+        .show();
       return;
     }
 
