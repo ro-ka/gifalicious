@@ -35,6 +35,7 @@ App.CollectionView = Backbone.View.extend({
 
     this.$title = this.$('.collection__title');
     this.$addForm = this.$('.collection__add');
+    this.$addFormError = this.$('.collection__add__error');
     this.$addFormInput = this.$('.collection__add__input');
     this.$addFormInputWrapper = this.$('.collection__add__input-wrapper');
     this.$list = this.$('.collection__list');
@@ -138,6 +139,11 @@ App.CollectionView = Backbone.View.extend({
   submitAddForm: function() {
     var url = this.$addFormInput.val();
 
+    if (!this.isAnimatedGif(url)) {
+      this.$addFormError.text('This is not an animated GIF! Shame on you!');
+      return;
+    }
+
     App.gifs.create({
         url: url
       }, {
@@ -146,5 +152,31 @@ App.CollectionView = Backbone.View.extend({
     );
 
     this.hideAddForm();
+  },
+
+  /**
+   * Returns when the gif is animated
+   * @param  {String}  url The urls
+   * @return {Boolean}     Whether it is an animate gif or not
+   */
+  isAnimatedGif: function(url) {
+    return (url.match(/\.gif$/));
+
+    // $.ajax({
+    //   url: 'http://www.reactiongifs.com/wp-content/uploads/2013/05/bear-wave.gif',
+    //   success: function(gifAsString) {
+    //     var frames = 0;
+
+    //     if (!gifAsString.match(/^GIF8[79]a/)) {
+    //       return false;
+    //     } else {
+    //       gifAsString.replace(/\x00\x21\xF9\x04\x00[\x2c\x21]/g, function(){
+    //         frames++;
+    //       });
+
+    //       return (frames > 1);
+    //     }
+    //   }
+    // });
   }
 });

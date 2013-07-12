@@ -48,6 +48,7 @@ App.Main = Backbone.View.extend({
       collection: Handlebars.compile($('#template__collection').html()),
       collectionTitle: Handlebars.compile($('#template__collection__title').html()),
       collectionGif: Handlebars.compile($('#template__collection__gif').html()),
+      collectionGifShow: Handlebars.compile($('#template__collection__gif__show').html()),
       collectionGifDelete: Handlebars.compile($('#template__collection__gif__delete').html())
     };
   },

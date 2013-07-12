@@ -973,6 +973,7 @@ form .fieldset input[type="text"], .form .fieldset input[type="text"], form fiel
   left:0;
   z-index:1980;
   opacity:0;
+  background:rgba(0, 0, 0, 0.8);
   -webkit-transition:all 250ms;
   -moz-transition:all 250ms;
   -ms-transition:all 250ms;
@@ -981,9 +982,7 @@ form .fieldset input[type="text"], .form .fieldset input[type="text"], form fiel
   visibility:hidden;
 }
 [data-tuktuk="lock"].active {
+  display: block;
   opacity:1;
   visibility:visible;
-}
-[data-tuktuk="lock"].active:not([data-active=true]) {
-  background:rgba(0, 0, 0, 0.8)
 }

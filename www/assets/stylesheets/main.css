@@ -87,6 +87,9 @@ hr {
 .color.default {
   color:#34495e !important
 }
+.color.alert {
+  color:#e74c3c !important
+}
 
 /**
  * Form
@@ -227,6 +230,7 @@ table td.highlight {
 }
 
 .collection__list__item__overlay {
+  cursor: pointer;
   position: absolute;
   padding: 5.5em 0.5em;
   top: 1em;
@@ -244,19 +248,20 @@ table td.highlight {
 }
 
 .collection__list__item__action {
+  cursor: pointer;
   display: none;
   color: #ddd;
   clear: right;
   float: right;
-  font-size: 1em;
+  font-size: 0.8em;
   font-weight: 400;
-  width: 1.7em;
-  height: 1.7em;
+  width: 2.3em;
+  height: 2.3em;
   border: 1px solid #ddd;
   border-radius: 50%;
-  margin: 0.5em;
-  line-height: 1.7em;
-  padding: 0 0.3em;
+  margin: 0.75em;
+  line-height: 2.3em;
+  text-align: center;
 }
 
 .collection__list__item__action:hover, .collection__list__item__action:hover .icon {
@@ -273,4 +278,18 @@ table td.highlight {
   background-size: cover;
   background-repeat: no-repeat;
   height: 20em;
+}
+
+.gif-show__close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.gif-show__gif {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }

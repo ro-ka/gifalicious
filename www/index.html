@@ -84,6 +84,7 @@
         <div class="row margin-bottom">
           <form class="small-12 columns collection__add">
             <h1 class="collection__title"></h1>
+            <div class="collection__add__error color alert"></div>
             <div class="collection__add__input-wrapper hide">
               <input type="url" class="collection__add__input" name="collection__add__input" id="collection__add__input" required placeholder="Enter a url to an animated gif and press ↵">
             </div>
@@ -117,17 +118,24 @@
     <script id="template__collection__gif" type="text/x-handlebars-template">
       <div class="small-12 large-6 columns collection__list__item">
         <div class="collection__list__item__overlay">
-          <a href="#gif/{{id}}" title="Show in big" class="collection__list__item__action">
+          <span title="Show in big" class="collection__list__item__action collection__gif__show">
             <span class="icon zoom-in"></span>
-          </a>
-          <a href="{{url}}" target="_blank" title="Open in new tab" class="collection__list__item__action">
+          </span>
+          <a href="{{url}}" target="_blank" title="Open in new tab" class="collection__list__item__action collection__gif__share">
             <span class="icon share-alt"></span>
           </a>
-          <a href="#remove" title="Remove" class="collection__list__item__action collection__gif__delete">
+          <span title="Remove" class="collection__list__item__action collection__gif__delete">
             <span class="icon trash"></span>
-          </a>
+          </span>
         </div>
         <div class="collection__gif box-shadow" style="background-image: url({{url}});"></div>
+      </div>
+    </script>
+
+    <script id="template__collection__gif__show" type="text/x-handlebars-template">
+      <div data-tuktuk="lock" class="active gif-show">
+        <div class="gif-show__gif" style="background-image: url({{url}});"></div>
+        <button class="gif-show__close text-shadow secondary icon remove"></div>
       </div>
     </script>
 

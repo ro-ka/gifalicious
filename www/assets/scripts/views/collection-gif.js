@@ -6,7 +6,10 @@ App.CollectionGifView = Backbone.View.extend({
    * @type {Object}
    */
   events: {
-    'click .collection__gif__delete': 'showDeleteForm'
+    'click .collection__gif__delete': 'showDeleteForm',
+    'click .collection__gif__share': 'shareGif',
+    'click .collection__gif__show': 'showGif',
+    'click': 'showGif'
   },
 
   /**
@@ -30,10 +33,40 @@ App.CollectionGifView = Backbone.View.extend({
   },
 
   /**
+   * Show the gif in fullbrowser
+   */
+  showGif: function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.$gifShow = $(App.template.collectionGifShow(this.model.toJSON()));
+    App.$content.append(this.$gifShow);
+
+    this.$gifShow.on('click', '.gif-show__close', this.hideGif);
+  },
+
+  /**
+   * Hide the fullbrowser gif
+   */
+  hideGif: function(event) {
+    event.preventDefault();
+
+    this.$gifShow.remove();
+  },
+
+  /**
+   * Share the gif
+   */
+  shareGif: function(event) {
+    event.stopPropagation();
+  },
+
+  /**
    * Show the form to delete the gif
    */
   showDeleteForm: function(event) {
     event.preventDefault();
+    event.stopPropagation();
 
     this.$deleteForm = $(App.template.collectionGifDelete(this.model.toJSON()));
     App.$content.append(this.$deleteForm);
