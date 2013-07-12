@@ -20,26 +20,75 @@ App.CollectionView = Backbone.View.extend({
 
     this.render();
 
-    this.$addForm = this.$('.collection__add');
-    this.$addFormInput = this.$('.collection__add__input');
-    this.$addFormInputWrapper = this.$('.collection__add__input-wrapper');
-    this.$list = this.$('.collection__list');
-
-    this.listenTo(App.gifs, 'add remove change', this.render);
+    this.listenTo(App.gifs, 'add remove change', this.onCollectionChange);
+    this.listenTo(App.gifs, 'add', this.addGif);
   },
 
   /**
    * Render the view
    */
   render: function() {
-    var data = {
-        gifs: App.gifs.toJSON(),
-        gifCount: App.gifs.size()
-      },
-      html = App.template.collection(data);
+    var html = App.template.collection();
 
     this.$el.html(html);
     App.$content.html(this.$el);
+
+    this.$title = this.$('.collection__title');
+    this.$addForm = this.$('.collection__add');
+    this.$addFormInput = this.$('.collection__add__input');
+    this.$addFormInputWrapper = this.$('.collection__add__input-wrapper');
+    this.$list = this.$('.collection__list');
+    this.$listEmpty = this.$('.collection__list--empty');
+
+    this.renderTitle();
+    this.updateListEmptyMessage();
+    App.gifs.each(this.addGif);
+  },
+
+  /**
+   * Render the title
+   */
+  renderTitle: function() {
+    var gifCount = App.gifs.size(),
+      data = {
+        gifCount: gifCount,
+        noGifs: gifCount === 0,
+        oneGif: gifCount === 1
+      },
+      html = App.template.collectionTitle(data);
+
+    this.$title.html(html);
+  },
+
+  /**
+   * Update the message for an empty list
+   */
+  updateListEmptyMessage: function() {
+    if (App.gifs.isEmpty()) {
+      this.$listEmpty.show();
+    } else {
+      this.$listEmpty.hide();
+    }
+  },
+
+  /**
+   * Add a gif to the list
+   * @param  {Model.Gif} gif The GIF
+   */
+  addGif: function(gif) {
+    var gifView = new App.CollectionGifView({
+      model: gif
+    });
+
+    this.$list.prepend(gifView.$el);
+  },
+
+  /**
+   * When something in the collection changes
+   */
+  onCollectionChange: function() {
+    this.renderTitle();
+    this.updateListEmptyMessage();
   },
 
   /**

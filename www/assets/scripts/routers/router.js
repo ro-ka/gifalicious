@@ -8,7 +8,7 @@ App.Router = Backbone.Router.extend({
   routes: {
     '': 'showIndex',
     'user': 'showUser',
-    'gif/:id': 'showGif',
+    // 'gif/:id': 'showGif',
     'signup': 'showSignup',
     'signin': 'showSignin',
     'collection': 'showCollection'

@@ -83,7 +83,7 @@
       <section class="padding">
         <div class="row margin-bottom">
           <form class="small-12 columns collection__add">
-            <h1 class="collection__title">You haz <span class="text-normal">{{gifCount}}</span> delicious gifs.</h1>
+            <h1 class="collection__title"></h1>
             <div class="collection__add__input-wrapper hide">
               <input type="url" class="collection__add__input" name="collection__add__input" id="collection__add__input" required placeholder="Enter a url to an animated gif and press ↵">
             </div>
@@ -93,49 +93,61 @@
             </button>
           </form>
         </div>
-        <div class="row collection__list">
-          {{#each gifs}}
-          <div class="small-12 large-6 columns collection__list__item">
-            <a href="#gif/{{id}}" class="collection__list__gif box-shadow" style="background-image: url({{url}});"></a>
+        <div class="row collection__list--empty">
+          <div class="small-12 columns text-center text-large color light">
+            <h2>Start by adding some animated GIFs.</h2>
           </div>
-          {{else}}
-          <div class="padding back light">
-            <h2>You have no delicious gifs at the moment.</h2>
-            <p>Start by adding some!</p>
-          </div>
-          {{/each}}
         </div>
+        <div class="row collection__list"></div>
       </section>
     </script>
 
-    <script id="template__gif" type="text/x-handlebars-template">
-      <section class="padding">
-        <div class="row">
-          <div class="small-12 columns gif__title">
-            <h1>
-              <a href="#collection" title="Back to the Collection">
-                <span class="icon double-angle-left"></span>
-                Collection
-              </a>
-            </h1>
-          </div>
+    <script id="template__collection__title" type="text/x-handlebars-template">
+      {{#if oneGif}}
+      You haz <span class="text-normal">one</span> lonely GIF.
+      {{else}}
+      {{#if noGifs}}
+      You not haz animated GIFs.
+      {{else}}
+      You haz <span class="text-normal">{{gifCount}}</span> delicious GIFs.
+      {{/if}}
+      {{/if}}
+    </script>
+
+    <script id="template__collection__gif" type="text/x-handlebars-template">
+      <div class="small-12 large-6 columns collection__list__item">
+        <div class="collection__list__item__overlay">
+          <a href="#gif/{{id}}" title="Show in big" class="collection__list__item__action">
+            <span class="icon zoom-in"></span>
+          </a>
+          <a href="{{url}}" target="_blank" title="Open in new tab" class="collection__list__item__action">
+            <span class="icon share-alt"></span>
+          </a>
+          <a href="#remove" title="Remove" class="collection__list__item__action collection__gif__delete">
+            <span class="icon trash"></span>
+          </a>
         </div>
-        <div class="row">
-          <div class="small-12 large-8 large-centered columns text-center padding">
-            <img class="responsive-horizontal box-shadow" src="{{url}}" alt="">
+        <div class="collection__gif box-shadow" style="background-image: url({{url}});"></div>
+      </div>
+    </script>
+
+    <script id="template__collection__gif__delete" type="text/x-handlebars-template">
+      <form id="modal--delete" data-tuktuk="modal" class="tuktuk-modal">
+        <header class="bck alert">
+          <h4 class="inline">Delete? You sure?</h4>
+          <button type="button" class="modal__close transparent text-small right inline icon remove"></button>
+        </header>
+        <article class="row">
+          <div class="small-8 padding columns small-centered text-center">
+            <img src="{{url}}" alt="" class="responsive-horizontal">
           </div>
-          <div class="small-12 large-8 large-centered columns text-center">
-            <a class="button secondary" href="{{url}}" target="_blank">
-              <span class="icon eye-open"></span>
-              Open gif
-            </a>
-            <button type="button" class="button secondary gif__delete">
-              <span class="icon remove"></span>
-              Delete
-            </button>
-          </div>
-        </div>
-      </section>
+        </article>
+        <footer class="padding">
+            <hr>
+            <button type="submit" class="button alert"><span class="icon ok"></span>Delete it</button>
+            <button type="button" class="button secondary modal__close"><span class="icon remove"></span>Cancel</button>
+        </footer>
+      </form>
     </script>
 
     <script id="template__user" type="text/x-handlebars-template">
@@ -186,7 +198,7 @@
             <h1>Sign Up</h1>
           </div>
           <p class="small-12 large-8 large-centered columns margin-bottom">
-            Join gifalicious to store your favorite animated gifs.
+            Join gifalicious to store your favorite animated GIFs.
           </p>
         </div>
         <form class="row margin-top">
@@ -237,6 +249,7 @@
     <script src="assets/scripts/vendor/backbone.min.js"></script>
     <script src="assets/scripts/vendor/hoodie.js"></script>
     <script src="assets/scripts/vendor/backbone-hoodie.js"></script>
+    <script src="assets/scripts/vendor/tuktuk.js"></script>
     <script src="assets/scripts/models/gif.js"></script>
     <script src="assets/scripts/models/settings.js"></script>
     <script src="assets/scripts/collections/gifs.js"></script>
@@ -247,6 +260,7 @@
     <script src="assets/scripts/views/signin.js"></script>
     <script src="assets/scripts/views/navbar.js"></script>
     <script src="assets/scripts/views/collection.js"></script>
+    <script src="assets/scripts/views/collection-gif.js"></script>
     <script src="assets/scripts/routers/router.js"></script>
     <script src="assets/scripts/main.js"></script>
   </body>
