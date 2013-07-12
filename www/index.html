@@ -185,10 +185,32 @@
             This will delete your profile and can not be undone!
           </p>
           <div class="small-12 large-8 large-centered columns margin-top">
-            <button type="submit" class="button alert">Delete Profile</button>
+            <button type="submit" class="button alert user__delete__button">Delete Profile</button>
           </div>
         </form>
       </section>
+    </script>
+
+    <script id="template__user__delete" type="text/x-handlebars-template">
+      <form id="modal--delete" data-tuktuk="modal" class="tuktuk-modal">
+        <header class="bck alert">
+          <h4 class="inline">Delete? You sure?</h4>
+          <button type="button" class="modal__close transparent text-small right inline icon remove"></button>
+        </header>
+        <article class="row">
+          <p class="small-12 columns text-big">
+            Sad to see you go.
+          </p>
+          <p class="small-12 columns text-big">
+             How will you remember your favorite GIFs in the future?
+          </p>
+        </article>
+        <footer class="padding">
+            <hr>
+            <button type="submit" class="button alert"><span class="icon ok"></span>Delete</button>
+            <button type="button" class="button secondary modal__close"><span class="icon remove"></span>Cancel</button>
+        </footer>
+      </form>
     </script>
 
     <script id="template__signup" type="text/x-handlebars-template">

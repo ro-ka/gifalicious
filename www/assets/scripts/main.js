@@ -41,12 +41,13 @@ App.Main = Backbone.View.extend({
   initTemplates: function() {
     App.template = {
       user: Handlebars.compile($('#template__user').html()),
+      userDelete: Handlebars.compile($('#template__user__delete').html()),
       index: Handlebars.compile($('#template__index').html()),
       signup: Handlebars.compile($('#template__signup').html()),
       signin: Handlebars.compile($('#template__signin').html()),
       collection: Handlebars.compile($('#template__collection').html()),
-      collectionGif: Handlebars.compile($('#template__collection__gif').html()),
       collectionTitle: Handlebars.compile($('#template__collection__title').html()),
+      collectionGif: Handlebars.compile($('#template__collection__gif').html()),
       collectionGifDelete: Handlebars.compile($('#template__collection__gif__delete').html())
     };
   },
