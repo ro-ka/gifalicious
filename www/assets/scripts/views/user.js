@@ -6,7 +6,8 @@ App.UserView = Backbone.View.extend({
    * @type {Object}
    */
   events: {
-    'click .user__delete__button': 'showDeleteForm'
+    'submit .user__change-password': 'changePassword',
+    'submit .user__delete': 'showDeleteForm'
   },
 
   /**
@@ -26,6 +27,21 @@ App.UserView = Backbone.View.extend({
 
     this.$el.html(html);
     App.$content.html(this.$el);
+
+    this.$currentPassword = this.$('.user__change-password__password--current');
+    this.$newPassword = this.$('.user__change-password__password--new');
+  },
+
+  /**
+   * Change the user password
+   */
+  changePassword: function(event) {
+    event.preventDefault();
+
+    var currentPassword = this.$currentPassword.val(),
+      newPassword = this.$newPassword.val();
+
+    App.hoodie.account.changePassword(currentPassword, newPassword);
   },
 
   /**
