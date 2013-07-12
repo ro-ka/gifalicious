@@ -54,7 +54,7 @@ App.Main = Backbone.View.extend({
    */
   initEvents: function() {
     App.hoodie.account
-      .on('signin', this.handleUserAuthenticated);
+      .on('signup', this.handleUserAuthenticated);
     App.hoodie.account
       .on('signin', this.handleUserAuthenticated);
     App.hoodie.account
