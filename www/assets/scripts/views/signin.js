@@ -19,9 +19,6 @@ App.SigninView = Backbone.View.extend({
 
     this.render();
 
-    this.$username = this.$('#signin__username');
-    this.$password = this.$('#signin__password');
-
     this.$username.focus();
   },
 
@@ -33,6 +30,10 @@ App.SigninView = Backbone.View.extend({
 
     this.$el.html(html);
     App.$content.html(this.$el);
+
+    this.$error = this.$('.signin__error');
+    this.$username = this.$('#signin__username');
+    this.$password = this.$('#signin__password');
   },
 
   /**
@@ -42,7 +43,19 @@ App.SigninView = Backbone.View.extend({
   signin: function(event) {
     event.preventDefault();
 
-    App.hoodie.account.signIn(this.$username.val(), this.$password.val());
+    var username = this.$username.val(),
+      password = this.$password.val();
+
+    App.hoodie.account.signIn(username, password)
+      .fail(this.handleSigninFail);
+  },
+
+  /**
+   * Handle a signin fail
+   * @param  {Object} response The server response
+   */
+  handleSigninFail: function(response) {
+    this.$error.text(response.reason).show();
   },
 
   /**

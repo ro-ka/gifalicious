@@ -30,6 +30,7 @@ App.UserView = Backbone.View.extend({
 
     this.$currentPassword = this.$('.user__change-password__password--current');
     this.$newPassword = this.$('.user__change-password__password--new');
+    this.$changePasswordError = this.$('.user__change-password__error');
   },
 
   /**
@@ -41,7 +42,25 @@ App.UserView = Backbone.View.extend({
     var currentPassword = this.$currentPassword.val(),
       newPassword = this.$newPassword.val();
 
-    App.hoodie.account.changePassword(currentPassword, newPassword);
+    App.hoodie.account.changePassword(currentPassword, newPassword)
+      .done(this.handleChangePasswordDone)
+      .fail(this.handleChangePasswordFail);
+  },
+
+  /**
+   * Handle a signin fail
+   * @param  {Object} response The server response
+   */
+  handleChangePasswordDone: function(response) {
+    this.$changePasswordError.hide();
+  },
+
+  /**
+   * Handle a signin fail
+   * @param  {Object} response The server response
+   */
+  handleChangePasswordFail: function(response) {
+    this.$changePasswordError.text(response.reason).show();
   },
 
   /**
