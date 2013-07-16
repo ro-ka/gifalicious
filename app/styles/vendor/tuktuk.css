@@ -25,6 +25,9 @@ a:hover {
 a:focus {
   outline: none;
 }
+a.icon {
+  padding:.3em
+}
 a:not(.icon) .icon {
   margin-right:.3em
 }

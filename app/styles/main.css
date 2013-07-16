@@ -203,6 +203,10 @@ table td.highlight {
   font-size: 3em
 }
 
+.collection__title {
+  padding-right: 4em;
+}
+
 .collection__add {
   position: relative;
 }
@@ -236,6 +240,10 @@ table td.highlight {
   left: 1em;
   right: 1em;
   bottom: 1em;
+}
+
+.gif .gif__overlay {
+  cursor: auto;
 }
 
 .gif__overlay__actions {
@@ -272,6 +280,10 @@ table td.highlight {
   margin: 0.75em;
   line-height: 2.3em;
   text-align: center;
+}
+
+a.gif__action .icon {
+  margin: 0;
 }
 
 .gif__action:hover, .gif__action:hover .icon {

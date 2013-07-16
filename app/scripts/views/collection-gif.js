@@ -8,8 +8,8 @@ App.CollectionGifView = App.GifAbstractView.extend({
   events: {
     'click .gif__delete': 'showDeleteForm',
     'click .gif__share': 'shareGif',
-    'click .gif__show': 'showGif',
-    'click': 'showGif'
+    'click .gif__overlay': 'showGif',
+    'click .gif__show': 'showGif'
   },
 
   /**
