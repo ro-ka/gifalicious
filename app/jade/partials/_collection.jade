@@ -17,16 +17,16 @@ script#template__collection(type='text/x-handlebars-template')
 
 script#template__collection__title(type='text/x-handlebars-template')
   | {{#if oneGif}}
-  | You haz
+  | You haz 
   span.text-normal one
-  | lonely GIF.
+  |  lonely GIF.
   | {{else}}
   | {{#if noGifs}}
   | You not haz animated GIFs.
   | {{else}}
-  | You haz
+  | You haz 
   span.text-normal {{gifCount}}
-  | delicious GIFs.
+  |  delicious GIFs.
   | {{/if}}
   | {{/if}}
 
@@ -52,7 +52,7 @@ script#template__collection__gif__delete(type='text/x-handlebars-template')
   form#modal--delete.tuktuk-modal(data-tuktuk='modal')
     header.bck.alert
       h4.inline Delete? You sure?
-        button.modal__close.transparent.text-small.right.inline.icon.remove(type='button')
+      button.modal__close.transparent.text-large.right.inline.icon.remove(type='button')
     article.row
       .small-8.padding.columns.small-centered.text-center
         img.responsive-horizontal(src='{{url}}', alt='')

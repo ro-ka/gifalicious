@@ -22,7 +22,7 @@ script#template__user(type='text/x-handlebars-template')
         h2 Delete Profile
       p.small-12.large-8.large-centered.columns.margin-bottom
         strong DANGER!
-        | This will delete your profile and can not be undone!
+        |  This will delete your profile and can not be undone!
       .small-12.large-8.large-centered.columns.margin-top
         button.button.alert.user__delete__button(type='submit') Delete Profile
 
@@ -30,7 +30,7 @@ script#template__user__delete(type='text/x-handlebars-template')
   form#modal--delete.tuktuk-modal(data-tuktuk='modal')
     header.bck.alert
       h4.inline Delete? You sure?
-      button.modal__close.transparent.text-small.right.inline.icon.remove(type='button')
+      button.modal__close.transparent.text-large.right.inline.icon.remove(type='button')
     article.row
       p.small-12.columns.text-big
         | Sad to see you go.

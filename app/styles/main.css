@@ -37,13 +37,13 @@ hr {
   background-color:#34495e
 }
 .bck.dark {
-  background-color:#0c2330
+  background-color:#394240
 }
 .bck.theme {
   background-color:#37a976
 }
 .bck.alert {
-  background-color:#e74c3c !important
+  background-color:#F06B50 !important
 }
 .bck.theme, .bck.alert {
   color:#fff
@@ -88,7 +88,7 @@ hr {
   color:#34495e !important
 }
 .color.alert {
-  color:#e74c3c !important
+  color:#F06B50 !important
 }
 
 /**
@@ -190,7 +190,7 @@ table td.highlight {
   background-color:#2ecc71
 }
 .button.alert, button.alert {
-  background-color:#e74c3c
+  background-color:#F06B50
 }
 .button:disabled, button:disabled, .button.disabled, button.disabled {
   background:rgba(255, 255, 255, 0.2);
