@@ -284,6 +284,18 @@ table td.highlight {
   position: absolute;
   top: 1em;
   right: 1em;
+  color: #ddd;
+  width: 2.3em;
+  height: 2.3em;
+  line-height: 2.3em;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+}
+
+.gif-show__close:hover {
+  color: #fff;
+  border-color: #fff;
 }
 
 .gif-show__gif {
