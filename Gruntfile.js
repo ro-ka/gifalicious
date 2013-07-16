@@ -27,7 +27,7 @@ module.exports = function (grunt) {
     folders: folders,
     bgShell: {
       hoodieStart: {
-        cmd: 'hoodie start no-open-browser',
+        cmd: 'hoodie start',
         bg: true,
         stdout: true
       }
