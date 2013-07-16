@@ -4,8 +4,8 @@ script#template__collection(type='text/x-handlebars-template')
       form.small-12.columns.collection__add
         h1.collection__title
         .collection__add__input-wrapper.hide
+          .collection__add__error.error-message.message
           input#collection__add__input.collection__add__input(type='url', name='collection__add__input', required='required', placeholder='Enter a url to an animated gif and press ↵')
-          .collection__add__error.color.alert
         button.button.large.collection__add__button(type='button')
           span.icon.plus
           | Add GIF
