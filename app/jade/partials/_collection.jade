@@ -33,34 +33,12 @@ script#template__collection__title(type='text/x-handlebars-template')
 
 script#template__collection__gif(type='text/x-handlebars-template')
   .small-12.large-6.columns.collection__list__item
-    .collection__list__item__overlay
-      span.collection__list__item__action.collection__gif__show(title='Show in big')
-        span.icon.zoom-in
-      a.collection__list__item__action.collection__gif__share(href='{{url}}', target='_blank', title='Open in new tab')
-        span.icon.share-alt
-      span.collection__list__item__action.collection__gif__delete(title='Remove')
-        span.icon.trash
+    .gif__overlay
+      .gif__overlay__actions
+        span.gif__action.gif__show(title='Show in big')
+          span.icon.zoom-in
+        a.gif__action.gif__share(href='{{url}}', target='_blank', title='Open in new tab')
+          span.icon.share-alt
+        span.gif__action.gif__delete(title='Remove')
+          span.icon.trash
     .collection__gif.box-shadow(style='background-image: url({{url}});')
-
-script#template__collection__gif__show(type='text/x-handlebars-template')
-  .active.gif-show(data-tuktuk='lock')
-    .gif-show__gif(style='background-image: url({{url}});')
-    button.gif-show__close.text-large.text-shadow.transparent.icon.remove
-
-
-script#template__collection__gif__delete(type='text/x-handlebars-template')
-  form#modal--delete.tuktuk-modal(data-tuktuk='modal')
-    header.bck.alert
-      h4.inline Delete? You sure?
-      button.modal__close.transparent.text-large.right.inline.icon.remove(type='button')
-    article.row
-      .small-8.padding.columns.small-centered.text-center
-        img.modal__gif(src='{{url}}', alt='')
-    footer.padding
-      hr
-      button.button.alert(type='submit')
-        span.icon.ok
-        | Delete it
-      button.button.secondary.modal__close(type='button')
-        span.icon.remove
-        | Cancel

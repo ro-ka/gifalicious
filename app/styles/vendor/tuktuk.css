@@ -74,6 +74,9 @@ hr {
 .hide {
   display: none;
 }
+.invisible {
+  visibility: hidden;
+}
 .clear {
   clear:both
 }

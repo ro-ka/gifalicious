@@ -1,12 +1,13 @@
 var App = App || {};
 
-App.GifView = Backbone.View.extend({
+App.GifView = App.GifAbstractView.extend({
   /**
    * Init the events
    * @type {Object}
    */
   events: {
-    'click .gif__delete': 'removeGif'
+    'click .gif__delete': 'showDeleteForm',
+    'click .gif__share': 'shareGif'
   },
 
   /**
@@ -28,13 +29,6 @@ App.GifView = Backbone.View.extend({
 
     this.$el.html(html);
     App.$content.html(this.$el);
-  },
-
-  /**
-   * Delete the gif
-   */
-  removeGif: function(event) {
-    this.model.destroy();
   },
 
   /**

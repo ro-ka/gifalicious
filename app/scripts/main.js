@@ -40,6 +40,8 @@ App.Main = Backbone.View.extend({
    */
   initTemplates: function() {
     App.template = {
+      gif: Handlebars.compile($('#template__gif').html()),
+      gifDelete: Handlebars.compile($('#template__gif__delete').html()),
       user: Handlebars.compile($('#template__user').html()),
       userDelete: Handlebars.compile($('#template__user__delete').html()),
       index: Handlebars.compile($('#template__index').html()),
@@ -47,9 +49,7 @@ App.Main = Backbone.View.extend({
       signin: Handlebars.compile($('#template__signin').html()),
       collection: Handlebars.compile($('#template__collection').html()),
       collectionTitle: Handlebars.compile($('#template__collection__title').html()),
-      collectionGif: Handlebars.compile($('#template__collection__gif').html()),
-      collectionGifShow: Handlebars.compile($('#template__collection__gif__show').html()),
-      collectionGifDelete: Handlebars.compile($('#template__collection__gif__delete').html())
+      collectionGif: Handlebars.compile($('#template__collection__gif').html())
     };
   },
 

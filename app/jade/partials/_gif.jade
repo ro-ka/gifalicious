@@ -1,0 +1,33 @@
+script#template__gif(type='text/x-handlebars-template')
+  section.padding
+    .row.margin-bottom
+      .small-12.columns
+        h1
+          a(href='#collection') &laquo; Collection
+    .row.margin-bottom
+      .gif.small-12.columns.margin-bottom
+        .gif__overlay
+          .gif__overlay__actions
+            a.gif__action.gif__share(href='{{url}}', target='_blank', title='Open in new tab')
+              span.icon.share-alt
+            span.gif__action.gif__delete(title='Remove')
+              span.icon.trash
+        img.responsive-horizontal(src='{{url}}', alt='')
+
+
+script#template__gif__delete(type='text/x-handlebars-template')
+  form#modal--delete.tuktuk-modal(data-tuktuk='modal')
+    header.bck.alert
+      h4.inline Delete? You sure?
+      button.modal__close.transparent.text-large.right.inline.icon.remove(type='button')
+    article.row
+      .small-8.padding.columns.small-centered.text-center
+        img.modal__gif(src='{{url}}', alt='')
+    footer.padding
+      hr
+      button.button.alert(type='submit')
+        span.icon.ok
+        | Delete it
+      button.button.secondary.modal__close(type='button')
+        span.icon.remove
+        | Cancel

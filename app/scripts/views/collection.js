@@ -123,6 +123,7 @@ App.CollectionView = Backbone.View.extend({
     this.$addFormError.hide();
     this.$addFormInputWrapper.show();
     this.$addFormInput.val('').focus();
+    this.$title.addClass('invisible');
     this.addFormVisible = true;
   },
 
@@ -131,6 +132,7 @@ App.CollectionView = Backbone.View.extend({
    */
   hideAddForm: function() {
     this.$addFormInputWrapper.hide();
+    this.$title.removeClass('invisible');
     this.addFormVisible = false;
   },
 
@@ -163,23 +165,17 @@ App.CollectionView = Backbone.View.extend({
    * @return {Boolean}     Whether it is an animate gif or not
    */
   isAnimatedGif: function(url) {
-    return (url.match(/\.gif$/));
+    if (!url.match(/\.gif$/)) {
+      return false;
+    }
 
-    // $.ajax({
-    //   url: 'http://www.reactiongifs.com/wp-content/uploads/2013/05/bear-wave.gif',
-    //   success: function(gifAsString) {
-    //     var frames = 0;
+    var encodedUrl = 'http://doesthisgifcontainananimation.com/' + encodeURIComponent(url);
 
-    //     if (!gifAsString.match(/^GIF8[79]a/)) {
-    //       return false;
-    //     } else {
-    //       gifAsString.replace(/\x00\x21\xF9\x04\x00[\x2c\x21]/g, function(){
-    //         frames++;
-    //       });
+console.log(encodedUrl);
 
-    //       return (frames > 1);
-    //     }
-    //   }
-    // });
+    $.getJSON(encodedUrl, function(response) {
+      console.log(response);
+      return true;
+    });
   }
 });
