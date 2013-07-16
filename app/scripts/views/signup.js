@@ -19,6 +19,10 @@ App.SignupView = Backbone.View.extend({
     this.render();
 
     this.$username.focus();
+    this.$password.hideShowPassword({
+      innerToggle: true,
+      hideToggleUntil: 'focus'
+    });
   },
 
   /**

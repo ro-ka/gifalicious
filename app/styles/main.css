@@ -297,3 +297,29 @@ table td.highlight {
 .modal__gif {
   max-height: 60%;
 }
+
+.hideShowPassword-toggle {
+  cursor: pointer;
+  margin-right: 1em;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  padding: 0.2em;
+  font-weight: 700;
+}
+
+.message {
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom-style: solid;
+  border-bottom-width: 0.1em;
+}
+
+.error-message {
+  color: #F06B50;
+  border-bottom-color: #F06B50;
+}
+
+.success-message {
+  color: #37A945;
+  border-bottom-color: #37A945;
+}

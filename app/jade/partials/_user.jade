@@ -7,7 +7,10 @@ script#template__user(type='text/x-handlebars-template')
     form.row.user__change-password.margin-bottom
       .small-12.large-8.large-centered.columns.margin-bottom
         h2 Change password
-      .user__change-password__error.hide.margin-bottom.small-12.large-8.large-centered.columns
+      .user__change-password__error.error-message.message.margin-bottom.small-12.large-8.large-centered.columns
+        | An error occured!
+      .user__change-password__success.success-message.message.hide.margin-bottom.small-12.large-8.large-centered.columns
+        | Updated your password!
       .small-12.large-8.large-centered.columns
         label(for='user__change-password__password--current') Current Password
         input#user__change-password__password--current.user__change-password__password--current(type='password', name='user__change-password__password--current', required='required')

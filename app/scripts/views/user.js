@@ -31,6 +31,16 @@ App.UserView = Backbone.View.extend({
     this.$currentPassword = this.$('.user__change-password__password--current');
     this.$newPassword = this.$('.user__change-password__password--new');
     this.$changePasswordError = this.$('.user__change-password__error');
+    this.$changePasswordSuccess = this.$('.user__change-password__success');
+
+    this.$currentPassword.hideShowPassword({
+      innerToggle: true,
+      hideToggleUntil: 'focus'
+    });
+    this.$newPassword.hideShowPassword({
+      innerToggle: true,
+      hideToggleUntil: 'focus'
+    });
   },
 
   /**
@@ -53,6 +63,7 @@ App.UserView = Backbone.View.extend({
    */
   handleChangePasswordDone: function(response) {
     this.$changePasswordError.hide();
+    this.$changePasswordSuccess.show();
   },
 
   /**
@@ -61,6 +72,7 @@ App.UserView = Backbone.View.extend({
    */
   handleChangePasswordFail: function(response) {
     this.$changePasswordError.text(response.reason).show();
+    this.$changePasswordSuccess.hide();
   },
 
   /**
