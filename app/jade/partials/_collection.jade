@@ -1,0 +1,66 @@
+script#template__collection(type='text/x-handlebars-template')
+  section.padding
+    .row.margin-bottom
+      form.small-12.columns.collection__add
+        h1.collection__title
+        .collection__add__input-wrapper.hide
+          input#collection__add__input.collection__add__input(type='url', name='collection__add__input', required='required', placeholder='Enter a url to an animated gif and press ↵')
+          .collection__add__error.color.alert
+        button.button.large.collection__add__button(type='button')
+          span.icon.plus
+          | Add GIF
+    .row.collection__list--empty
+      .small-12.columns.text-center.text-large.color.light
+        h2 Start by adding some animated GIFs.
+    .row.collection__list
+
+
+script#template__collection__title(type='text/x-handlebars-template')
+  | {{#if oneGif}}
+  | You haz
+  span.text-normal one
+  | lonely GIF.
+  | {{else}}
+  | {{#if noGifs}}
+  | You not haz animated GIFs.
+  | {{else}}
+  | You haz
+  span.text-normal {{gifCount}}
+  | delicious GIFs.
+  | {{/if}}
+  | {{/if}}
+
+
+script#template__collection__gif(type='text/x-handlebars-template')
+  .small-12.large-6.columns.collection__list__item
+    .collection__list__item__overlay
+      span.collection__list__item__action.collection__gif__show(title='Show in big')
+        span.icon.zoom-in
+      a.collection__list__item__action.collection__gif__share(href='{{url}}', target='_blank', title='Open in new tab')
+        span.icon.share-alt
+      span.collection__list__item__action.collection__gif__delete(title='Remove')
+        span.icon.trash
+    .collection__gif.box-shadow(style='background-image: url({{url}});')
+
+script#template__collection__gif__show(type='text/x-handlebars-template')
+  .active.gif-show(data-tuktuk='lock')
+    .gif-show__gif(style='background-image: url({{url}});')
+    button.gif-show__close.text-shadow.secondary.icon.remove
+
+
+script#template__collection__gif__delete(type='text/x-handlebars-template')
+  form#modal--delete.tuktuk-modal(data-tuktuk='modal')
+    header.bck.alert
+      h4.inline Delete? You sure?
+        button.modal__close.transparent.text-small.right.inline.icon.remove(type='button')
+    article.row
+      .small-8.padding.columns.small-centered.text-center
+        img.responsive-horizontal(src='{{url}}', alt='')
+    footer.padding
+      hr
+      button.button.alert(type='submit')
+        span.icon.ok
+        | Delete it
+      button.button.secondary.modal__close(type='button')
+        span.icon.remove
+        | Cancel

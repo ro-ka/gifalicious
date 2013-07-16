@@ -1,0 +1,46 @@
+script#template__user(type='text/x-handlebars-template')
+  section.padding
+    .row.margin-bottom
+      .small-12.large-8.large-centered.columns
+        h1 Profile
+    form.row.user__change-password.margin-bottom
+      .small-12.large-8.large-centered.columns.margin-bottom
+        h2 Change password
+      .user__change-password__error.hide.margin-bottom.small-12.large-8.large-centered.columns
+      .small-12.large-8.large-centered.columns
+        label(for='user__change-password__password--current') Current Password
+        input#user__change-password__password--current.user__change-password__password--current(type='password', name='user__change-password__password--current', required='required')
+      .small-12.large-8.large-centered.columns
+        label(for='user__change-password__password--new') New Password
+        input#user__change-password__password--new.user__change-password__password--new(type='password', name='user__change-password__password--new', required='required')
+      .small-12.large-8.large-centered.columns.margin-top
+        button.button(type='submit') Change Password
+    .row
+      hr.small-12.large-8.large-centered.columns.margin-bottom.margin-top
+    form.row.user__delete
+      .small-12.large-8.large-centered.columns.margin-bottom
+        h2 Delete Profile
+      p.small-12.large-8.large-centered.columns.margin-bottom
+        strong DANGER!
+        | This will delete your profile and can not be undone!
+      .small-12.large-8.large-centered.columns.margin-top
+        button.button.alert.user__delete__button(type='submit') Delete Profile
+
+script#template__user__delete(type='text/x-handlebars-template')
+  form#modal--delete.tuktuk-modal(data-tuktuk='modal')
+    header.bck.alert
+      h4.inline Delete? You sure?
+      button.modal__close.transparent.text-small.right.inline.icon.remove(type='button')
+    article.row
+      p.small-12.columns.text-big
+        | Sad to see you go.
+      p.small-12.columns.text-big
+        | How will you remember your favorite GIFs in the future?
+    footer.padding
+      hr
+      button.button.alert(type='submit')
+        span.icon.ok
+        | Delete
+      button.button.secondary.modal__close(type='button')
+        span.icon.remove
+        | Cancel

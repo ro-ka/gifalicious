@@ -1,0 +1,17 @@
+script#template__signin(type='text/x-handlebars-template')
+  section.padding
+    .row.margin-bottom
+      .small-12.large-8.large-centered.columns
+        h1 Login
+    .row.margin-bottom
+      .signin__error.hide.small-12.large-8.large-centered.columns
+    form.row
+      .small-12.large-8.large-centered.columns
+        label(for='signin__username') Username
+        input#signin__username(type='text', name='signin__username', required='required')
+      .small-12.large-8.large-centered.columns
+        label(for='signin__password') Password
+        input#signin__password(type='password', name='signin__password', required='required')
+      .small-12.large-8.large-centered.columns.margin-top
+        button.button(type='submit') Login
+        button.button.secondary.signin-view__cancel(type='button') Cancel

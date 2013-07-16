@@ -226,7 +226,7 @@ table td.highlight {
 .collection__list__item {
   position: relative;
   padding: 1em;
-  background: 50% 50% no-repeat url(/assets/images/loading.gif);
+  background: 50% 50% no-repeat url(/images/loading.gif);
 }
 
 .collection__list__item__overlay {
