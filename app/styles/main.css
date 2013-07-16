@@ -293,3 +293,7 @@ table td.highlight {
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
+
+.modal__gif {
+  max-height: 60%;
+}
