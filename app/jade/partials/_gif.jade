@@ -15,6 +15,23 @@ script#template__gif(type='text/x-handlebars-template')
         img.responsive-horizontal(src='{{url}}', alt='')
 
 
+script#template__gif__share(type='text/x-handlebars-template')
+  form#modal--share.tuktuk-modal(data-tuktuk='modal')
+    header.bck.theme
+      h4.inline Share
+      button.modal__close.transparent.text-large.right.inline.icon.remove(type='button')
+    article.row
+      .small-8.padding.columns.small-centered.text-center
+        img.modal__gif(src='{{gif.url}}', alt='')
+      .form.small-8.padding.columns.small-centered
+        input.gif__share__input(type='text', value='{{shareUrl}}')
+    footer.padding
+      hr
+      button.button.secondary.modal__close(type='button')
+        span.icon.remove
+        | Close
+
+
 script#template__gif__delete(type='text/x-handlebars-template')
   form#modal--delete.tuktuk-modal(data-tuktuk='modal')
     header.bck.alert

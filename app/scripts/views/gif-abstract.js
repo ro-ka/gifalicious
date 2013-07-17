@@ -8,11 +8,31 @@ App.GifAbstractView = Backbone.View.extend({
     event.preventDefault();
     event.stopPropagation();
 
-    var encodedUrl = encodeURIComponent(this.model.get('url'));
+    var data = {
+      shareUrl: document.location.origin + '#public/' + encodeURIComponent(this.model.get('url')),
+      gif: this.model.toJSON()
+    };
 
-    window.open('#public/' + encodedUrl, '_blank');
-    window.focus();
+    this.$shareForm = $(App.template.gifShare(data));
+    App.$content.append(this.$shareForm);
+
+    window.TukTuk.Modal.show('modal--share');
+
+    this.$shareFormInput = this.$shareForm.find('.gif__share__input');
+    this.$shareFormInput.focus();
+
+    this.$shareForm.on('click', '.modal__close', this.hideShareForm);
+    // window.open(encodedUrl, '_blank');
+    // window.focus();
     // App.router.navigate('/public/' + encodedUrl, {trigger: true});
+  },
+
+  /**
+   * Hide the share form
+   */
+  hideShareForm: function(event) {
+    window.TukTuk.Modal.hide();
+    this.$shareForm.remove();
   },
 
   /**
