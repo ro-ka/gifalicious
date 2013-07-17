@@ -18,7 +18,8 @@ script#template__user(type='text/x-handlebars-template')
         label(for='user__change-password__password--new') New Password
         input#user__change-password__password--new.user__change-password__password--new(type='password', name='user__change-password__password--new', required='required')
       .small-12.large-8.large-centered.columns.margin-top
-        button.button(type='submit') Change Password
+        button.button.user__change-password__submit(type='submit')
+          span.button__text Change Password
     .row
       hr.small-12.large-8.large-centered.columns.margin-bottom.margin-top
     form.row.user__delete
@@ -42,9 +43,10 @@ script#template__user__delete(type='text/x-handlebars-template')
         | How will you remember your favorite GIFs in the future?
     footer.padding
       hr
-      button.button.alert(type='submit')
-        span.icon.ok
-        | Delete
+      button.button.modal--delete__submit.alert(type='submit')
+        span.button__text
+          span.icon.ok
+          | Delete
       button.button.secondary.modal__close(type='button')
         span.icon.remove
         | Cancel

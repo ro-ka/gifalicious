@@ -7,8 +7,9 @@ script#template__collection(type='text/x-handlebars-template')
           .collection__add__error.error-message.message
           input#collection__add__input.collection__add__input(type='url', name='collection__add__input', required='required', placeholder='Enter a url to an animated gif and press ↵')
         button.button.large.collection__add__button(type='button')
-          span.icon.plus
-          | Add GIF
+          span.button__text
+            span.icon.plus
+            | Add GIF
     .row.collection__list--empty
       .small-12.columns.text-center.text-large.color.light
         h2 Start by adding some animated GIFs.

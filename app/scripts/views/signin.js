@@ -7,8 +7,7 @@ App.SigninView = Backbone.View.extend({
    */
   events: {
     'submit form': 'signin',
-    'click .signin-view__cancel': 'cancel'
-    // 'click .signin-view__resetpassword': 'resetpassword'
+    'click .signin__cancel': 'cancel'
   },
 
   /**
@@ -38,6 +37,7 @@ App.SigninView = Backbone.View.extend({
     this.$error = this.$('.signin__error');
     this.$username = this.$('#signin__username');
     this.$password = this.$('#signin__password');
+    this.$submit = this.$('.signin__submit');
   },
 
   /**
@@ -50,6 +50,8 @@ App.SigninView = Backbone.View.extend({
     var username = this.$username.val(),
       password = this.$password.val();
 
+    this.$submit.addClass('loading');
+
     App.hoodie.account.signIn(username, password)
       .fail(this.handleSigninFail);
   },
@@ -59,6 +61,7 @@ App.SigninView = Backbone.View.extend({
    * @param  {Object} response The server response
    */
   handleSigninFail: function(response) {
+    this.$submit.removeClass('loading');
     this.$error.text(response.reason).show();
   },
 
@@ -68,14 +71,5 @@ App.SigninView = Backbone.View.extend({
    */
   cancel: function() {
     App.router.navigate('/', {trigger: true});
-  },
-
-  /**
-   * Reset the password
-   */
-  resetpassword: function(event) {
-    event.preventDefault();
-
-    // hoodie.account.resetPassword('joe@example.com');
   }
 });

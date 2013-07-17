@@ -37,7 +37,7 @@ App.SignupView = Backbone.View.extend({
     this.$error = this.$('.signup__error');
     this.$username = this.$('#signup__username');
     this.$password = this.$('#signup__password');
-
+    this.$submit = this.$('.signup__submit');
   },
 
   /**
@@ -50,6 +50,8 @@ App.SignupView = Backbone.View.extend({
     var username = this.$username.val(),
       password = this.$password.val();
 
+    this.$submit.addClass('loading');
+
     App.hoodie.account.signUp(username, password)
       .fail(this.handleSignupFail);
   },
@@ -59,6 +61,7 @@ App.SignupView = Backbone.View.extend({
    * @param  {Object} response The server response
    */
   handleSignupFail: function(response) {
+    this.$submit.removeClass('loading');
     this.$error.text(response.reason).show();
   },
 

@@ -35,6 +35,7 @@ App.GifView = App.GifAbstractView.extend({
    * Delete the gif
    */
   onRemove: function() {
+    this.hideDeleteForm();
     App.router.navigate('/collection', {trigger: true});
   }
 });

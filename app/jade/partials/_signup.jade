@@ -16,5 +16,6 @@ script#template__signup(type='text/x-handlebars-template')
         label(for='signup__password') Password
         input#signup__password(type='password', name='signup__password', required='required')
       .small-12.large-8.large-centered.columns.margin-top
-        button.button(type='submit') Sign Up
+        button.button.signup__submit(type='submit')
+          span.button__text Sign Up
         button.button.secondary.signup-view__cancel(type='button') Cancel

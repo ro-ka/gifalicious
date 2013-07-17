@@ -37,6 +37,7 @@ App.CollectionView = Backbone.View.extend({
     this.$addForm = this.$('.collection__add');
     this.$addFormError = this.$('.collection__add__error');
     this.$addFormInput = this.$('.collection__add__input');
+    this.$addFormButton = this.$('.collection__add__button');
     this.$addFormInputWrapper = this.$('.collection__add__input-wrapper');
     this.$list = this.$('.collection__list');
     this.$listEmpty = this.$('.collection__list--empty');
@@ -142,6 +143,7 @@ App.CollectionView = Backbone.View.extend({
   submitAddForm: function() {
     var url = this.$addFormInput.val();
 
+    this.$addFormButton.addClass('loading');
     this.isAnimatedGif(url, this.onIsAnimatedGifCheck);
   },
 
@@ -152,6 +154,7 @@ App.CollectionView = Backbone.View.extend({
    */
   onIsAnimatedGifCheck: function(url, isAnimatedGif) {
     if (!isAnimatedGif) {
+      this.$addFormButton.removeClass('loading');
       this.$addFormError
         .text('This is not an animated GIF! Shame on you!')
         .show();

@@ -32,6 +32,7 @@ App.UserView = Backbone.View.extend({
     this.$newPassword = this.$('.user__change-password__password--new');
     this.$changePasswordError = this.$('.user__change-password__error');
     this.$changePasswordSuccess = this.$('.user__change-password__success');
+    this.$changePasswordSubmit = this.$('.user__change-password__submit');
 
     this.$currentPassword.hideShowPassword({
       innerToggle: true,
@@ -52,6 +53,8 @@ App.UserView = Backbone.View.extend({
     var currentPassword = this.$currentPassword.val(),
       newPassword = this.$newPassword.val();
 
+    this.$changePasswordSubmit.addClass('loading');
+
     App.hoodie.account.changePassword(currentPassword, newPassword)
       .done(this.handleChangePasswordDone)
       .fail(this.handleChangePasswordFail);
@@ -64,6 +67,7 @@ App.UserView = Backbone.View.extend({
   handleChangePasswordDone: function(response) {
     this.$changePasswordError.hide();
     this.$changePasswordSuccess.show();
+    this.$changePasswordSubmit.removeClass('loading');
   },
 
   /**
@@ -73,6 +77,7 @@ App.UserView = Backbone.View.extend({
   handleChangePasswordFail: function(response) {
     this.$changePasswordError.text(response.reason).show();
     this.$changePasswordSuccess.hide();
+    this.$changePasswordSubmit.removeClass('loading');
   },
 
   /**
@@ -85,6 +90,8 @@ App.UserView = Backbone.View.extend({
     App.$content.append(this.$deleteForm);
 
     window.TukTuk.Modal.show('modal--delete');
+
+    this.$deleteFormButton = this.$deleteForm.find('.modal--delete__submit');
 
     this.$deleteForm.on('click', '.modal__close', this.hideDeleteForm);
     this.$deleteForm.on('submit', this.deleteUser);
@@ -103,7 +110,7 @@ App.UserView = Backbone.View.extend({
    */
   deleteUser: function(event) {
     event.preventDefault();
-    this.hideDeleteForm();
+    this.$deleteFormButton.addClass('loading');
     App.hoodie.account.destroy();
   }
 });

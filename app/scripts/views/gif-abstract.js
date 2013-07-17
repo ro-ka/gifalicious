@@ -20,6 +20,8 @@ App.GifAbstractView = Backbone.View.extend({
 
     window.TukTuk.Modal.show('modal--delete');
 
+    this.$deleteFormButton = this.$deleteForm.find('.gif__delete__button');
+
     this.$deleteForm.on('click', '.modal__close', this.hideDeleteForm);
     this.$deleteForm.on('submit', this.deleteGif);
   },
@@ -38,7 +40,7 @@ App.GifAbstractView = Backbone.View.extend({
   deleteGif: function(event) {
     event.preventDefault();
 
-    this.hideDeleteForm();
+    this.$deleteFormButton.addClass('loading');
     this.model.destroy();
   }
 });

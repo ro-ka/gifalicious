@@ -14,5 +14,6 @@ script#template__signin(type='text/x-handlebars-template')
         label(for='signin__password') Password
         input#signin__password(type='password', name='signin__password', required='required')
       .small-12.large-8.large-centered.columns.margin-top
-        button.button(type='submit') Login
-        button.button.secondary.signin-view__cancel(type='button') Cancel
+        button.button.signin__submit(type='submit')
+          span.button__text Login
+        button.button.secondary.signin__cancel(type='button') Cancel

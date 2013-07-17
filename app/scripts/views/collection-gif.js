@@ -46,6 +46,7 @@ App.CollectionGifView = App.GifAbstractView.extend({
    * Delete the gif
    */
   onRemove: function() {
+    this.hideDeleteForm();
     this.remove();
   }
 });

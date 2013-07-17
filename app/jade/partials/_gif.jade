@@ -25,9 +25,10 @@ script#template__gif__delete(type='text/x-handlebars-template')
         img.modal__gif(src='{{url}}', alt='')
     footer.padding
       hr
-      button.button.alert(type='submit')
-        span.icon.ok
-        | Delete it
+      button.button.alert.gif__delete__button(type='submit')
+        span.button__text
+          span.icon.ok
+          | Delete it
       button.button.secondary.modal__close(type='button')
         span.icon.remove
         | Cancel
