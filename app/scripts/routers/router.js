@@ -11,7 +11,8 @@ App.Router = Backbone.Router.extend({
     'gif/:id': 'showGif',
     'signup': 'showSignup',
     'signin': 'showSignin',
-    'collection': 'showCollection'
+    'collection': 'showCollection',
+    'public/:url': 'showPublicGif'
   },
 
   /**
@@ -77,6 +78,17 @@ App.Router = Backbone.Router.extend({
     this.currentView.remove();
     this.currentView = new App.GifView({
       model: gif
+    });
+  },
+
+  /**
+   * Show a specific public gif
+   * @param  {String} url The encoded url of the gif
+   */
+  showPublicGif: function(url) {
+    this.currentView.remove();
+    this.currentView = new App.GifPublicView({
+      url: decodeURIComponent(url)
     });
   },
 

@@ -5,7 +5,14 @@ App.GifAbstractView = Backbone.View.extend({
    * Share the gif
    */
   shareGif: function(event) {
+    event.preventDefault();
     event.stopPropagation();
+
+    var encodedUrl = encodeURIComponent(this.model.get('url'));
+
+    window.open('#public/' + encodedUrl, '_blank');
+    window.focus();
+    // App.router.navigate('/public/' + encodedUrl, {trigger: true});
   },
 
   /**

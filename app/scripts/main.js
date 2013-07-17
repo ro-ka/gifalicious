@@ -42,6 +42,7 @@ App.Main = Backbone.View.extend({
     App.template = {
       gif: Handlebars.compile($('#template__gif').html()),
       gifDelete: Handlebars.compile($('#template__gif__delete').html()),
+      gifPublic: Handlebars.compile($('#template__gif--public').html()),
       user: Handlebars.compile($('#template__user').html()),
       userDelete: Handlebars.compile($('#template__user__delete').html()),
       index: Handlebars.compile($('#template__index').html()),
