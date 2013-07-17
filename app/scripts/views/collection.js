@@ -177,6 +177,11 @@ App.CollectionView = Backbone.View.extend({
    * @return {Boolean}     Whether it is an animate gif or not
    */
   isAnimatedGif: function(url, callback) {
+    if (!url) {
+      callback('', false);
+      return;
+    }
+
     var encodedUrl = 'https://doesthisgifcontainananimation.com/' + encodeURIComponent(url);
 
     $.getJSON(encodedUrl, function(response) {
