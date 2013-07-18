@@ -67,6 +67,22 @@ hr {
   height:1px;
   margin:0
 }
+blockquote {
+  position: relative;
+  font-size: 2em;
+  font-weight: 300;
+  line-height: 1.4em;
+}
+blockquote .quote-open {
+  position: absolute;
+  top: 0;
+  left: -0.5em;
+  font-size: 2em;
+}
+blockquote small {
+  display: block;
+  font-style: italic;
+}
 
 /**
  * Flow

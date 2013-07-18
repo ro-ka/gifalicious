@@ -48,6 +48,8 @@ hr
   box-shadow: 0 .1em 0.2em $black
 
 .bck
+  &.theme-dark
+    background-color: darken($theme, 10%)
   &.color
     background-color: $text
   &.dark
@@ -174,6 +176,29 @@ table
   font-family: 'Grand Hotel', Helvetica, Arial, sans-serif
   font-weight: 400
   font-size: 3em
+
+.index__title
+  line-height: 1.5em
+
+.index__user-story
+  position: relative
+
+.index__user-story__image
+  position: absolute
+  top: 0
+  left: 50%
+  right: 0
+  bottom: 0
+  background: url('/images/cool-cat.gif') no-repeat center center
+  background-size: cover
+
+.index__feature__icon
+  font-size: 7em
+  margin-bottom: 0.3em
+
+.index__feature__text
+  font-size: 1.4em
+  text-transform: uppercase
 
 .collection__title
   padding-right: 4em
