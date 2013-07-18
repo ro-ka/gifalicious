@@ -1,5 +1,7 @@
 // Generated on<%= (new Date).toISOString().split('T')[0] %> using <%= pkg.name %> <%= pkg.version %>
 'use strict';
+
+// Define Snippets and helper functions
 var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 var mountFolder = function (connect, dir) {
@@ -16,20 +18,19 @@ module.exports = function (grunt) {
   // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-  // configurable paths
-  var folders = {
-    app: 'app',
-    www: 'www',
-    tmp: '.tmp'
-  };
-
   grunt.initConfig({
-    folders: folders,
-    bgShell: {
-      hoodieStart: {
-        cmd: 'hoodie start',
-        bg: true,
-        stdout: true
+    folders: {
+      app: 'app',
+      www: 'www',
+      tmp: '.tmp'
+    },
+    hoodie: {
+      start: {
+        options: {
+          callback: function(stack) {
+            grunt.config.set('connect.proxies.0.port', stack.www.port);
+          }
+        }
       }
     },
     watch: {
@@ -63,7 +64,7 @@ module.exports = function (grunt) {
         {
           context: '/_api',
           host: 'localhost',
-          port: 6001,
+          port: false,
           https: false,
           changeOrigin: false
         }
@@ -316,7 +317,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'bgShell:hoodieStart',
+      'hoodie',
       'jade',
       'configureProxies',
       'concurrent:server',
