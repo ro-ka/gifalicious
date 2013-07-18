@@ -16,36 +16,23 @@ script#template__gif(type='text/x-handlebars-template')
 
 
 script#template__gif__share(type='text/x-handlebars-template')
-  form#modal--share.tuktuk-modal(data-tuktuk='modal')
-    header.bck.theme
-      h4.inline Share
-      button.modal__close.transparent.text-large.right.inline.icon.remove(type='button')
-    article.row
-      .small-8.padding.columns.small-centered.text-center
-        img.modal__gif(src='{{gif.url}}', alt='')
-      .form.small-8.padding.columns.small-centered
+  form.action-overlay.overlay--share
+    .action-overlay__actions.overlay--share__actions.row
+      .small-9.large-6.large-offset-2.columns
         input.gif__share__input(type='text', value='{{shareUrl}}')
-    footer.padding
-      hr
-      button.button.secondary.modal__close(type='button')
-        span.icon.remove
-        | Close
+      .small-3.large-2.columns
+        button.button.large.secondary.overlay__close(type='button')
+          span.icon.remove
+          | Close
 
 
 script#template__gif__delete(type='text/x-handlebars-template')
-  form#modal--delete.tuktuk-modal(data-tuktuk='modal')
-    header.bck.alert
-      h4.inline Delete? You sure?
-      button.modal__close.transparent.text-large.right.inline.icon.remove(type='button')
-    article.row
-      .small-8.padding.columns.small-centered.text-center
-        img.modal__gif(src='{{url}}', alt='')
-    footer.padding
-      hr
-      button.button.alert.gif__delete__button(type='submit')
+  form.action-overlay.overlay--confirm-delete
+    .action-overlay__actions.overlay--confirm-delete__actions
+      button.button.large.alert.gif__delete__button(type='submit')
         span.button__text
           span.icon.ok
           | Delete it
-      button.button.secondary.modal__close(type='button')
+      button.button.large.secondary.overlay__close(type='button')
         span.icon.remove
         | Cancel

@@ -6,7 +6,7 @@ App.GifView = App.GifAbstractView.extend({
    * @type {Object}
    */
   events: {
-    'click .gif__delete': 'showDeleteForm',
+    'click .gif__delete': 'showDeleteOverlay',
     'click .gif__share': 'shareGif'
   },
 
@@ -29,13 +29,15 @@ App.GifView = App.GifAbstractView.extend({
 
     this.$el.html(html);
     App.$content.html(this.$el);
+
+    this.$gif = this.$('.gif');
   },
 
   /**
    * Delete the gif
    */
   onRemove: function() {
-    this.hideDeleteForm();
+    this.hideDeleteOverlay();
     App.router.navigate('/collection', {trigger: true});
   }
 });

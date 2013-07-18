@@ -6,7 +6,7 @@ App.CollectionGifView = App.GifAbstractView.extend({
    * @type {Object}
    */
   events: {
-    'click .gif__delete': 'showDeleteForm',
+    'click .gif__delete': 'showDeleteOverlay',
     'click .gif__share': 'shareGif',
     'click .gif__overlay': 'showGif',
     'click .gif__show': 'showGif'
@@ -30,6 +30,8 @@ App.CollectionGifView = App.GifAbstractView.extend({
     var html = App.template.collectionGif(this.model.toJSON());
 
     this.$el.html(html);
+
+    this.$gif = this.$('.collection__list__item');
   },
 
   /**
@@ -46,7 +48,7 @@ App.CollectionGifView = App.GifAbstractView.extend({
    * Delete the gif
    */
   onRemove: function() {
-    this.hideDeleteForm();
+    this.hideDeleteOverlay();
     this.remove();
   }
 });

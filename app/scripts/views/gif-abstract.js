@@ -13,52 +13,43 @@ App.GifAbstractView = Backbone.View.extend({
       gif: this.model.toJSON()
     };
 
-    this.$shareForm = $(App.template.gifShare(data));
-    App.$content.append(this.$shareForm);
+    this.$shareOverlay = $(App.template.gifShare(data));
+    this.$gif.append(this.$shareOverlay);
 
-    window.TukTuk.Modal.show('modal--share');
+    this.$shareOverlayInput = this.$shareOverlay.find('.gif__share__input');
+    this.$shareOverlayInput.focus();
 
-    this.$shareFormInput = this.$shareForm.find('.gif__share__input');
-    this.$shareFormInput.focus();
-
-    this.$shareForm.on('click', '.modal__close', this.hideShareForm);
-    // window.open(encodedUrl, '_blank');
-    // window.focus();
-    // App.router.navigate('/public/' + encodedUrl, {trigger: true});
+    this.$shareOverlay.on('click', '.overlay__close', this.hideShareOverlay);
   },
 
   /**
-   * Hide the share form
+   * Hide the share overlay
    */
-  hideShareForm: function(event) {
-    window.TukTuk.Modal.hide();
-    this.$shareForm.remove();
+  hideShareOverlay: function(event) {
+    this.$shareOverlay.remove();
   },
 
   /**
-   * Show the form to delete the gif
+   * Show the overlay to delete the gif
    */
-  showDeleteForm: function(event) {
+  showDeleteOverlay: function(event) {
     event.preventDefault();
     event.stopPropagation();
 
-    this.$deleteForm = $(App.template.gifDelete(this.model.toJSON()));
-    App.$content.append(this.$deleteForm);
+    this.$deleteOverlay = $(App.template.gifDelete(this.model.toJSON()));
+    this.$gif.append(this.$deleteOverlay);
 
-    window.TukTuk.Modal.show('modal--delete');
+    this.$deleteOverlayButton = this.$deleteOverlay.find('.gif__delete__button');
 
-    this.$deleteFormButton = this.$deleteForm.find('.gif__delete__button');
-
-    this.$deleteForm.on('click', '.modal__close', this.hideDeleteForm);
-    this.$deleteForm.on('submit', this.deleteGif);
+    this.$deleteOverlay.on('click', '.overlay__close', this.hideDeleteOverlay);
+    this.$deleteOverlay.on('submit', this.deleteGif);
   },
 
   /**
-   * Hide the delete form
+   * Hide the delete overlay
    */
-  hideDeleteForm: function(event) {
-    window.TukTuk.Modal.hide();
-    this.$deleteForm.remove();
+  hideDeleteOverlay: function(event) {
+    this.$deleteOverlay.remove();
   },
 
   /**
@@ -67,7 +58,7 @@ App.GifAbstractView = Backbone.View.extend({
   deleteGif: function(event) {
     event.preventDefault();
 
-    this.$deleteFormButton.addClass('loading');
+    this.$deleteOverlayButton.addClass('loading');
     this.model.destroy();
   }
 });
