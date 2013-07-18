@@ -17,22 +17,26 @@ script#template__gif(type='text/x-handlebars-template')
 
 script#template__gif__share(type='text/x-handlebars-template')
   form.action-overlay.overlay--share
-    .action-overlay__actions.overlay--share__actions.row
-      .small-9.large-6.large-offset-2.columns
-        input.gif__share__input(type='text', value='{{shareUrl}}')
-      .small-3.large-2.columns
-        button.button.large.secondary.overlay__close(type='button')
-          span.icon.remove
-          | Close
+    .action-overlay__actions.overlay--share__actions
+      .row
+        .small-8.small-centered.columns
+          input.gif__share__input(type='text', value='{{shareUrl}}')
+        .small-8.small-centered.columns
+          button.button.large.secondary.overlay__close(type='button')
+            span.icon.remove
+            | Close
 
 
 script#template__gif__delete(type='text/x-handlebars-template')
   form.action-overlay.overlay--confirm-delete
     .action-overlay__actions.overlay--confirm-delete__actions
-      button.button.large.alert.gif__delete__button(type='submit')
-        span.button__text
-          span.icon.ok
-          | Delete it
-      button.button.large.secondary.overlay__close(type='button')
-        span.icon.remove
-        | Cancel
+      .row
+        .small-8.small-centered.columns
+          button.button.large.alert.gif__delete__button(type='submit')
+            span.button__text
+              span.icon.ok
+              | Delete it
+        .small-8.small-centered.columns
+          button.button.large.secondary.overlay__close(type='button')
+            span.icon.remove
+            | Cancel

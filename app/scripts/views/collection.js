@@ -134,6 +134,7 @@ App.CollectionView = Backbone.View.extend({
   hideAddForm: function() {
     this.$addFormInputWrapper.hide();
     this.$title.removeClass('invisible');
+    this.$addFormButton.removeClass('loading');
     this.addFormVisible = false;
   },
 
