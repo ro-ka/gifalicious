@@ -184,13 +184,16 @@ table
   position: relative
 
 .index__user-story__image
-  position: absolute
-  top: 0
-  left: 50%
-  right: 0
-  bottom: 0
-  background: url('/images/cool-cat.gif') no-repeat center center
-  background-size: cover
+  @media screen and (min-width: 768px)
+    position: absolute
+    top: 0
+    left: 50%
+    right: 0
+    bottom: 0
+    background: url('/images/cool-cat.gif') no-repeat center center
+    background-size: cover
+    img
+      display: none
 
 .index__feature__icon
   font-size: 7em
