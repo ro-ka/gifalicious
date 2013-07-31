@@ -94,8 +94,10 @@ App.Main = Backbone.View.extend({
    * Handle it, when there was an authentication error
    */
   handleUserAuthenticationError: function() {
-    App.router.navigate('/signin', {trigger: true});
-    App.navbar.setAccountStatus('error');
+    // App.router.navigate('/signin', {trigger: true});
+    // App.navbar.setAccountStatus('error');
+
+    App.hoodie.account.signOut();
   }
 });
 new App.Main();
