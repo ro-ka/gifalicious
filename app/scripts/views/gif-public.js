@@ -36,7 +36,6 @@ App.GifPublicView = Backbone.View.extend({
 
     this.$overlay = this.$('.gif__overlay');
     this.$error = this.$('.gif__error');
-    this.$success = this.$('.gif__success');
     this.$add = this.$('.gif__add');
     this.$addIcon = this.$add.find('.icon');
     this.$addLoading = this.$add.find('.loading');
@@ -50,7 +49,6 @@ App.GifPublicView = Backbone.View.extend({
     event.stopPropagation();
 
     this.$error.hide();
-    this.$success.hide();
     this.$addIcon.hide();
     this.$addLoading.show();
 
@@ -77,10 +75,6 @@ App.GifPublicView = Backbone.View.extend({
       }
     );
 
-    this.$success.text('Added to your collection!').show();
-    this.$addIcon.hide();
-    this.$addLoading.show();
-
-    this.$overlay.hide();
+    this.render();
   }
 });

@@ -5,12 +5,15 @@ script#template__gif--public(type='text/x-handlebars-template')
         .gif__error.error-message.message.hide
         .gif__success.success-message.message.hide
         {{#if loggedin}}
-        {{#if newgif}}
         .gif__overlay
           .gif__overlay__actions.gif__overlay__actions--one
+            {{#if newgif}}
             span.gif__action.gif__add(title='Add to collection')
               span.icon.plus
               img.loading.hide(src='/images/loading.small.gif')
-        {{/if}}
+            {{else}}
+            span.gif__status(title='Already collected!')
+              span.icon.check
+            {{/if}}
         {{/if}}
         img.responsive-horizontal.box-shadow(src='{{url}}', alt='')
