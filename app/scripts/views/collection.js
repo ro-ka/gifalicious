@@ -145,7 +145,7 @@ App.CollectionView = Backbone.View.extend({
     var url = this.$addFormInput.val();
 
     this.$addFormButton.addClass('loading');
-    this.isAnimatedGif(url, this.onIsAnimatedGifCheck);
+    App.isAnimatedGif(url, this.onIsAnimatedGifCheck);
   },
 
   /**
@@ -170,23 +170,5 @@ App.CollectionView = Backbone.View.extend({
     );
 
     this.hideAddForm();
-  },
-
-  /**
-   * Returns when the gif is animated
-   * @param  {String}  url The urls
-   * @return {Boolean}     Whether it is an animate gif or not
-   */
-  isAnimatedGif: function(url, callback) {
-    if (!url) {
-      callback('', false);
-      return;
-    }
-
-    var encodedUrl = 'https://doesthisgifcontainananimation.com/' + encodeURIComponent(url);
-
-    $.getJSON(encodedUrl, function(response) {
-      callback(url, response.containsananimation);
-    });
   }
 });

@@ -34,6 +34,9 @@ App.GifView = App.GifAbstractView.extend({
     this.$gif = this.$('.gif');
   },
 
+  /**
+   * Close the gif and return to collection
+   */
   closeGif: function(event) {
     event.preventDefault();
     event.stopPropagation();
