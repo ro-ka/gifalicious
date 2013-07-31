@@ -48,7 +48,6 @@ App.GifView = App.GifAbstractView.extend({
    * Delete the gif
    */
   onRemove: function() {
-    this.hideDeleteOverlay();
     App.router.navigate('/collection', {trigger: true});
   }
 });
