@@ -26,7 +26,8 @@ App.GifPublicView = Backbone.View.extend({
   render: function() {
     var data = {
         url: this.url,
-        loggedin: App.loggedin()
+        loggedin: App.loggedin(),
+        newgif: !App.gifs.alreadyExists(this.url)
       },
       html = App.template.gifPublic(data);
 

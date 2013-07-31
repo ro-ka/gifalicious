@@ -145,6 +145,12 @@ App.CollectionView = Backbone.View.extend({
     var url = this.$addFormInput.val();
 
     this.$addFormButton.addClass('loading');
+
+    if (App.gifs.alreadyExists(url)) {
+      this.showAddError('You already collected that one!');
+      return;
+    }
+
     App.isAnimatedGif(url, this.onIsAnimatedGifCheck);
   },
 
@@ -155,10 +161,7 @@ App.CollectionView = Backbone.View.extend({
    */
   onIsAnimatedGifCheck: function(url, isAnimatedGif) {
     if (!isAnimatedGif) {
-      this.$addFormButton.removeClass('loading');
-      this.$addFormError
-        .text('This is not an animated GIF! Shame on you!')
-        .show();
+      this.showAddError('This is not an animated GIF! Shame on you!');
       return;
     }
 
@@ -170,5 +173,14 @@ App.CollectionView = Backbone.View.extend({
     );
 
     this.hideAddForm();
+  },
+
+  /**
+   * Show the error form with a message
+   * @param  {String} message The error message
+   */
+  showAddError: function(message) {
+    this.$addFormButton.removeClass('loading');
+    this.$addFormError.text(message).show();
   }
 });
