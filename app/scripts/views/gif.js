@@ -6,6 +6,7 @@ App.GifView = App.GifAbstractView.extend({
    * @type {Object}
    */
   events: {
+    'click .gif__close': 'closeGif',
     'click .gif__delete': 'showDeleteOverlay',
     'click .gif__share': 'shareGif'
   },
@@ -31,6 +32,13 @@ App.GifView = App.GifAbstractView.extend({
     App.$content.html(this.$el);
 
     this.$gif = this.$('.gif');
+  },
+
+  closeGif: function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    App.router.navigate('/collection', {trigger: true});
   },
 
   /**
