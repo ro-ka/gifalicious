@@ -256,7 +256,7 @@ module.exports = function (grunt) {
           cwd: '<%= folders.app %>',
           dest: '<%= folders.www %>',
           src: [
-            '*.{ico,txt}',
+            '*.{ico,txt,png}',
             '.htaccess',
             'images/{,*/}*.{webp,gif}',
             'styles/fonts/*'
