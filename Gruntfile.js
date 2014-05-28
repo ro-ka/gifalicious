@@ -23,8 +23,8 @@ module.exports = function(grunt) {
     hoodie: {
       start: {
         options: {
-          callback: function(stack) {
-            grunt.config.set('connect.proxies.0.port', stack.stack.www.port);
+          callback: function(config) {
+            grunt.config.set('connect.proxies.0.port', config.stack.www.port);
           }
         }
       }
@@ -293,7 +293,7 @@ module.exports = function(grunt) {
       test: [
         'stylus'
       ],
-      dist: [
+      www: [
         'stylus',
         'imagemin',
         'svgmin',
