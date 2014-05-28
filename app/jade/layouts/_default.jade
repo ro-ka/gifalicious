@@ -1,4 +1,4 @@
-!!! 5
+doctype html
 html.no-js
   head
     title gifalicious
@@ -70,21 +70,23 @@ html.no-js
         a.social-link(href='https://www.facebook.com/gifalicious')
           span.icon.facebook
       .small-6.columns.padding.text-right
-        | A project by 
+        | A project by
         a(href='http://katzki.de') Robert Katzki
-        |  at 
+        |  at
         a(href='http://ubilabs.net') Ubilabs
         | .
 
     // build:js /scripts/main.js
-    script(src='scripts/vendor/lodash.min.js')
-    script(src='scripts/vendor/handlebars.js')
-    script(src='scripts/vendor/jquery2.min.js')
-    script(src='scripts/vendor/backbone.min.js')
-    script(src='scripts/vendor/hoodie.js')
-    script(src='scripts/vendor/backbone-hoodie.js')
+    script(src='bower_components/lodash/dist/lodash.js')
+    script(src='bower_components/handlebars/handlebars.js')
+    script(src='bower_components/jquery/dist/jquery.js')
+    script(src='bower_components/backbone/backbone.js')
+    script(src='bower_components/hoodie/dist/hoodie.js')
+    script(src='bower_components/backbone-hoodie/src/backbone-hoodie.js')
+    script(src='bower_components/hideShowPassword/hideShowPassword.js')
+
     script(src='scripts/vendor/tuktuk.js')
-    script(src='scripts/vendor/hideShowPassword.js')
+
     script(src='scripts/models/gif.js')
     script(src='scripts/models/settings.js')
     script(src='scripts/collections/gifs.js')
@@ -102,7 +104,7 @@ html.no-js
     script(src='scripts/main.js')
     // endbuild
 
-    script
+    script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

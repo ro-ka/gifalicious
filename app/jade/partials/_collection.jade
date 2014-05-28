@@ -18,14 +18,14 @@ script#template__collection(type='text/x-handlebars-template')
 
 script#template__collection__title(type='text/x-handlebars-template')
   | {{#if oneGif}}
-  | You haz 
+  | You haz&nbsp;
   span.text-normal one
   |  lonely GIF.
   | {{else}}
   | {{#if noGifs}}
   | You not haz animated GIFs.
   | {{else}}
-  | You haz 
+  | You haz&nbsp;
   span.text-normal {{gifCount}}
   |  delicious GIFs.
   | {{/if}}

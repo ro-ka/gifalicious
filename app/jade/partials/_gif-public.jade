@@ -4,16 +4,16 @@ script#template__gif--public(type='text/x-handlebars-template')
       .gif.small-12.columns.margin-bottom
         .gif__error.error-message.message.hide
         .gif__success.success-message.message.hide
-        {{#if loggedin}}
+        | {{#if loggedin}}
         .gif__overlay
           .gif__overlay__actions.gif__overlay__actions--one
-            {{#if newgif}}
+            | {{#if newgif}}
             span.gif__action.gif__add(title='Add to collection')
               span.icon.plus
               img.loading.hide(src='/images/loading.small.gif')
-            {{else}}
+            | {{else}}
             span.gif__status(title='Already collected!')
               span.icon.check
-            {{/if}}
-        {{/if}}
+            | {{/if}}
+        | {{/if}}
         img.responsive-horizontal.box-shadow(src='{{url}}', alt='')

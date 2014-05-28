@@ -1,12 +1,5 @@
-// Generated on<%= (new Date).toISOString().split('T')[0] %> using <%= pkg.name %> <%= pkg.version %>
+// Generated on 2014-05-12 using generator-jade 0.6.1
 'use strict';
-
-// Define Snippets and helper functions
-var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
-var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
-var mountFolder = function (connect, dir) {
-  return connect.static(require('path').resolve(dir));
-};
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -14,9 +7,12 @@ var mountFolder = function (connect, dir) {
 // use this if you want to match all subfolders:
 // 'test/spec/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   // load all grunt tasks
-  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+  require('load-grunt-tasks')(grunt);
+
+  // Time how long tasks take. Can help when optimizing build times
+  require('time-grunt')(grunt);
 
   grunt.initConfig({
     folders: {
@@ -28,29 +24,29 @@ module.exports = function (grunt) {
       start: {
         options: {
           callback: function(stack) {
-            grunt.config.set('connect.proxies.0.port', stack.www.port);
+            grunt.config.set('connect.proxies.0.port', stack.stack.www.port);
           }
         }
       }
     },
     watch: {
       stylus: {
-        files: ['<%= folders.app %>/styles/{,*/}*.styl'],
-        tasks: ['stylus:server']
+        files: '<%= folders.app %>/styles/**/*.styl',
+        tasks: ['stylus']
       },
-      livereload: {
-        files: [
-          '<%= folders.app %>/*.html',
-          '{.tmp,<%= folders.app %>}/styles/{,*/}*.css',
-          '{.tmp,<%= folders.app %>}/scripts/{,*/}*.js',
-          '<%= folders.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ],
+      server: {
         options: {
           livereload: true
-        }
+        },
+        files: [
+          '<%= folders.tmp %>/*.html',
+          '<%= folders.tmp %>/styles/{,*/}*.css',
+          '{.tmp,<%= folders.app %>}/scripts/{,*/}*.js',
+          '<%= folders.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+        ]
       },
       jade: {
-        files: ['app/jade/{,*/}*.jade', 'app/jade/**/{,*/}*.jade'],
+        files: '<%= folders.app %>/jade/**/*.jade',
         tasks: ['jade']
       }
     },
@@ -71,39 +67,30 @@ module.exports = function (grunt) {
       ],
       server: {
         options: {
-          middleware: function (connect) {
-            return [
-              lrSnippet,
-              proxySnippet,
-              mountFolder(connect, '.tmp'),
-              mountFolder(connect, 'app')
-            ];
-          }
+          open: true,
+          base: [
+            '<%= folders.tmp %>',
+            '<%= folders.app %>'
+          ]
         }
       },
       test: {
         options: {
-          middleware: function (connect) {
-            return [
-              mountFolder(connect, '.tmp'),
-              mountFolder(connect, 'test')
-            ];
-          }
+          base: [
+            '<%= folders.tmp %>',
+            'test',
+            '<%= folders.app %>'
+          ]
         }
       },
       www: {
         options: {
-          middleware: function (connect) {
-            return [
-              mountFolder(connect, '<%= folders.www %>')
-            ];
-          }
+          open: true,
+          base: [
+            '<%= folders.www %>'
+          ],
+          livereload: false
         }
-      }
-    },
-    open: {
-      server: {
-        path: 'http://localhost:<%= connect.options.port %>'
       }
     },
     clean: {
@@ -111,13 +98,13 @@ module.exports = function (grunt) {
         files: [{
           dot: true,
           src: [
-            '.tmp',
+            '<%= folders.tmp %>',
             '<%= folders.www %>/*',
             '!<%= folders.www %>/.git*'
           ]
         }]
       },
-      server: '.tmp'
+      server: '<%= folders.tmp %>'
     },
     mocha: {
       all: {
@@ -128,35 +115,31 @@ module.exports = function (grunt) {
       }
     },
     stylus: {
-      options: {
-        paths: ['<%= folders.app %>/styles']
-      },
-      www: {
-        files: {
-          '<%= folders.tmp %>/styles/main.css': ['<%= folders.app %>/styles/main.styl']
-        }
-      },
-      server: {
+      compile: {
+        files: [{
+          expand: true,
+          cwd: '<%= folders.app %>/styles',
+          src: ['{,*/}*.styl', '!**/_*'],
+          dest: '<%= folders.tmp %>/styles',
+          ext: '.css'
+        }],
         options: {
           compress: false,
-          linenos: true,
-          firebug: true
-        },
-        files: '<%= stylus.www.files %>'
+          // convert the css url() declaration into nib inline imaging function
+          // this converts images smaller than 30kb to data url
+          urlfunc: 'url'
+        }
       }
     },
     jade: {
       html: {
-        files: grunt.file.expandMapping(['{,*/}*.jade', '!**/_*'], 'dest', {
-          cwd: 'app/jade',
-          rename: function (dest, src) {
-            if (/i18n/.test(src)) {
-              return '<%= folders.tmp %>/' + src.replace(/index.i18n-(.*).jade/, '$1.html');
-            }
-
-            return '<%= folders.tmp %>/' + src.replace(/\.jade$/, '.html');
-          }
-        }),
+        files: [{
+          expand: true,
+          cwd: '<%= folders.app %>/jade',
+          src: ['{,*/}*.jade', '!**/_*'],
+          dest: '.tmp/',
+          ext: '.html'
+        }],
         options: {
           client: false,
           pretty: true,
@@ -164,6 +147,10 @@ module.exports = function (grunt) {
           data: function(dest, src) {
 
             var page = src[0].replace(/app\/jade\/(.*)\/index.jade/, '$1');
+
+            if (page == src[0]) {
+              page = 'index';
+            }
 
             return {
               page: page
@@ -221,7 +208,7 @@ module.exports = function (grunt) {
       www: {
         files: {
           '<%= folders.www %>/styles/main.css': [
-            '.tmp/styles/{,*/}*.css'
+            '<%= folders.tmp %>/styles/{,*/}*.css'
           ]
         }
       }
@@ -256,7 +243,7 @@ module.exports = function (grunt) {
           cwd: '<%= folders.app %>',
           dest: '<%= folders.www %>',
           src: [
-            '*.{ico,txt,png}',
+            '*.{ico,txt}',
             '.htaccess',
             'images/{,*/}*.{webp,gif}',
             'styles/fonts/*'
@@ -269,7 +256,7 @@ module.exports = function (grunt) {
           cwd: '<%= folders.app %>',
           dest: '<%= folders.tmp %>',
           src: [
-            'scripts/{,*/}*js'
+            'scripts/{,*/}*js', 'bower_components/**/*js'
           ]
         }]
       },
@@ -294,35 +281,44 @@ module.exports = function (grunt) {
         }]
       }
     },
+    release: {
+      options: {
+        npm: false
+      }
+    },
     concurrent: {
       server: [
-        'stylus:server'
+        'stylus'
       ],
       test: [
-        'stylus:www'
+        'stylus'
       ],
-      www: [
-        'stylus:www',
+      dist: [
+        'stylus',
         'imagemin',
         'svgmin',
         'htmlmin'
       ]
+    },
+    jshint: {
+      options: {
+        reporter: require('jshint-stylish')
+      },
+      build: ['<%= folders.app %>/scripts/**/*js']
     }
   });
 
-  grunt.registerTask('server', function (target) {
+  grunt.registerTask('server', function(target) {
     if (target === 'www') {
-      return grunt.task.run(['build', 'open', 'connect:www:keepalive']);
+      return grunt.task.run(['build', 'connect:www:keepalive']);
     }
 
     grunt.task.run([
       'clean:server',
       'hoodie',
       'jade',
-      'configureProxies',
       'concurrent:server',
       'connect:server',
-      'open',
       'watch'
     ]);
   });
@@ -341,8 +337,8 @@ module.exports = function (grunt) {
     'copy:css',
     'useminPrepare',
     'concurrent:www',
-    'cssmin',
     'concat',
+    'cssmin',
     'uglify',
     'copy:www',
     'copy:assets',
