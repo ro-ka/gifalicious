@@ -68,10 +68,19 @@ module.exports = function(grunt) {
       server: {
         options: {
           open: true,
+          livereload: true,
           base: [
             '<%= folders.tmp %>',
             '<%= folders.app %>'
-          ]
+          ],
+          middleware: function(connect, options, middlewares) {
+            var proxySnippet = require('grunt-connect-proxy/lib/utils')
+              .proxyRequest;
+
+            middlewares.push(proxySnippet);
+
+            return middlewares;
+          }
         }
       },
       test: {
@@ -317,6 +326,7 @@ module.exports = function(grunt) {
       'clean:server',
       'hoodie',
       'jade',
+      'configureProxies',
       'concurrent:server',
       'connect:server',
       'watch'
