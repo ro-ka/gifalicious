@@ -62,7 +62,7 @@ App.SigninView = Backbone.View.extend({
    */
   handleSigninFail: function(response) {
     this.$submit.removeClass('loading');
-    this.$error.text(response.reason).show();
+    this.$error.text(response.message).show();
   },
 
   /**
