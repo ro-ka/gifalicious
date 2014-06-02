@@ -4,10 +4,10 @@
   "type": "app",
   "private": true,
   "dependencies": {
-    "hoodie-server": "^0.9.19",
     "hoodie-plugin-appconfig": "^0.2.0",
-    "hoodie-plugin-email": "^0.1.1",
-    "hoodie-plugin-users": "^0.1.0"
+    "hoodie-plugin-email": "^0.1.4",
+    "hoodie-plugin-users": "^0.1.0",
+    "hoodie-server": "^0.9.19"
   },
   "devDependencies": {
     "grunt": "^0.4.1",
@@ -41,5 +41,12 @@
   },
   "scripts": {
     "start": "hoodie start -n"
+  },
+  "hoodie": {
+    "plugins": [
+      "hoodie-plugin-email",
+      "hoodie-plugin-users",
+      "hoodie-plugin-appconfig"
+    ]
   }
 }
