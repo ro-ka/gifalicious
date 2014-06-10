@@ -1,357 +1,473 @@
 @import 'nib'
+@import '_vars'
+@import '../bower_components/normalize.styl/normalize'
+@import '../bower_components/stackenblochen/stackenblochen'
 
 /**
- * Variables
+ * Basics
  */
-$text = #494949
-$header = #394240
-$link = #256e4d
-$theme = #37a976
-$alert = #f06b50
-$success = #37a945
-$white = #fff
-$black = #000
+*, *:before, *:after
+  box-sizing: border-box
 
-/**
- * Basic
- */
 body
   color: $text
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
-  font-weight: 400
   background: $white
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-weight: 400
+  font-size: 100%
+  line-height: 1.333
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
 
 a
   color: $link
-  body > header &
-    color: $white
+  text-decoration: none
+  transition: color .2s ease-in-out
+  &:hover, &:focus
+    text-decoration: underline
+    color: darken($link, 10%)
 
-body:not(.color):not(.dark) a:not(.button):hover, body:not(.color):not(.dark) a:not(.button):active
-  color: $theme
+blockquote
+  font-size: 1rem
+  position: relative
+  &:before
+    content: '“'
+    font-size: 2em
+    position: absolute
+    top: -.25em
+    left: -.5em
+  small
+    display: block
+    font-weight: 300
+    font-size: .8em
+    text-align: right
+    margin-top: .5em
 
 h1, h2, h3, h4, h5, h6
   font-weight: 300
-  a
-    color: $text
 
 hr
-  margin: 15px 0
-  background: darken($white, 10%)
+  height: 0
+  border: 0
+  border-top: 1px solid darken($white, 10%)
+  margin: emCalc(15px) 0
 
-.radius
-  -webkit-border-radius: 4px
-  -moz-border-radius: 4px
-  border-radius: 4px
-.text-shadow
-  text-shadow:0 1px 1px rgba($black, 0.5)
-.box-shadow
-  -webkit-box-shadow: 0 .1em 0.2em $black
-  -moz-box-shadow: 0 .1em 0.2em $black
-  box-shadow: 0 .1em 0.2em $black
-
-.bck
-  &.theme-dark
-    background-color: darken($theme, 10%)
-  &.color
-    background-color: $text
-  &.dark
-    background-color: $header
-  &.theme
-    background-color: $theme
-    color: $white
-  &.alert
-    background-color: $alert !important
-    color: $white
-  &.color, &.dark
-    color: darken($white, 10%)
-    hr
-      background: lighten($black, 20%)
-      background: rgba($black, 0.2)
-    a
-      color: $white
-      &.active
-        color: $white !important
-
-.color
-  &.white
-    color: $white !important
-  &.light
-    color: darken($white, 10%) !important
-  &.theme
-    color: $theme !important
-  &.default
-    color: $text !important
-  &.alert
-    color: $alert !important
+// .radius
+//   border-radius: 4px
+// .text-shadow
+//   text-shadow:0 1px 1px rgba($black, 0.5)
+// .box-shadow
+//   box-shadow: 0 .1em 0.2em $black
 
 /**
  * Form
  */
-form, .form
-  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], select, textarea
-    background-color: $white
-    color: $text
-    border: 2px solid darken($white, 10%)
-    -webkit-transition: border-color 200ms;
-    -moz-transition: border-color 200ms;
-    -ms-transition: border-color 200ms;
-    -o-transition: border-color 200ms;
-    transition: border-color 200ms;
-    &:focus
-      border-color: $theme
-  .select:after
-    color: darken($white, 10%)
-  input[type="checkbox"], input[type="radio"]
-    background: $white
-    border: 2px solid darken($white, 10%)
-    &:checked
-      border-color: $theme
-      &:after
-        color: $theme
-  label
-    font-weight: 700
+// form, .form
+//   font-size: 1rem
+//   input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], select, textarea
+//     background-color: $white
+//     color: $text
+//     border: 2px solid darken($white, 10%)
+//     transition: border-color 200ms;
+//     &:focus
+//       border-color: $theme
+//   .select:after
+//     color: darken($white, 10%)
+//   input[type="checkbox"], input[type="radio"]
+//     background: $white
+//     border: 2px solid darken($white, 10%)
+//     &:checked
+//       border-color: $theme
+//       &:after
+//         color: $theme
+//   label
+//     font-weight: 700
 
-/**
- * Table
- */
-table
-  background: $white
-  color: $text
-  border:.1em solid darken($white, 10%)
-  tr:nth-child(even) td
-    background-color: darken($white, 5%)
-  th
-    background-color: darken($white, 10%)
-    color: $white
-  td.highlight
-    background-color: $theme !important
-    color: $white
+// .hideShowPassword-toggle
+//   cursor: pointer
+//   margin-right: 1em
+//   text-transform: uppercase
+//   font-size: 0.8em
+//   padding: 0.2em
+//   font-weight: 700
+
+// /**
+//  * Table
+//  */
+// table
+//   background: $white
+//   color: $text
+//   border:.1em solid darken($white, 10%)
+//   tr:nth-child(even) td
+//     background-color: darken($white, 5%)
+//   th
+//     background-color: darken($white, 10%)
+//     color: $white
+//   td.highlight
+//     background-color: $theme !important
+//     color: $white
 
 /**
  * Button
  */
-.button, button
+.button
+  font-size: 1rem
+  font-family: inherit
+  line-height: 2.3em
   position: relative
-  color: $white !important
-  font-weight: 700 !important
-  background-color: $theme
-  text-shadow: rgba(0, 0, 0, 0.1) 0 1px 0
-  -webkit-border-radius: 4px
-  -moz-border-radius: 4px
+  display: inline-block
+  cursor: pointer
+  color: $white
+  font-weight: 700
+  border: medium none
   border-radius: 4px
-  -webkit-box-shadow: inset 0 .1em 0 rgba(255, 255, 255, 0.1), inset 0 -.15em 0 rgba(0, 0, 0, 0.2), 0 .15em 0 rgba(0, 0, 0, 0.075)
-  -moz-box-shadow: inset 0 .1em 0 rgba(255, 255, 255, 0.1), inset 0 -.15em 0 rgba(0, 0, 0, 0.2), 0 .15em 0 rgba(0, 0, 0, 0.075)
-  box-shadow: inset 0 .1em 0 rgba(255, 255, 255, 0.1), inset 0 -.15em 0 rgba(0, 0, 0, 0.2), 0 .15em 0 rgba(0, 0, 0, 0.075)
-  -webkit-font-smoothing: antialiased
-  &:hover
-    -webkit-box-shadow: inset 0 0 5em rgba(0, 0, 0, 0.15), inset 0 -.15em 0 rgba(0, 0, 0, 0.2), 0 .15em 0 rgba(0, 0, 0, 0.075)
-    -moz-box-shadow: inset 0 0 5em rgba(0, 0, 0, 0.15), inset 0 -.15em 0 rgba(0, 0, 0, 0.2), 0 .15em 0 rgba(0, 0, 0, 0.075)
-    box-shadow: inset 0 0 5em rgba(0, 0, 0, 0.15), inset 0 -.15em 0 rgba(0, 0, 0, 0.2), 0 .15em 0 rgba(0, 0, 0, 0.075)
-  &:active
-    -webkit-box-shadow: inset 0 0 5em rgba(0, 0, 0, 0.3), inset 0 .15em 0 rgba(0, 0, 0, 0.1)
-    -moz-box-shadow: inset 0 0 5em rgba(0, 0, 0, 0.3), inset 0 .15em 0 rgba(0, 0, 0, 0.1)
-    box-shadow: inset 0 0 5em rgba(0, 0, 0, 0.3), inset 0 .15em 0 rgba(0, 0, 0, 0.1)
-  &.secondary
-    background-color: darken($white, 25%)
+  outline: medium none
+  text-decoration: none
+  padding: 0 1em
+  background-color: $theme
+  text-align: center
+  text-shadow: rgba(0, 0, 0, 0.1) 0 1px 0
+  transition: background-color .2s ease-in-out
+  &:hover, &:focus
+    background-color: darken($theme, 10%)
+    text-decoration: none
     color: $white
-  &.success
-    background-color: $success
-  &.alert
-    background-color: $alert
-  &:disabled, &.disabled
-    background: rgba($white, 0.2)
-    color: darken($white, 20%) !important
-  &.loading
-    .button__text
-      visibility: hidden
-    &:before
-      content: ''
-      display: block
-      width: 100%
-      height: 100%
-      position: absolute
-      top: 0
-      left: 0
-      background: url('/images/loading.small.gif') no-repeat center center
+  // &:active
+  //   box-shadow: inset 0 0 5em rgba(0, 0, 0, 0.3), inset 0 .15em 0 rgba(0, 0, 0, 0.1)
+  // &.secondary
+  //   background-color: darken($white, 25%)
+  //   color: $white
+  // &.success
+  //   background-color: $success
+  // &.alert
+  //   background-color: $alert
+  // &:disabled, &.disabled
+  //   background: rgba($white, 0.2)
+  //   color: darken($white, 20%) !important
+  // &.loading
+  //   .button__text
+  //     visibility: hidden
+  //   &:before
+  //     content: ''
+  //     display: block
+  //     width: 100%
+  //     height: 100%
+  //     position: absolute
+  //     top: 0
+  //     left: 0
+  //     background: url('/images/loading.small.gif') no-repeat center center
+
+/**
+ * Avatar
+ */
+.avatar
+  background-image: url('http://photos1.meetupstatic.com/photos/member/1/1/3/c/thumb_147484412.jpeg')
+  width: emCalc(25px)
+  height: emCalc(25px)
+  font-size: emCalc(25px)
+  border-radius: 50%
+  background-size: cover
+  display: inline-block
+  text-indent: 100%
+  white-space: nowrap
+  overflow: hidden
+  vertical-align: top
+  background-repeat: no-repeat
+  background-position: center 50%
+  background-color: rgba(black, 0.5)
+
+/**
+ * Site header
+ */
+.site-header
+  font-size: 1rem
+  padding: .4em 0
+  background: $header
 
 .logo
-  font-family: 'Grand Hotel', Helvetica, Arial, sans-serif
-  font-weight: 400
-  font-size: 3em
-
-.index__title
-  line-height: 1.5em
-
-.index__user-story
-  position: relative
-
-.index__user-story__image
-  @media screen and (min-width: 768px)
-    position: absolute
-    top: 0
-    left: 50%
-    right: 0
-    bottom: 0
-    background: url('/images/cool-cat.gif') no-repeat center center
-    background-size: cover
-    img
-      display: none
-
-.index__feature__icon
-  font-size: 7em
-  margin-bottom: 0.3em
-
-.index__feature__text
-  font-size: 1.4em
-  text-transform: uppercase
-
-.collection__title
-  padding-right: 4em
-
-.collection__add
-  position: relative
-
-.collection__add__button
-  position: absolute
-  right: 1em
-  top: 1em
-
-.collection__add__input-wrapper
-  position: absolute
-  left: 0
-  right: 12em
-  top: 0em
-  height: 100%
-  background: $white
-  padding: 1.5em
-
-.gif, .collection__list__item
-  position: relative
-  padding: 1em
-  background: 50% 50% no-repeat url(/images/loading.gif)
-
-.gif__overlay
-  cursor: pointer
-  position: absolute
-  top: 1em
-  left: 1em
-  right: 1em
-  bottom: 1em
-  .gif &
-    cursor: auto
-
-.gif__overlay__actions
-  position: absolute
-  right: 0.3em
-  top: 50%
-  margin-top: -7em
-
-.gif__overlay__actions--one
-  margin-top: -2em
-
-.gif__status
-  display: none
-  color: darken($white, 5%)
-  color: rgba(darken($white, 5%), 0.9)
-  clear: right
-  float: right
-  font-size: 1.6em
-  font-weight: 400
-  width: 1.6em
-  height: 1.6em
-  margin: 0.75em
-  line-height: 1.6em
-  text-align: center
-  text-shadow: 0 .1em 0.2em lighten($black, 30%)
-  .gif__overlay:hover &
-    display: inline
-
-.gif__action
-  cursor: pointer
-  display: none
-  position: relative
-  color: lighten($text, 5%)
-  background: darken($white, 5%)
-  background: rgba(darken($white, 5%), 0.7)
-  clear: right
-  float: right
-  font-size: 1.3em
-  font-weight: 400
-  width: 2.3em
-  height: 2.3em
-  -webkit-border-radius: 50%
-  -moz-border-radius: 50%
-  border-radius: 50%
-  margin: 0.75em
-  line-height: 2.3em
-  text-align: center
-  a& .icon
-    margin: 0
-
-  &:hover
-    background: $white
-    background: rgba($white, 0.9)
-    -webkit-box-shadow: none
-    -moz-box-shadow: none
-    box-shadow: none
-    .icon
-      color: $text
-
-  .gif__overlay:hover &
-    display: inline
-
-.collection__gif
-  display: block
-  background-size: cover
-  background-repeat: no-repeat
-  background-position: 50%
-  height: 20em
-
-.action-overlay
-  position: absolute
-  top: 1em
-  left: 1em
-  right: 1em
-  bottom: 1em
-  background-color: rgba($black, 0.6)
-
-.action-overlay__actions
-  position: absolute
-  top: 50%
-  left: 0
-  right: 0
-  margin-top: -3.5em
-  text-align: center
-  button
-    margin: 1em
-.overlay--confirm-delete__actions
-  margin-top: -5.5em
-
-.hideShowPassword-toggle
-  cursor: pointer
-  margin-right: 1em
-  text-transform: uppercase
-  font-size: 0.8em
-  padding: 0.2em
-  font-weight: 700
-
-.message
-  font-weight: 700
-  text-transform: uppercase
-  border-bottom-style: solid
-  border-bottom-width: 0.1em
-
-  &.error-message
-    color: $alert
-    border-bottom-color: $alert
-
-  &.success-message
-    color: $success
-    border-bottom-color: $success
-
-.social-link
-  display: inline-block
   font-size: 2em
-  margin-right: 0.5em
-  margin-top: -0.3em
-  color: $text
+  font-weight: 400
+  font-family: 'Grand Hotel', Helvetica, Arial, sans-serif
+  text-shadow:0 1px 1px rgba($black, 0.5)
+  color: $white
+  text-decoration: none
+  &:hover, &:focus
+    color: darken($white, 10%)
+
+.gif-nav
+  font-size: 1rem
+  text-align: center
+  &__item
+    height: 100%
+    padding: 0
+    display: inline-block
+    &__link
+      display: block
+      height: 100%
+      text-align: center
+      color: $white
+      font-weight: 700
+      &:hover, &:focus
+        color: $white
+        background: darken($header, 20%)
+  &--integrated
+    margin: -.4em 0
+    height: 3.5em
+    &__item
+      &__link
+        line-height: 3.5em
+        margin: 0 .2em
+        padding: 0 2em
+  &--independent
+    height: auto
+    background: lighten($header, 5%)
+    &__item
+      &__link
+        padding: .4em 0
+        &:hover, &:focus
+          background: $header
+
+.user-nav
+  font-size: 1rem
+  position: relative
+  display: inline-block
+  &--signed-out
+    .user-nav--sigend-out__items__item
+      display: block
+    .user-nav--sigend-in__items__item
+      display: none
+  &--signed-in
+    .user-nav--sigend-out__items__item
+      display: none
+    .user-nav--sigend-in__items__item
+      display: block
+  &-container
+    text-align: right
+  &__avatar
+    padding: emCalc(2px)
+    background-color: darken($header, 20%)
+    border-radius: emCalc(25px)
+    position: relative
+    cursor: pointer
+    &:hover, &:focus
+      background-color: darken($header, 40%)
+    &__dropdown
+      color: $white
+      line-height: emCalc(39px)
+      margin: 0 emCalc(10px)
+  &__items
+    list-style: none outside none
+    box-shadow: 0 .1em 0.2em $black
+    border-radius: 4px
+    z-index: 5
+    padding: 0
+    width: emCalc(150px)
+    position: absolute
+    right: 0
+    &:before, &:after
+      content: '.'
+      position: absolute
+      top: -10px
+      right: 30px
+      display: block
+      width: 0
+      height: 0
+      font-size: 0
+      line-height: 0
+      border-style: solid
+      border-width: 0 10px 10px
+      border-color: transparent transparent $white
+    &:before
+      border-color: transparent transparent rgba(0, 0, 0, 0.1)
+      border-width: 0 11px 11px
+      margin-left: -1px
+      margin-top: -1px
+    &--hidden
+      display: none
+    &__item
+      padding: 0 emCalc(10px)
+      padding: 0
+      margin: 0
+      color: $text
+      background-color: $white
+      transition: color .1s ease-in-out, background-color .1s ease-in-out
+      &:first-child
+        border-radius: 4px 4px 0 0
+      &:last-child
+        border-radius: 0 0 4px 4px
+      &:hover, &:focus
+        color: $white
+        background-color: $theme
+      &__link
+        color: inherit
+        display: block
+        padding: emCalc(10px)
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+        transition: none
+        &:hover, &:focus
+          color: inherit
+          text-decoration: none
+
+/**
+ * Index site
+ */
+.index
+  font-size: 1rem
+  margin-top: 1em
+  &__quote
+    font-size: 1.5em
+    margin-bottom: 1em
+  &__action
+    text-align: center
+    margin-bottom: 1em
+  &__image
+    text-align: center
+
+/**
+ * Collections
+ */
+// .collection__title
+//   padding-right: 4em
+
+// .collection__add
+//   position: relative
+
+// .collection__add__button
+//   position: absolute
+//   right: 1em
+//   top: 1em
+
+// .collection__add__input-wrapper
+//   position: absolute
+//   left: 0
+//   right: 12em
+//   top: 0em
+//   height: 100%
+//   background: $white
+//   padding: 1.5em
+
+// .gif, .collection__list__item
+//   position: relative
+//   padding: 1em
+//   background: 50% 50% no-repeat url(/images/loading.gif)
+
+// .gif__overlay
+//   cursor: pointer
+//   position: absolute
+//   top: 1em
+//   left: 1em
+//   right: 1em
+//   bottom: 1em
+//   .gif &
+//     cursor: auto
+
+// .gif__overlay__actions
+//   position: absolute
+//   right: 0.3em
+//   top: 50%
+//   margin-top: -7em
+
+// .gif__overlay__actions--one
+//   margin-top: -2em
+
+// .gif__status
+//   display: none
+//   color: darken($white, 5%)
+//   color: rgba(darken($white, 5%), 0.9)
+//   clear: right
+//   float: right
+//   font-size: 1.6em
+//   font-weight: 400
+//   width: 1.6em
+//   height: 1.6em
+//   margin: 0.75em
+//   line-height: 1.6em
+//   text-align: center
+//   text-shadow: 0 .1em 0.2em lighten($black, 30%)
+//   .gif__overlay:hover &
+//     display: inline
+
+// .gif__action
+//   cursor: pointer
+//   display: none
+//   position: relative
+//   color: lighten($text, 5%)
+//   background: darken($white, 5%)
+//   background: rgba(darken($white, 5%), 0.7)
+//   clear: right
+//   float: right
+//   font-size: 1.3em
+//   font-weight: 400
+//   width: 2.3em
+//   height: 2.3em
+//   border-radius: 50%
+//   margin: 0.75em
+//   line-height: 2.3em
+//   text-align: center
+//   a& .icon
+//     margin: 0
+
+//   &:hover
+//     background: $white
+//     background: rgba($white, 0.9)
+//     box-shadow: none
+//     .icon
+//       color: $text
+
+//   .gif__overlay:hover &
+//     display: inline
+
+// .collection__gif
+//   display: block
+//   background-size: cover
+//   background-repeat: no-repeat
+//   background-position: 50%
+//   height: 20em
+
+// .action-overlay
+//   position: absolute
+//   top: 1em
+//   left: 1em
+//   right: 1em
+//   bottom: 1em
+//   background-color: rgba($black, 0.6)
+
+// .action-overlay__actions
+//   position: absolute
+//   top: 50%
+//   left: 0
+//   right: 0
+//   margin-top: -3.5em
+//   text-align: center
+//   button
+//     margin: 1em
+// .overlay--confirm-delete__actions
+//   margin-top: -5.5em
+
+// .message
+//   font-weight: 700
+//   text-transform: uppercase
+//   border-bottom-style: solid
+//   border-bottom-width: 0.1em
+//   &.error-message
+//     color: $alert
+//     border-bottom-color: $alert
+//   &.success-message
+//     color: $success
+//     border-bottom-color: $success
+
+/**
+ * Site footer
+ */
+.site-footer
+  font-size: 1rem
+  &__content
+    padding: 1em 0 3em 0
+    &--about
+      text-align: right
+    &__social-link
+      display: inline-block
+      font-size: 2em
+      margin-right: 0.5em
+      margin-top: -0.3em
+      color: $text

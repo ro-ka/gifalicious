@@ -1,9 +1,66 @@
 extends /layouts/_default
 
 block content
-  #content
+  header.site-header
+    .grid
+      .small-8.large-3.columns
+        a.logo(href='/') gifalicious
 
-  include partials/_index
+      .gif-nav.gif-nav--integrated.large-6.columns.show-on-large
+        .gif-nav__item
+          a.gif-nav__item__link.gif-nav--integrated__item__link(href='/explore') Explore
+        .gif-nav__item
+          a.gif-nav__item__link.gif-nav--integrated__item__link(href='/collection') My GIFs
+
+      .small-4.large-3.columns.user-nav-container
+        nav.user-nav.user-nav--signed-out
+          .user-nav__avatar
+            .avatar(style='background-image: url(\'http://photos1.meetupstatic.com/photos/member/1/1/3/c/thumb_147484412.jpeg\');') Robert Katzki
+            i.user-nav__avatar__dropdown.icon.ion-arrow-down-b
+          ul.user-nav__items.user-nav__items--hidden
+            li.user-nav__items__item.user-nav--sigend-out__items__item
+              a.user-nav__items__item__link(href='/signin') Sign in
+            li.user-nav__items__item.user-nav--sigend-out__items__item
+              a.user-nav__items__item__link(href='/create-account') Create account
+            li.user-nav__items__item.user-nav--sigend-in__items__item
+              a.user-nav__items__item__link(href='/settings') Settings
+            li.user-nav__items__item.user-nav--sigend-in__items__item
+              a.user-nav__items__item__link(href='/signout') Sign out
+
+  header.gif-nav.gif-nav--independent.hide-on-large
+    .grid
+      .gif-nav__item.small-6.columns
+        a.gif-nav__item__link.gif-nav--independent__item__link(href='/explore') Explore
+      .gif-nav__item.small-6.columns
+        a.gif-nav__item__link.gif-nav--independent__item__link(href='/collection') My GIFs
+
+  .content
+    section.index
+      .grid
+        .small-12.large-6.columns
+          blockquote.index__quote
+            | gifalicious is a must have. It haz never been so easy to collect my deliciousest animated gifs. Meow.
+            small — An anonymous cat
+          .index__action
+            a.button.button--large(href='/create-account') Create a free account
+        .small-12.large-6.columns
+          .index__image
+            img(src='/images/cool-cat.gif', alt='An anonymous cat.')
+
+  // Footer
+  footer.site-footer.grid
+    .small-12.columns
+      hr
+    .small-3.columns
+      .site-footer__content
+        a.site-footer__content__social-link(href='https://twitter.com/gifalicious', target='_blank')
+          i.icon.ion-social-twitter
+    .small-9.columns
+      .site-footer__content.site-footer__content--about
+        | A project by&nbsp;
+        a(href='http://katzki.de') Robert Katzki
+        | .
+
   include partials/_collection
   include partials/_gif
   include partials/_gif-public

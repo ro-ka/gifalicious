@@ -1,0 +1,34 @@
+/**
+ * Functions
+ */
+font-size(_size)
+  if unit(_size) == 'rem'
+    font-size (_size * 16)px
+  font-size _size
+
+emCalc(_px)
+  return (_px / 16)em;
+
+remCalc(_px)
+  return (_px / 16)rem;
+
+/**
+ * Colors
+ */
+$text = #494949
+$header = #394240
+$link = #256e4d
+$theme = #37a976
+$alert = #f06b50
+$success = #37a945
+$white = #fff
+$black = #000
+
+/**
+ * Variables
+ */
+$grid-columns = 12
+$grid-gutter = remCalc(30px)
+$grid-width = remCalc(1200px)
+$grid-medium = 25em
+$grid-large = 50em

@@ -8,7 +8,7 @@ script#template__collection(type='text/x-handlebars-template')
           input#collection__add__input.collection__add__input(type='url', name='collection__add__input', required='required', placeholder='Enter a url to an animated gif and press ↵')
         button.button.large.collection__add__button(type='button')
           span.button__text
-            span.icon.plus
+            i.icon.ion-plus-round
             | Add GIF
     .row.collection__list--empty
       .small-12.columns.text-center.text-large.color.light
@@ -37,9 +37,9 @@ script#template__collection__gif(type='text/x-handlebars-template')
     .gif__overlay
       .gif__overlay__actions
         span.gif__action.gif__show(title='Show in big')
-          span.icon.zoom-in
+          i.icon.ion-search
         a.gif__action.gif__share(href='{{url}}', target='_blank', title='Open in new tab')
-          span.icon.share-alt
+          i.icon.ion-share
         span.gif__action.gif__delete(title='Remove')
-          span.icon.trash
+          i.icon.ion-trash-a
     .collection__gif.box-shadow(style='background-image: url({{url}});')

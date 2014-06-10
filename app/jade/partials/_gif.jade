@@ -9,11 +9,11 @@ script#template__gif(type='text/x-handlebars-template')
         .gif__overlay
           .gif__overlay__actions
             span.gif__action.gif__close(title='Close')
-              span.icon.zoom-out
+              i.icon.ion-close-round
             a.gif__action.gif__share(href='{{url}}', target='_blank', title='Open in new tab')
-              span.icon.share-alt
+              i.icon.ion-share
             span.gif__action.gif__delete(title='Remove')
-              span.icon.trash
+              i.icon.ion-trash-a
         img.responsive-horizontal.box-shadow(src='{{url}}', alt='')
 
 
@@ -25,7 +25,7 @@ script#template__gif__share(type='text/x-handlebars-template')
           input.gif__share__input(type='text', value='{{shareUrl}}')
         .small-8.small-centered.columns
           button.button.large.secondary.overlay__close(type='button')
-            span.icon.remove
+            i.icon.ion-close-round
             | Close
 
 
@@ -36,9 +36,9 @@ script#template__gif__delete(type='text/x-handlebars-template')
         .small-8.small-centered.columns
           button.button.large.alert.gif__delete__button(type='submit')
             span.button__text
-              span.icon.ok
+              i.icon.ion-checkmark-round
               | Delete it
         .small-8.small-centered.columns
           button.button.large.secondary.overlay__close(type='button')
-            span.icon.remove
+            i.icon.ion-close-round
             | Cancel

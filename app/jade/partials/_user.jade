@@ -35,7 +35,8 @@ script#template__user__delete(type='text/x-handlebars-template')
   form#modal--delete.tuktuk-modal(data-tuktuk='modal')
     header.bck.alert
       h4.inline Delete? You sure?
-      button.modal__close.transparent.text-large.right.inline.icon.remove(type='button')
+      button.modal__close.transparent.text-large.right.inline(type='button')
+        i.icon.ion-trash-a
     article.row
       p.small-12.columns.text-big
         | Sad to see you go.
@@ -45,8 +46,8 @@ script#template__user__delete(type='text/x-handlebars-template')
       hr
       button.button.modal--delete__submit.alert(type='submit')
         span.button__text
-          span.icon.ok
+          i.icon.ion-checkmark-round
           | Delete
       button.button.secondary.modal__close(type='button')
-        span.icon.remove
+        i.icon.ion-close-round
         | Cancel

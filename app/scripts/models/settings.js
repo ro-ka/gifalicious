@@ -1,7 +1,20 @@
-var App = App || {};
+var app = app || {};
 
-App.Settings = Backbone.Model.extend({
+app.Settings = Backbone.Model.extend({
+  /**
+   * Default settings
+   * @type {Object}
+   */
   defaults: {
     view: 'index'
+  },
+
+  /**
+   * Initialize
+   */
+  initialize: function() {
+    _.bindAll(this);
   }
 });
+
+app.settings = new app.Settings();

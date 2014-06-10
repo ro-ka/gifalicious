@@ -9,11 +9,11 @@ script#template__gif--public(type='text/x-handlebars-template')
           .gif__overlay__actions.gif__overlay__actions--one
             | {{#if newgif}}
             span.gif__action.gif__add(title='Add to collection')
-              span.icon.plus
+              i.icon.ion-plus-round
               img.loading.hide(src='/images/loading.small.gif')
             | {{else}}
             span.gif__status(title='Already collected!')
-              span.icon.check
+              i.icon.ion-checkmark-round
             | {{/if}}
         | {{/if}}
         img.responsive-horizontal.box-shadow(src='{{url}}', alt='')
