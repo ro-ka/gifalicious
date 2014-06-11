@@ -1,18 +1,18 @@
-var App = App || {};
+var app = app || {};
 
-App.Router = Backbone.Router.extend({
+app.Router = Backbone.Router.extend({
   /**
    * The routes
    * @type {Object}
    */
   routes: {
     '': 'showIndex',
-    'user': 'showUser',
-    'gif/:id': 'showGif',
-    'signup': 'showSignup',
-    'signin': 'showSignin',
-    'collection': 'showCollection',
-    'public/:url': 'showPublicGif'
+    'user/': 'showUser',
+    'gif/:id/': 'showGif',
+    'create-account/': 'showCreateAccount',
+    'signin/': 'showSignin',
+    'collection/': 'showCollection',
+    'public/:url/': 'showPublicGif'
   },
 
   /**
@@ -21,46 +21,46 @@ App.Router = Backbone.Router.extend({
   initialize: function() {
     _.bindAll(this);
 
-    this.currentView = new App.IndexView();
+    this.currentView = new app.IndexView();
   },
 
   /**
    * Show the index page
    */
   showIndex: function() {
-    if (App.loggedin()) {
-      App.router.navigate('/collection', {trigger: true, replace: true});
+    if (app.loggedin()) {
+      app.router.navigate('/collection', {trigger: true, replace: true});
       return;
     }
 
     this.currentView.remove();
-    this.currentView = new App.IndexView();
+    this.currentView = new app.IndexView();
   },
 
   /**
    * Show the user page
    */
   showUser: function() {
-    if (!App.loggedin()) {
-      App.router.navigate('/', {trigger: true, replace: true});
+    if (!app.loggedin()) {
+      app.router.navigate('/', {trigger: true, replace: true});
       return;
     }
 
     this.currentView.remove();
-    this.currentView = new App.UserView();
+    this.currentView = new app.UserView();
   },
 
   /**
    * Show the collection
    */
   showCollection: function() {
-    if (!App.loggedin()) {
-      App.router.navigate('/', {trigger: true, replace: true});
+    if (!app.loggedin()) {
+      app.router.navigate('/', {trigger: true, replace: true});
       return;
     }
 
     this.currentView.remove();
-    this.currentView = new App.CollectionView();
+    this.currentView = new app.CollectionView();
   },
 
   /**
@@ -68,15 +68,15 @@ App.Router = Backbone.Router.extend({
    * @param  {String} id The id of the gif
    */
   showGif: function(id) {
-    if (!App.loggedin()) {
-      App.router.navigate('/', {trigger: true, replace: true});
+    if (!app.loggedin()) {
+      app.router.navigate('/', {trigger: true, replace: true});
       return;
     }
 
-    var gif = App.gifs.get(id);
+    var gif = app.gifs.get(id);
 
     this.currentView.remove();
-    this.currentView = new App.GifView({
+    this.currentView = new app.GifView({
       model: gif
     });
   },
@@ -87,22 +87,22 @@ App.Router = Backbone.Router.extend({
    */
   showPublicGif: function(url) {
     this.currentView.remove();
-    this.currentView = new App.GifPublicView({
+    this.currentView = new app.GifPublicView({
       url: decodeURIComponent(url)
     });
   },
 
   /**
-   * Show the signup page
+   * Show the create account page
    */
-  showSignup: function() {
-    if (App.loggedin()) {
-      App.router.navigate('/collection', {trigger: true, replace: true});
+  showCreateAccount: function() {
+    if (app.loggedin()) {
+      app.router.navigate('/collection', {trigger: true, replace: true});
       return;
     }
 
     this.currentView.remove();
-    this.currentView = new App.SignupView();
+    this.currentView = new app.CreateAccountView();
   },
 
   /**
@@ -110,6 +110,6 @@ App.Router = Backbone.Router.extend({
    */
   showSignin: function() {
     this.currentView.remove();
-    this.currentView = new App.SigninView();
+    this.currentView = new app.SigninView();
   }
 });

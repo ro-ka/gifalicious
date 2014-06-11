@@ -156,6 +156,23 @@ hr
       background: url('/images/loading.small.gif') no-repeat center center
 
 /**
+ * A message
+ */
+.message
+  font-weight: 700
+  text-transform: uppercase
+  border-bottom-style: solid
+  border-bottom-width: 0.1em
+  &--error
+    color: $alert
+    border-bottom-color: $alert
+  &--success
+    color: $success
+    border-bottom-color: $success
+  &--hidden
+    display: none
+
+/**
  * Avatar
  */
 .avatar
@@ -441,18 +458,6 @@ hr
 //     margin: 1em
 // .overlay--confirm-delete__actions
 //   margin-top: -5.5em
-
-// .message
-//   font-weight: 700
-//   text-transform: uppercase
-//   border-bottom-style: solid
-//   border-bottom-width: 0.1em
-//   &.error-message
-//     color: $alert
-//     border-bottom-color: $alert
-//   &.success-message
-//     color: $success
-//     border-bottom-color: $success
 
 /**
  * Site footer

@@ -8,9 +8,9 @@ block content
 
       .gif-nav.gif-nav--integrated.large-6.columns.show-on-large
         .gif-nav__item
-          a.gif-nav__item__link.gif-nav--integrated__item__link(href='/explore') Explore
+          a.gif-nav__item__link.gif-nav--integrated__item__link(href='/explore/') Explore
         .gif-nav__item
-          a.gif-nav__item__link.gif-nav--integrated__item__link(href='/collection') My GIFs
+          a.gif-nav__item__link.gif-nav--integrated__item__link(href='/collection/') My GIFs
 
       .small-4.large-3.columns.user-nav-container
         nav.user-nav.user-nav--signed-out
@@ -19,33 +19,23 @@ block content
             i.user-nav__avatar__dropdown.icon.ion-arrow-down-b
           ul.user-nav__items.user-nav__items--hidden
             li.user-nav__items__item.user-nav--sigend-out__items__item
-              a.user-nav__items__item__link(href='/signin') Sign in
+              a.user-nav__items__item__link(href='/signin/') Sign in
             li.user-nav__items__item.user-nav--sigend-out__items__item
-              a.user-nav__items__item__link(href='/create-account') Create account
+              a.user-nav__items__item__link(href='/create-account/') Create account
             li.user-nav__items__item.user-nav--sigend-in__items__item
-              a.user-nav__items__item__link(href='/settings') Settings
+              a.user-nav__items__item__link(href='/settings/') Settings
             li.user-nav__items__item.user-nav--sigend-in__items__item
-              a.user-nav__items__item__link(href='/signout') Sign out
+              a.user-nav__items__item__link(href='/signout/') Sign out
 
   header.gif-nav.gif-nav--independent.hide-on-large
     .grid
       .gif-nav__item.small-6.columns
-        a.gif-nav__item__link.gif-nav--independent__item__link(href='/explore') Explore
+        a.gif-nav__item__link.gif-nav--independent__item__link(href='/explore/') Explore
       .gif-nav__item.small-6.columns
-        a.gif-nav__item__link.gif-nav--independent__item__link(href='/collection') My GIFs
+        a.gif-nav__item__link.gif-nav--independent__item__link(href='/collection/') My GIFs
 
   .content
-    section.index
-      .grid
-        .small-12.large-6.columns
-          blockquote.index__quote
-            | gifalicious is a must have. It haz never been so easy to collect my deliciousest animated gifs. Meow.
-            small — An anonymous cat
-          .index__action
-            a.button.button--large(href='/create-account') Create a free account
-        .small-12.large-6.columns
-          .index__image
-            img(src='/images/cool-cat.gif', alt='An anonymous cat.')
+    include partials/_index
 
   // Footer
   footer.site-footer.grid
@@ -61,10 +51,17 @@ block content
         a(href='http://katzki.de') Robert Katzki
         | .
 
-  include partials/_collection
-  include partials/_gif
-  include partials/_gif-public
-  include partials/_signup
-  include partials/_signin
-  include partials/_user
+  //- Templates
+  script#template__index(type='text/x-handlebars-template')
+    include partials/_index
+
+  script#template__create-account(type='text/x-handlebars-template')
+    include partials/_create-account
+
+
+  //- include partials/_collection
+  //- include partials/_gif
+  //- include partials/_gif-public
+  //- include partials/_signin
+  //- include partials/_user
 

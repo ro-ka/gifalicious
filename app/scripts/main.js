@@ -21,16 +21,50 @@ app.Main = Backbone.View.extend({
     app.hoodie = Backbone.hoodie;
     app.hoodie.account.authenticate();
 
-    // app.$content = this.$('#content');
+    app.$content = this.$('.content');
 
     app.siteHeader = new app.SiteHeaderView();
     // app.gifs = new app.Gifs();
+    app.router = new app.Router();
+    Backbone.history.start({
+      pushState: true
+    });
 
+    this.initLinkNavigation();
     // this.initTemplates();
     // this.initEvents();
+  },
 
-    // app.router = new app.Router();
-    // Backbone.history.start();
+  /**
+   * Override links to use Backbone navigate when internal
+   */
+  initLinkNavigation: function() {
+    if (!Backbone.history || !Backbone.history._hasPushState) {
+      return;
+    }
+
+    var $document = $(document),
+      openLinkInTab = false;
+
+    $document.keydown(function(event) {
+      if (event.ctrlKey || event.keyCode === 91) {
+        openLinkInTab = true;
+      }
+    });
+
+    $document.keyup(function(event) {
+      openLinkInTab = false;
+    });
+
+    $document.delegate('a', 'click', function(event) {
+      var href = $(this).attr('href'),
+        protocol = this.protocol + '//';
+
+      if (!openLinkInTab && href.slice(protocol.length) !== protocol) {
+        event.preventDefault();
+        Backbone.history.navigate(href, {trigger: true});
+      }
+    });
   },
 
 //   /**
@@ -44,8 +78,6 @@ app.Main = Backbone.View.extend({
 //       gifPublic: Handlebars.compile($('#template__gif--public').html()),
 //       user: Handlebars.compile($('#template__user').html()),
 //       userDelete: Handlebars.compile($('#template__user__delete').html()),
-//       index: Handlebars.compile($('#template__index').html()),
-//       signup: Handlebars.compile($('#template__signup').html()),
 //       signin: Handlebars.compile($('#template__signin').html()),
 //       collection: Handlebars.compile($('#template__collection').html()),
 //       collectionTitle: Handlebars.compile($('#template__collection__title').html()),
