@@ -8,7 +8,7 @@ section.create-account
   .grid
     .small-12.large-8.large-centered.columns.create-account__error.message.message--error.message--hidden
       | An error occured!
-  form.grid
+  form.form.grid
     .small-12.large-8.large-centered.columns
       label(for='create-account__username') Username
       input#create-account__username.create-account__username(type='text', name='create-account__username', required='required')
@@ -16,6 +16,7 @@ section.create-account
       label(for='create-account__password') Password
       input#create-account__password.create-account__password(type='password', name='create-account__password', required='required')
     .small-12.large-8.large-centered.columns
-      button.button.create-account__submit(type='submit')
-        span.button__text Create an account
-      button.button.button--secondary.create-account__cancel(type='button') Cancel
+      .form__actions
+        button.button.form__actions__button.create-account__submit(type='submit')
+          span.button__text Create an account
+        button.button.button--secondary.form__actions__button.create-account__cancel(type='button') Cancel

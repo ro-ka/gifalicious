@@ -62,34 +62,84 @@ hr
 /**
  * Form
  */
-// form, .form
-//   font-size: 1rem
-//   input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], select, textarea
-//     background-color: $white
-//     color: $text
-//     border: 2px solid darken($white, 10%)
-//     transition: border-color 200ms;
-//     &:focus
-//       border-color: $theme
-//   .select:after
-//     color: darken($white, 10%)
-//   input[type="checkbox"], input[type="radio"]
-//     background: $white
-//     border: 2px solid darken($white, 10%)
-//     &:checked
-//       border-color: $theme
-//       &:after
-//         color: $theme
-//   label
-//     font-weight: 700
+.form
+  font-size: 1rem
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], select, textarea
+    display: inline-block
+    width: 100%
+    padding: .5em
+    margin: .1em 0 .25em 0
+    font-family: inherit
+    font-size: 1em
+    -webkit-appearance: none
+    -webkit-user-select: text
+    background-color: $white
+    color: $text
+    border: 2px solid darken($white, 10%)
+    transition: border-color 200ms;
+    &:focus
+      outline: none
+      border-color: $theme
+  input[type="checkbox"], input[type="radio"]
+    display: inline-block
+    margin-right: .2em
+    font-family: inherit
+    font-size: 1em
+    width: 1.45em
+    height: 1.45em
+    line-height: 1em
+    -webkit-appearance: none
+    text-align:center
+    background: $white
+    border: 2px solid darken($white, 10%)
+    &:after
+      content: "+"
+      opacity: 0
+      font-size: 1.2em
+      line-height: .9em
+    &:checked
+      border-color: $theme
+      &:after
+        color: $theme
+        opacity: 1
+  input[type="checkbox"]
+    &:checked
+      &:after
+        content:"✔"
+  input[type="radio"]
+    border-radius: 1em
+  textarea
+    padding: .4em .5em
+    height: auto
+    min-height: 2.5em
+    line-height: 1.2em
+  label
+    display: inline-block
+    margin-top: 1em
+    font-size: .9em
+    font-weight: 700
+  select
+    width: 100%
+  &__actions
+    margin: 2em 0
+    &__button
+      margin-right: 1em
+      &:last-child
+        margin-right: 0
 
-// .hideShowPassword-toggle
-//   cursor: pointer
-//   margin-right: 1em
-//   text-transform: uppercase
-//   font-size: 0.8em
-//   padding: 0.2em
-//   font-weight: 700
+.hideShowPassword-toggle
+  background: transparent
+  border: none
+  border-left: 1px solid darken($white, 10%)
+  cursor: pointer
+  margin-right: 1em
+  text-transform: uppercase
+  font-size: .8em
+  padding: .2em .2em .2em 1em
+  font-weight: 700
+  color: $text
+  &:hover, &:focus
+    color: $theme
 
 // /**
 //  * Table
@@ -135,6 +185,8 @@ hr
   &--secondary
     background-color: darken($white, 25%)
     color: $white
+    &:hover, &:focus
+      background-color: darken($white, 35%)
   &--success
     background-color: $success
   &--alert
