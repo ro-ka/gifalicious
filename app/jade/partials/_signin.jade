@@ -1,19 +1,20 @@
-script#template__signin(type='text/x-handlebars-template')
-  section.padding
-    .row.margin-bottom
-      .small-12.large-8.large-centered.columns
-        h1 Sign in
-    .row.margin-bottom
-      .signin__error.error-message.message.hide.small-12.large-8.large-centered.columns
-        | An error occured!
-    form.row
-      .small-12.large-8.large-centered.columns
-        label(for='signin__username') Username
-        input#signin__username(type='text', name='signin__username', required='required')
-      .small-12.large-8.large-centered.columns
-        label(for='signin__password') Password
-        input#signin__password(type='password', name='signin__password', required='required')
-      .small-12.large-8.large-centered.columns.margin-top
-        button.button.signin__submit(type='submit')
+//- Page for signing in
+section.signin
+  .grid
+    .small-12.large-8.large-centered.columns
+      h1 Sign in
+  .grid
+    .small-12.large-8.large-centered.columns.signin__error.message.message--error.message--hidden
+      | An error occured!
+  form.form.grid
+    .small-12.large-8.large-centered.columns
+      label(for='signin__username') Username
+      input#signin__username.signin__username(type='text', name='signin__username', required='required')
+    .small-12.large-8.large-centered.columns
+      label(for='signin__password') Password
+      input#signin__password.signin__password(type='password', name='signin__password', required='required')
+    .small-12.large-8.large-centered.columns.margin-top
+      .form__actions
+        button.button.form__actions__button.signin__submit(type='submit')
           span.button__text Sign in
-        button.button.secondary.signin__cancel(type='button') Cancel
+        button.button.button--secondary.form__actions__button.signin__cancel(type='button') Cancel

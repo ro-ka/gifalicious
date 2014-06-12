@@ -1,6 +1,14 @@
-var App = App || {};
+var app = app || {};
 
-App.SigninView = Backbone.View.extend({
+app.SigninView = Backbone.View.extend({
+  /**
+   * The templates for this view
+   * @type {Object}
+   */
+  templates: {
+    el: Handlebars.compile($('#template__signin').html())
+  },
+
   /**
    * Init the events
    * @type {Object}
@@ -29,14 +37,14 @@ App.SigninView = Backbone.View.extend({
    * Render the view
    */
   render: function() {
-    var html = App.template.signin();
+    var html = this.templates.el();
 
     this.$el.html(html);
-    App.$content.html(this.$el);
+    app.$content.html(this.$el);
 
     this.$error = this.$('.signin__error');
-    this.$username = this.$('#signin__username');
-    this.$password = this.$('#signin__password');
+    this.$username = this.$('.signin__username');
+    this.$password = this.$('.signin__password');
     this.$submit = this.$('.signin__submit');
   },
 
@@ -50,9 +58,10 @@ App.SigninView = Backbone.View.extend({
     var username = this.$username.val(),
       password = this.$password.val();
 
-    this.$submit.addClass('loading');
+    this.$submit.addClass('button--loading');
 
-    App.hoodie.account.signIn(username, password)
+    app.hoodie.account
+      .signIn(username, password)
       .fail(this.handleSigninFail);
   },
 
@@ -61,8 +70,10 @@ App.SigninView = Backbone.View.extend({
    * @param  {Object} response The server response
    */
   handleSigninFail: function(response) {
-    this.$submit.removeClass('loading');
-    this.$error.text(response.message).show();
+    this.$submit.removeClass('button--loading');
+    this.$error
+      .text(response.message)
+      .removeClass('message--hidden');
   },
 
   /**
@@ -70,6 +81,6 @@ App.SigninView = Backbone.View.extend({
    * @param {JQueryEvent} event The triggered event
    */
   cancel: function() {
-    App.router.navigate('/', {trigger: true});
+    app.router.navigate('/', {trigger: true});
   }
 });
