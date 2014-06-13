@@ -79,6 +79,8 @@ app.SettingsView = Backbone.View.extend({
     this.$changePasswordError.hide();
     this.$changePasswordSuccess.show();
     this.$changePasswordSubmit.removeClass('button--loading');
+    this.$currentPassword.val('');
+    this.$newPassword.val('');
   },
 
   /**
