@@ -6,8 +6,7 @@ app.SettingsView = Backbone.View.extend({
    * @type {Object}
    */
   templates: {
-    el: Handlebars.compile($('#template__settings').html()),
-    deleteUser: Handlebars.compile($('#template__settings__delete-user').html())
+    el: Handlebars.compile($('#template__settings').html())
   },
 
   /**
