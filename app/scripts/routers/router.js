@@ -7,7 +7,7 @@ app.Router = Backbone.Router.extend({
    */
   routes: {
     '': 'showIndex',
-    'user/': 'showUser',
+    'settings/': 'showSettings',
     'gif/:id/': 'showGif',
     'create-account/': 'showCreateAccount',
     'signin/': 'showSignin',
@@ -40,16 +40,16 @@ app.Router = Backbone.Router.extend({
   },
 
   /**
-   * Show the user page
+   * Show the settings page
    */
-  showUser: function() {
+  showSettings: function() {
     if (!app.loggedin()) {
       app.router.navigate('/', {trigger: true, replace: true});
       return;
     }
 
     this.currentView.remove();
-    this.currentView = new app.UserView();
+    this.currentView = new app.SettingsView();
   },
 
   /**

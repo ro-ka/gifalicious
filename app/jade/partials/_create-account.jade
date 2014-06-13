@@ -1,22 +1,23 @@
 //- Page for creating an account
-section.create-account
-  .grid
-    .small-12.large-8.large-centered.columns
-      h1 Create an account
-    p.small-12.large-8.large-centered.columns
-      | Join gifalicious to store your favorite animated GIFs. It's free!
-  .grid
-    .small-12.large-8.large-centered.columns.create-account__error.message.message--error.message--hidden
-      | An error occured!
-  form.form.grid
-    .small-12.large-8.large-centered.columns
-      label(for='create-account__username') Username
-      input#create-account__username.create-account__username(type='text', name='create-account__username', required='required')
-    .small-12.large-8.large-centered.columns
-      label(for='create-account__password') Password
-      input#create-account__password.create-account__password(type='password', name='create-account__password', required='required')
-    .small-12.large-8.large-centered.columns
-      .form__actions
-        button.button.form__actions__button.create-account__submit(type='submit')
-          span.button__text Create an account
-        button.button.button--secondary.form__actions__button.create-account__cancel(type='button') Cancel
+script#template__create-account(type='text/x-handlebars-template')
+  section.create-account
+    .grid
+      .small-12.large-8.large-centered.columns
+        h1 Create an account
+      p.small-12.large-8.large-centered.columns
+        | Join gifalicious to store your favorite animated GIFs. It's free!
+    .grid
+      .small-12.large-8.large-centered.columns.create-account__error.message.message--error.message--hidden
+        | An error occured!
+    form.form.grid
+      .small-12.large-8.large-centered.columns
+        label(for='create-account__username') Username
+        input#create-account__username.create-account__username(type='text', name='create-account__username', required='required')
+      .small-12.large-8.large-centered.columns
+        label(for='create-account__password') Password
+        input#create-account__password.create-account__password(type='password', name='create-account__password', required='required')
+      .small-12.large-8.large-centered.columns
+        .form__actions
+          button.button.form__actions__button.create-account__submit(type='submit')
+            span.button__text Create an account
+          button.button.button--secondary.form__actions__button.create-account__cancel(type='button') Cancel

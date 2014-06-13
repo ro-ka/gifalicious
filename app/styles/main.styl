@@ -191,8 +191,12 @@ hr
       background-color: darken($white, 35%)
   &--success
     background-color: $success
+    &:hover, &:focus
+      background-color: darken($success, 10%)
   &--alert
     background-color: $alert
+    &:hover, &:focus
+      background-color: darken($alert, 10%)
   &--disabled
     background-color: darken($white, 2%)
     color: darken($white, 20%)

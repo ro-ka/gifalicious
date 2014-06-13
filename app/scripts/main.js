@@ -76,8 +76,6 @@ app.Main = Backbone.View.extend({
 //       gifShare: Handlebars.compile($('#template__gif__share').html()),
 //       gifDelete: Handlebars.compile($('#template__gif__delete').html()),
 //       gifPublic: Handlebars.compile($('#template__gif--public').html()),
-//       user: Handlebars.compile($('#template__user').html()),
-//       userDelete: Handlebars.compile($('#template__user__delete').html()),
 //       collection: Handlebars.compile($('#template__collection').html()),
 //       collectionTitle: Handlebars.compile($('#template__collection__title').html()),
 //       collectionGif: Handlebars.compile($('#template__collection__gif').html())

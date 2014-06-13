@@ -1,0 +1,57 @@
+//- Settings page for the user
+script#template__settings(type='text/x-handlebars-template')
+  section.settings
+    .grid
+      .small-12.columns
+        h1 Settings
+    form.form.grid.settings__change-password
+      .small-12.large-8.large-centered.columns
+        h2 Change password
+      .small-12.large-8.large-centered.columns.settings__change-password__error.message.message--error.message--hidden
+        | An error occured!
+      .small-12.large-8.large-centered.columns.settings__change-password__success.message.message--success.message--hidden
+        | Updated your password!
+      .small-12.large-8.large-centered.columns
+        label(for='settings__change-password__password--current') Current Password
+        input#settings__change-password__password--current.settings__change-password__password--current(type='password', name='settings__change-password__password--current', required='required')
+      .small-12.large-8.large-centered.columns
+        label(for='settings__change-password__password--new') New Password
+        input#settings__change-password__password--new.settings__change-password__password--new(type='password', name='settings__change-password__password--new', required='required')
+      .small-12.large-8.large-centered.columns
+        .form__actions
+          button.button.form__actions__button.settings__change-password__submit(type='submit')
+            span.button__text Change Password
+
+    .grid
+      hr.small-12.large-8.large-centered.columns
+
+    form.form.grid.settings__delete-user
+      .small-12.large-8.large-centered.columns
+        h2 Delete Profile
+      p.small-12.large-8.large-centered.columns
+        strong DANGER!
+        |  This will delete your profile and can not be undone!
+      .small-12.large-8.large-centered.columns
+        .form__actions
+          button.button.button--alert.settings__delete-user__button(type='submit') Delete Profile
+
+script#template__settings__delete-user(type='text/x-handlebars-template')
+  //- form#modal--delete.tuktuk-modal(data-tuktuk='modal')
+  //-   header.bck.alert
+  //-     h4.inline Delete? You sure?
+  //-     button.modal__close.transparent.text-large.right.inline(type='button')
+  //-       i.icon.ion-trash-a
+  //-   article.row
+  //-     p.small-12.columns.text-big
+  //-       | Sad to see you go.
+  //-     p.small-12.columns.text-big
+  //-       | How will you remember your favorite GIFs in the future?
+  //-   footer.padding
+  //-     hr
+  //-     button.button.modal--delete__submit.alert(type='submit')
+  //-       span.button__text
+  //-         i.icon.ion-checkmark-round
+  //-         | Delete
+  //-     button.button.secondary.modal__close(type='button')
+  //-       i.icon.ion-close-round
+  //-       | Cancel
