@@ -23,9 +23,9 @@ app.Main = Backbone.View.extend({
 
     app.$content = this.$('.content');
 
-    app.siteHeader = new app.SiteHeaderView();
     // app.gifs = new app.Gifs();
     app.router = new app.Router();
+    app.siteHeader = new app.SiteHeaderView();
     Backbone.history.start({
       pushState: true
     });

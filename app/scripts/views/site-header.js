@@ -30,6 +30,8 @@ app.SiteHeaderView = Backbone.View.extend({
     } else {
       this.setAccountStatus('signed-out');
     }
+
+    app.router.on('route', this.hideUserNav);
   },
 
   /**
