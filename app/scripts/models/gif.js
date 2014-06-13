@@ -1,6 +1,6 @@
-var App = App || {};
+var app = app || {};
 
-App.Gif = Backbone.Model.extend({
+app.Gif = Backbone.Model.extend({
   /**
    * Necessary type for backbone-hoodie
    * @type {String}
@@ -21,15 +21,16 @@ App.Gif = Backbone.Model.extend({
  * @param  {String}  url The urls
  * @return {Boolean}     Whether it is an animate gif or not
  */
-App.isAnimatedGif = function(url, callback) {
+app.isAnimatedGif = function(url, callback) {
   if (!url) {
     callback('', false);
     return;
   }
 
-  var encodedUrl = 'https://doesthisgifcontainananimation.com/' + encodeURIComponent(url);
+  var encodedUrl = 'https://doesthisgifcontainananimation.com/' +
+    encodeURIComponent(url);
 
   $.getJSON(encodedUrl, function(response) {
-    callback(url, response.containsananimation);
+    callback(url, response.containsananimation || false);
   });
 };

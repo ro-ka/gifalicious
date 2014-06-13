@@ -1,11 +1,11 @@
-var App = App || {};
+var app = app || {};
 
-App.Gifs = Backbone.Collection.extend({
+app.Gifs = Backbone.Collection.extend({
   /**
    * The model used in the collection
    * @type {ModelGif}
    */
-  model: App.Gif,
+  model: app.Gif,
 
   /**
    * What to sort for
@@ -24,3 +24,5 @@ App.Gifs = Backbone.Collection.extend({
     });
   }
 });
+
+app.gifs = new app.Gifs();
