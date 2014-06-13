@@ -31,8 +31,8 @@ app.Main = Backbone.View.extend({
     });
 
     this.initLinkNavigation();
+    this.initEvents();
     // this.initTemplates();
-    // this.initEvents();
   },
 
   /**
@@ -84,52 +84,52 @@ app.Main = Backbone.View.extend({
 //     };
 //   },
 
-//   /**
-//    * Initialize events
-//    */
-//   initEvents: function() {
-//     // app.hoodie.account
-//     //   .on('signup', this.handleUserAuthenticated);
-//     // app.hoodie.account
-//     //   .on('signin', this.handleUserAuthenticated);
-//     // app.hoodie.account
-//     //   .on('signout', this.handleUserUnauthenticated);
-//     app.hoodie.account
-//       .on('authenticate', this.handleUserAuthenticated);
-//     app.hoodie.account
-//       .on('unauthenticated', this.handleUserUnauthenticated);
-//     app.hoodie
-//       .on('account:error:unauthenticated remote:error:unauthenticated', this.handleUserAuthenticationError);
-//   },
+  /**
+   * Initialize events
+   */
+  initEvents: function() {
+    // app.hoodie.account
+    //   .on('signup', this.handleUserAuthenticated);
+    // app.hoodie.account
+    //   .on('signin', this.handleUserAuthenticated);
+    // app.hoodie.account
+    //   .on('signout', this.handleUserUnauthenticated);
+    app.hoodie.account
+      .on('authenticate', this.handleUserAuthenticated);
+    app.hoodie.account
+      .on('unauthenticated', this.handleUserUnauthenticated);
+    app.hoodie
+      .on('account:error:unauthenticated remote:error:unauthenticated', this.handleUserAuthenticationError);
+  },
 
-//   /**
-//    * Handle it, when the user got authenticated
-//    * @param  {String} username The username
-//    */
-//   handleUserAuthenticated: function(username) {
-//     console.log('authenticated', arguments);
-//     app.router.navigate('/collection', {trigger: true});
-//     app.navbar.setAccountStatus('signed-in');
-//   },
+  /**
+   * Handle it, when the user got authenticated
+   * @param  {String} username The username
+   */
+  handleUserAuthenticated: function(username) {
+    console.log('authenticated', arguments);
+    app.router.navigate('/collection', {trigger: true});
+    app.navbar.setAccountStatus('signed-in');
+  },
 
-//   /**
-//    * Handle it, when the user got unauthenticated
-//    */
-//   handleUserUnauthenticated: function() {
-//     console.log('unauthenticated', arguments);
-//     app.router.navigate('/', {trigger: true});
-//     app.navbar.setAccountStatus('signed-out');
-//   },
+  /**
+   * Handle it, when the user got unauthenticated
+   */
+  handleUserUnauthenticated: function() {
+    console.log('unauthenticated', arguments);
+    app.router.navigate('/', {trigger: true});
+    app.navbar.setAccountStatus('signed-out');
+  },
 
-//   /**
-//    * Handle it, when there was an authentication error
-//    */
-//   handleUserAuthenticationError: function() {
-//     console.log('authentication:error', arguments);
-//     // app.router.navigate('/signin', {trigger: true});
-//     // app.navbar.setAccountStatus('error');
+  /**
+   * Handle it, when there was an authentication error
+   */
+  handleUserAuthenticationError: function() {
+    console.log('authentication:error', arguments);
+    // app.router.navigate('/signin', {trigger: true});
+    // app.navbar.setAccountStatus('error');
 
-//     app.hoodie.account.signOut();
-//   }
+    app.hoodie.account.signOut();
+  }
 });
 new app.Main();

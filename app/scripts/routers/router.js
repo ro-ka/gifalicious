@@ -11,6 +11,8 @@ app.Router = Backbone.Router.extend({
     'gif/:id/': 'showGif',
     'create-account/': 'showCreateAccount',
     'signin/': 'showSignin',
+    'signout/': 'showSignout',
+    'explore/': 'showExplore',
     'collection/': 'showCollection',
     'public/:url/': 'showPublicGif'
   },
@@ -29,7 +31,7 @@ app.Router = Backbone.Router.extend({
    */
   showIndex: function() {
     if (app.loggedin()) {
-      app.router.navigate('/collection', {trigger: true, replace: true});
+      app.router.navigate('/explore/', {trigger: true, replace: true});
       return;
     }
 
@@ -61,6 +63,14 @@ app.Router = Backbone.Router.extend({
 
     this.currentView.remove();
     this.currentView = new app.CollectionView();
+  },
+
+  /**
+   * Show the explore page
+   */
+  showExplore: function() {
+    this.currentView.remove();
+    this.currentView = new app.ExploreView();
   },
 
   /**
@@ -116,5 +126,13 @@ app.Router = Backbone.Router.extend({
 
     this.currentView.remove();
     this.currentView = new app.SigninView();
+  },
+
+  /**
+   * sign the user out
+   */
+  showSignout: function() {
+    app.hoodie.account.signOut();
+    app.router.navigate('/', {trigger: true, replace: true});
   }
 });
