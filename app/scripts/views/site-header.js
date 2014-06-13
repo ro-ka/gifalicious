@@ -2,6 +2,14 @@ var app = app || {};
 
 app.SiteHeaderView = Backbone.View.extend({
   /**
+   * The templates for this view
+   * @type {Object}
+   */
+  templates: {
+    userNav: Handlebars.compile($('#template__site-header__user-nav').html())
+  },
+
+  /**
    * The view element
    * @type {String}
    */
@@ -22,16 +30,27 @@ app.SiteHeaderView = Backbone.View.extend({
     _.bindAll(this);
 
     this.$document = $(document);
-    this.$userNav = this.$('.user-nav');
-    this.$userNavItems = this.$('.user-nav__items');
+    this.$userNavContainer = this.$('.user-nav-container');
 
-    if (app.loggedin()) {
-      this.setAccountStatus('signed-in');
-    } else {
-      this.setAccountStatus('signed-out');
-    }
+    this.render();
 
     app.router.on('route', this.hideUserNav);
+  },
+
+  /**
+   * Render the view
+   */
+  render: function() {
+    var data = {
+        isLoggedIn: app.loggedin(),
+        username: app.hoodie.account.username
+      },
+      html = this.templates.userNav(data);
+
+    this.$userNavContainer.html(html);
+
+    this.$userNav = this.$('.user-nav');
+    this.$userNavItems = this.$('.user-nav__items');
   },
 
   /**

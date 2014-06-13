@@ -1,9 +1,5 @@
 var app = app || {};
 
-app.loggedin = function() {
-  return app.hoodie.account.username;
-};
-
 app.Main = Backbone.View.extend({
   /**
    * The view element
@@ -20,6 +16,7 @@ app.Main = Backbone.View.extend({
     Backbone.connect();
     app.hoodie = Backbone.hoodie;
     app.hoodie.account.authenticate();
+    app.loggedin = app.hoodie.account.hasAccount;
 
     app.$content = this.$('.content');
 
@@ -106,7 +103,7 @@ app.Main = Backbone.View.extend({
   handleUserAuthenticated: function(username) {
     console.log('authenticated', arguments);
     app.router.navigate('/collection', {trigger: true});
-    app.navbar.setAccountStatus('signed-in');
+    app.siteHeader.render();
   },
 
   /**
@@ -115,7 +112,7 @@ app.Main = Backbone.View.extend({
   handleUserUnauthenticated: function() {
     console.log('unauthenticated', arguments);
     app.router.navigate('/', {trigger: true});
-    app.navbar.setAccountStatus('signed-out');
+    app.siteHeader.render();
   },
 
   /**
