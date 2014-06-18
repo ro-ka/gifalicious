@@ -36,9 +36,9 @@ script#template__site-header__user-nav(type='text/x-handlebars-template')
         a.user-nav__items__item__link(href='/settings/') Settings
       li.user-nav__items__item
         a.user-nav__items__item__link(href='/signout/') Sign out
-      {{else}}
+      |{{else}}
       li.user-nav__items__item
         a.user-nav__items__item__link(href='/signin/') Sign in
       li.user-nav__items__item
         a.user-nav__items__item__link(href='/create-account/') Create account
-      {{/if}}
+      |{{/if}}
