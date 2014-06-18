@@ -1,19 +1,19 @@
 script#template__collection(type='text/x-handlebars-template')
-  section.padding
-    .row.margin-bottom
-      form.small-12.columns.collection__add
+  section
+    .grid
+      form.form.small-12.columns.collection__add
         h1.collection__title
-        .collection__add__input-wrapper.hide
-          .collection__add__error.error-message.message
+        .collection__add__input-wrapper.collection__add__input-wrapper--hidden
+          .collection__add__error.message.message--error
           input#collection__add__input.collection__add__input(type='url', name='collection__add__input', required='required', placeholder='Enter a url to an animated gif and press ↵')
-        button.button.large.collection__add__button(type='button')
+        button.button.button--large.collection__add__button(type='button')
           span.button__text
             i.icon.ion-plus-round
-            | Add GIF
-    .row.collection__list--empty
-      .small-12.columns.text-center.text-large.color.light
+            |&nbsp;&nbsp;Add GIF
+    .grid.collection__list--empty
+      .small-12.columns
         h2 Start by adding some animated GIFs.
-    .row.collection__list
+    .grid.collection__list
 
 
 script#template__collection__title(type='text/x-handlebars-template')
@@ -36,10 +36,10 @@ script#template__collection__gif(type='text/x-handlebars-template')
   .small-12.large-6.columns.collection__list__item
     .gif__overlay
       .gif__overlay__actions
-        span.gif__action.gif__show(title='Show in big')
+        span.gif__action.gif__action--show(title='Show in big')
           i.icon.ion-search
-        a.gif__action.gif__share(href='{{url}}', target='_blank', title='Open in new tab')
+        a.gif__action.gif__action--share(href='{{url}}', target='_blank', title='Open in new tab')
           i.icon.ion-share
-        span.gif__action.gif__delete(title='Remove')
+        span.gif__action.gif__action--delete(title='Remove')
           i.icon.ion-trash-a
-    .collection__gif.box-shadow(style='background-image: url({{url}});')
+    .collection__gif(style='background-image: url({{url}});')

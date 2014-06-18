@@ -184,6 +184,8 @@ hr
     background-color: darken($theme, 10%)
     text-decoration: none
     color: $white
+  &--large
+    font-size: 1.333rem
   &--secondary
     background-color: darken($white, 25%)
     color: $white
@@ -403,25 +405,35 @@ hr
 /**
  * Collections
  */
-// .collection__title
-//   padding-right: 4em
-
-// .collection__add
-//   position: relative
-
-// .collection__add__button
-//   position: absolute
-//   right: 1em
-//   top: 1em
-
-// .collection__add__input-wrapper
-//   position: absolute
-//   left: 0
-//   right: 12em
-//   top: 0em
-//   height: 100%
-//   background: $white
-//   padding: 1.5em
+.collection
+  font-size: 1rem
+  &__title
+    font-size: 2.25em
+    padding-right: 4em
+    &--invisible
+      visibility: hidden
+  &__add
+    position: relative
+    &__button
+      position: absolute
+      right: 1em
+      top: 1em
+    &__input-wrapper
+      position: absolute
+      left: 0
+      right: 12em
+      top: 0em
+      height: 100%
+      background: $white
+      padding: 1.5em
+      &--hidden
+        display: none
+  &__list
+    &--empty
+      text-align: center
+      font-size: 2em
+      color: lighten($text, 50%)
+      padding: 3em 0
 
 // .gif, .collection__list__item
 //   position: relative

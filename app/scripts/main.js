@@ -28,7 +28,6 @@ app.Main = Backbone.View.extend({
 
     this.initLinkNavigation();
     this.initEvents();
-    // this.initTemplates();
   },
 
   /**
@@ -62,21 +61,6 @@ app.Main = Backbone.View.extend({
       }
     });
   },
-
-//   /**
-//    * Initialize templates
-//    */
-//   initTemplates: function() {
-//     app.template = {
-//       gif: Handlebars.compile($('#template__gif').html()),
-//       gifShare: Handlebars.compile($('#template__gif__share').html()),
-//       gifDelete: Handlebars.compile($('#template__gif__delete').html()),
-//       gifPublic: Handlebars.compile($('#template__gif--public').html()),
-//       collection: Handlebars.compile($('#template__collection').html()),
-//       collectionTitle: Handlebars.compile($('#template__collection__title').html()),
-//       collectionGif: Handlebars.compile($('#template__collection__gif').html())
-//     };
-//   },
 
   /**
    * Initialize events

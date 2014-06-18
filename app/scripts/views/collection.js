@@ -1,6 +1,15 @@
-var App = App || {};
+var app = app || {};
 
-App.CollectionView = Backbone.View.extend({
+app.CollectionView = Backbone.View.extend({
+  /**
+   * The templates for this view
+   * @type {Object}
+   */
+  templates: {
+    el: Handlebars.compile($('#template__collection').html()),
+    title: Handlebars.compile($('#template__collection__title').html())
+  },
+
   /**
    * Init the events
    * @type {Object}
@@ -20,18 +29,18 @@ App.CollectionView = Backbone.View.extend({
 
     this.render();
 
-    this.listenTo(App.gifs, 'add remove change', this.onCollectionChange);
-    this.listenTo(App.gifs, 'add', this.addGif);
+    this.listenTo(app.gifs, 'add remove change', this.onCollectionChange);
+    this.listenTo(app.gifs, 'add', this.addGif);
   },
 
   /**
    * Render the view
    */
   render: function() {
-    var html = App.template.collection();
+    var html = this.templates.el();
 
     this.$el.html(html);
-    App.$content.html(this.$el);
+    app.$content.html(this.$el);
 
     this.$title = this.$('.collection__title');
     this.$addForm = this.$('.collection__add');
@@ -44,20 +53,20 @@ App.CollectionView = Backbone.View.extend({
 
     this.renderTitle();
     this.updateListEmptyMessage();
-    App.gifs.each(this.addGif);
+    app.gifs.each(this.addGif);
   },
 
   /**
    * Render the title
    */
   renderTitle: function() {
-    var gifCount = App.gifs.size(),
+    var gifCount = app.gifs.size(),
       data = {
         gifCount: gifCount,
         noGifs: gifCount === 0,
         oneGif: gifCount === 1
       },
-      html = App.template.collectionTitle(data);
+      html = this.templates.title(data);
 
     this.$title.html(html);
   },
@@ -66,7 +75,7 @@ App.CollectionView = Backbone.View.extend({
    * Update the message for an empty list
    */
   updateListEmptyMessage: function() {
-    if (App.gifs.isEmpty()) {
+    if (app.gifs.isEmpty()) {
       this.$listEmpty.show();
     } else {
       this.$listEmpty.hide();
@@ -78,7 +87,7 @@ App.CollectionView = Backbone.View.extend({
    * @param  {Model.Gif} gif The GIF
    */
   addGif: function(gif) {
-    var gifView = new App.CollectionGifView({
+    var gifView = new app.CollectionGifView({
       model: gif
     });
 
@@ -124,7 +133,7 @@ App.CollectionView = Backbone.View.extend({
     this.$addFormError.hide();
     this.$addFormInputWrapper.show();
     this.$addFormInput.val('').focus();
-    this.$title.addClass('invisible');
+    this.$title.addClass('collection__title--invisible');
     this.addFormVisible = true;
   },
 
@@ -133,8 +142,8 @@ App.CollectionView = Backbone.View.extend({
    */
   hideAddForm: function() {
     this.$addFormInputWrapper.hide();
-    this.$title.removeClass('invisible');
-    this.$addFormButton.removeClass('loading');
+    this.$title.removeClass('collection__title--invisible');
+    this.$addFormButton.removeClass('button--loading');
     this.addFormVisible = false;
   },
 
@@ -144,14 +153,14 @@ App.CollectionView = Backbone.View.extend({
   submitAddForm: function() {
     var url = this.$addFormInput.val();
 
-    this.$addFormButton.addClass('loading');
+    this.$addFormButton.addClass('button--loading');
 
-    if (App.gifs.alreadyExists(url)) {
+    if (app.gifs.alreadyExists(url)) {
       this.showAddError('You already collected that one!');
       return;
     }
 
-    App.isAnimatedGif(url, this.onIsAnimatedGifCheck);
+    app.isAnimatedGif(url, this.onIsAnimatedGifCheck);
   },
 
   /**
@@ -165,7 +174,7 @@ App.CollectionView = Backbone.View.extend({
       return;
     }
 
-    App.gifs.create({
+    app.gifs.create({
         url: url
       }, {
         wait: true
@@ -180,7 +189,7 @@ App.CollectionView = Backbone.View.extend({
    * @param  {String} message The error message
    */
   showAddError: function(message) {
-    this.$addFormButton.removeClass('loading');
+    this.$addFormButton.removeClass('button--loading');
     this.$addFormError.text(message).show();
   }
 });
