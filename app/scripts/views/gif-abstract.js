@@ -1,33 +1,33 @@
-var App = App || {};
+var app = app || {};
 
-App.GifAbstractView = Backbone.View.extend({
-  /**
-   * Share the gif
-   */
-  shareGif: function(event) {
-    event.preventDefault();
-    event.stopPropagation();
+app.GifAbstractView = Backbone.View.extend({
+  // /**
+  //  * Share the gif
+  //  */
+  // shareGif: function(event) {
+  //   event.preventDefault();
+  //   event.stopPropagation();
 
-    var data = {
-      shareUrl: document.location.origin + '#public/' + encodeURIComponent(this.model.get('url')),
-      gif: this.model.toJSON()
-    };
+  //   var data = {
+  //     shareUrl: document.location.origin + '#public/' + encodeURIComponent(this.model.get('url')),
+  //     gif: this.model.toJSON()
+  //   };
 
-    this.$shareOverlay = $(App.template.gifShare(data));
-    this.$gif.append(this.$shareOverlay);
+  //   this.$shareOverlay = $(app.template.gifShare(data));
+  //   this.$gif.append(this.$shareOverlay);
 
-    this.$shareOverlayInput = this.$shareOverlay.find('.gif__share__input');
-    this.$shareOverlayInput.focus();
+  //   this.$shareOverlayInput = this.$shareOverlay.find('.gif__share__input');
+  //   this.$shareOverlayInput.focus();
 
-    this.$shareOverlay.on('click', '.overlay__close', this.hideShareOverlay);
-  },
+  //   this.$shareOverlay.on('click', '.overlay__close', this.hideShareOverlay);
+  // },
 
-  /**
-   * Hide the share overlay
-   */
-  hideShareOverlay: function(event) {
-    this.$shareOverlay.remove();
-  },
+  // /**
+  //  * Hide the share overlay
+  //  */
+  // hideShareOverlay: function(event) {
+  //   this.$shareOverlay.remove();
+  // },
 
   /**
    * Show the overlay to delete the gif
@@ -36,7 +36,7 @@ App.GifAbstractView = Backbone.View.extend({
     event.preventDefault();
     event.stopPropagation();
 
-    this.$deleteOverlay = $(App.template.gifDelete(this.model.toJSON()));
+    this.$deleteOverlay = $(this.templates.delete(this.model.toJSON()));
     this.$gif.append(this.$deleteOverlay);
 
     this.$deleteOverlayButton = this.$deleteOverlay.find('.gif__delete__button');

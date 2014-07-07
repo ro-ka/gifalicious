@@ -87,7 +87,7 @@ app.CollectionView = Backbone.View.extend({
    * @param  {Model.Gif} gif The GIF
    */
   addGif: function(gif) {
-    var gifView = new app.CollectionGifView({
+    var gifView = new app.GifListView({
       model: gif
     });
 

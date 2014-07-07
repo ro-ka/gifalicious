@@ -1,6 +1,21 @@
-var App = App || {};
+var app = app || {};
 
-App.CollectionGifView = App.GifAbstractView.extend({
+app.GifListView = app.GifAbstractView.extend({
+  /**
+   * Classes of the element
+   * @type {String}
+   */
+  className: 'small-12 large-6 columns',
+
+  /**
+   * The templates for this view
+   * @type {Object}
+   */
+  templates: {
+    el: Handlebars.compile($('#template__gif').html()),
+    delete: Handlebars.compile($('#template__gif__delete').html())
+  },
+
   /**
    * Init the events
    * @type {Object}
@@ -27,7 +42,7 @@ App.CollectionGifView = App.GifAbstractView.extend({
    * Render the view
    */
   render: function() {
-    var html = App.template.collectionGif(this.model.toJSON());
+    var html = this.templates.el(this.model.toJSON());
 
     this.$el.html(html);
 
@@ -41,7 +56,7 @@ App.CollectionGifView = App.GifAbstractView.extend({
     event.preventDefault();
     event.stopPropagation();
 
-    App.router.navigate('/gif/' + this.model.get('id'), {trigger: true});
+    app.router.navigate('/gif/' + this.model.get('id'), {trigger: true});
   },
 
   /**

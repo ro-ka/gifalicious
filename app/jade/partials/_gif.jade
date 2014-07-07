@@ -1,36 +1,17 @@
+//- A single GIF
 script#template__gif(type='text/x-handlebars-template')
-  section.padding
-    .row.margin-bottom
-      .small-12.columns
-        h1
-          a(href='#collection') &laquo; Collection
-    .row.margin-bottom
-      .gif.small-12.columns.margin-bottom
-        .gif__overlay
-          .gif__overlay__actions
-            span.gif__action.gif__close(title='Close')
-              i.icon.ion-close-round
-            a.gif__action.gif__share(href='{{url}}', target='_blank', title='Open in new tab')
-              i.icon.ion-share
-            span.gif__action.gif__delete(title='Remove')
-              i.icon.ion-trash-a
-        img.responsive-horizontal.box-shadow(src='{{url}}', alt='')
+  figure.gif
+    img.gif__image(src='{{url}}', alt='')
+    figcaption.gif__caption
+      .gif__caption__actions
+        span.gif__action.gif__action--close(title='Close')
+          i.icon.ion-close-round
+        span.gif__action.gif__action--delete(title='Remove')
+          i.icon.ion-trash-a
 
-
-script#template__gif__share(type='text/x-handlebars-template')
-  form.action-overlay.overlay--share
-    .action-overlay__actions.overlay--share__actions
-      .row
-        .small-8.small-centered.columns
-          input.gif__share__input(type='text', value='{{shareUrl}}')
-        .small-8.small-centered.columns
-          button.button.large.secondary.overlay__close(type='button')
-            i.icon.ion-close-round
-            | Close
-
-
+//- The delete overlay
 script#template__gif__delete(type='text/x-handlebars-template')
-  form.action-overlay.overlay--confirm-delete
+  form.overlay.overlay--confirm-delete
     .action-overlay__actions.overlay--confirm-delete__actions
       .row
         .small-8.small-centered.columns
