@@ -21,10 +21,10 @@ app.GifListView = app.GifAbstractView.extend({
    * @type {Object}
    */
   events: {
-    'click .gif__delete': 'showDeleteOverlay',
-    'click .gif__share': 'shareGif',
-    'click .gif__overlay': 'showGif',
-    'click .gif__show': 'showGif'
+    'click': 'showGif',
+    'click .gif__action--view': 'showGif',
+    'click .gif__action--delete': 'showDeleteOverlay',
+    'click .gif__action--add': 'addGif'
   },
 
   /**
@@ -42,9 +42,13 @@ app.GifListView = app.GifAbstractView.extend({
    * Render the view
    */
   render: function() {
-    var html = this.templates.el(this.model.toJSON());
+    var data = this.model.toJSON();
 
-    this.$el.html(html);
+    data.mode = 'list';
+    data.isList = true;
+    data.isOwn = true;
+
+    this.$el.html(this.templates.el(data));
 
     this.$gif = this.$('.collection__list__item');
   },

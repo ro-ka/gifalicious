@@ -30,6 +30,16 @@ app.GifAbstractView = Backbone.View.extend({
   // },
 
   /**
+   * Add an GIF to the own collection
+   */
+  addGif: function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    console.log('Add GIF to own collection');
+  },
+
+  /**
    * Show the overlay to delete the gif
    */
   showDeleteOverlay: function(event) {

@@ -1,13 +1,32 @@
 //- A single GIF
 script#template__gif(type='text/x-handlebars-template')
-  figure.gif
+  figure.gif(class='gif--{{mode}}')
     img.gif__image(src='{{url}}', alt='')
     figcaption.gif__caption
-      .gif__caption__actions
-        span.gif__action.gif__action--close(title='Close')
-          i.icon.ion-close-round
-        span.gif__action.gif__action--delete(title='Remove')
-          i.icon.ion-trash-a
+      {{#if isOwn}}
+      span.gif__privacy(title='Privacy')
+        {{#if isPublic}}
+        i.icon.ion-unlocked
+        {{else}}
+        i.icon.ion-locked
+        {{/if}}
+      {{/if}}
+
+      {{#if isList}}
+      span.gif__action.gif__action--view(title='View')
+        i.icon.ion-eye
+      {{else}}
+      span.gif__action.gif__action--close(title='Close')
+        i.icon.ion-close-round
+      {{/if}}
+
+      {{#if isOwn}}
+      span.gif__action.gif__action--delete(title='Remove')
+        i.icon.ion-trash-a
+      {{else}}
+      span.gif__action.gif__action--add(title='Add')
+        i.icon.ion-plus-circled
+      {{/if}}
 
 //- The delete overlay
 script#template__gif__delete(type='text/x-handlebars-template')
