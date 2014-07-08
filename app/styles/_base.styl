@@ -1,0 +1,48 @@
+/**
+ * Basics
+ */
+*, *:before, *:after
+  box-sizing: border-box
+
+body
+  color: $text
+  background: $white
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-weight: 400
+  font-size: 100%
+  line-height: 1.333
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+a
+  color: $link
+  text-decoration: none
+  transition: color .2s ease-in-out
+  &:hover, &:focus
+    text-decoration: underline
+    color: darken($link, 10%)
+
+blockquote
+  font-size: 1rem
+  position: relative
+  &:before
+    content: '“'
+    font-size: 2em
+    position: absolute
+    top: -.25em
+    left: -.5em
+  small
+    display: block
+    font-weight: 300
+    font-size: .8em
+    text-align: right
+    margin-top: .5em
+
+h1, h2, h3, h4, h5, h6
+  font-weight: 300
+
+hr
+  height: 0
+  border: 0
+  border-top: 1px solid darken($white, 10%)
+  margin: emCalc(15px) 0
