@@ -77,7 +77,8 @@ app.Main = Backbone.View.extend({
     app.hoodie.account
       .on('unauthenticated', this.handleUserUnauthenticated);
     app.hoodie
-      .on('account:error:unauthenticated remote:error:unauthenticated', this.handleUserAuthenticationError);
+      .on('account:error:unauthenticated remote:error:unauthenticated',
+        this.handleUserAuthenticationError);
   },
 
   /**
@@ -104,6 +105,8 @@ app.Main = Backbone.View.extend({
    */
   handleUserAuthenticationError: function() {
     console.log('authentication:error', arguments);
+    app.siteHeader.render();
+    app.siteHeader.showAuthenticationError();
     // app.router.navigate('/signin', {trigger: true});
     // app.navbar.setAccountStatus('error');
 

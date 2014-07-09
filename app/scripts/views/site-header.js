@@ -31,6 +31,7 @@ app.SiteHeaderView = Backbone.View.extend({
 
     this.$document = $(document);
     this.$userNavContainer = this.$('.user-nav-container');
+    this.$authenticationError = $('.authentication-error');
 
     this.render();
 
@@ -51,6 +52,24 @@ app.SiteHeaderView = Backbone.View.extend({
 
     this.$userNav = this.$('.user-nav');
     this.$userNavItems = this.$('.user-nav__items');
+
+    this.hideAuthenticationError();
+  },
+
+  /**
+   * Show the authentication error message
+   */
+  showAuthenticationError: function() {
+    console.log('Show');
+    this.$authenticationError.removeClass('authentication-error--hidden');
+  },
+
+  /**
+   * Hide the authentication error message
+   */
+  hideAuthenticationError: function() {
+    console.log('Hide');
+    this.$authenticationError.addClass('authentication-error--hidden');
   },
 
   /**
@@ -106,6 +125,5 @@ app.SiteHeaderView = Backbone.View.extend({
   setAccountStatus: function(status) {
     this.$el.removeClass('user-nav--signed-in user-nav--signed-out');
     this.$el.addClass('user-nav--' + status);
-    // this.$username.text(app.hoodie.account.username);
   }
 });

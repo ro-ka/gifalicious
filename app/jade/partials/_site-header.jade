@@ -19,6 +19,13 @@ header.gif-nav.gif-nav--independent.hide-on-large
     .gif-nav__item.small-6.columns
       a.gif-nav__item__link.gif-nav--independent__item__link(href='/collection/') My GIFs
 
+header.authentication-error.authentication-error--hidden
+  .grid
+    .small-12.columns.message.message--error.authentication-error__message
+      | There was a signin error! Please&nbsp;
+      a(href='/signin/') sign in
+      | &nbsp;again!
+
 script#template__site-header__user-nav(type='text/x-handlebars-template')
   nav.user-nav
     .user-nav__avatar
