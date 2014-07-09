@@ -3,30 +3,30 @@ script#template__gif(type='text/x-handlebars-template')
   figure.gif(class='gif--{{mode}}')
     img.gif__image(src='{{url}}', alt='')
     figcaption.gif__caption
-      {{#if isOwn}}
+      |{{#if isOwn}}
       span.gif__privacy(title='Privacy')
-        {{#if isPublic}}
+        |{{#if isPublic}}
         i.icon.ion-unlocked
-        {{else}}
+        |{{else}}
         i.icon.ion-locked
-        {{/if}}
-      {{/if}}
+        |{{/if}}
+      |{{/if}}
 
-      {{#if isList}}
+      |{{#if isList}}
       span.gif__action.gif__action--view(title='View')
         i.icon.ion-eye
-      {{else}}
+      |{{else}}
       span.gif__action.gif__action--close(title='Close')
         i.icon.ion-close-round
-      {{/if}}
+      |{{/if}}
 
-      {{#if isOwn}}
+      |{{#if isOwn}}
       span.gif__action.gif__action--delete(title='Remove')
         i.icon.ion-trash-a
-      {{else}}
+      |{{else}}
       span.gif__action.gif__action--add(title='Add')
         i.icon.ion-plus-circled
-      {{/if}}
+      |{{/if}}
 
 //- The delete overlay
 script#template__gif__delete(type='text/x-handlebars-template')
