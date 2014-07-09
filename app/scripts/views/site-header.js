@@ -60,7 +60,6 @@ app.SiteHeaderView = Backbone.View.extend({
    * Show the authentication error message
    */
   showAuthenticationError: function() {
-    console.log('Show');
     this.$authenticationError.removeClass('authentication-error--hidden');
   },
 
@@ -68,7 +67,6 @@ app.SiteHeaderView = Backbone.View.extend({
    * Hide the authentication error message
    */
   hideAuthenticationError: function() {
-    console.log('Hide');
     this.$authenticationError.addClass('authentication-error--hidden');
   },
 
