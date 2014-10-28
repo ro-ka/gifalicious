@@ -21,7 +21,7 @@ Set the used hoodie WWW port in the Gruntfile in the connect proxies settings.
 This will start grunt and hoodie. Ready to use jade, sass and livereload.
 
 ```bash
-grunt server
+grunt serve
 ```
 
 ### Build
