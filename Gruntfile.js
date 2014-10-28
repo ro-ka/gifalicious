@@ -295,20 +295,6 @@ module.exports = function(grunt) {
         npm: false
       }
     },
-    concurrent: {
-      server: [
-        'stylus'
-      ],
-      test: [
-        'stylus'
-      ],
-      www: [
-        'stylus',
-        'imagemin',
-        'svgmin',
-        'htmlmin'
-      ]
-    },
     jshint: {
       options: {
         reporter: require('jshint-stylish')
@@ -326,8 +312,8 @@ module.exports = function(grunt) {
       'clean:server',
       'hoodie',
       'jade',
+      'stylus',
       'configureProxies',
-      'concurrent:server',
       'connect:server',
       'watch'
     ]);
@@ -335,7 +321,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    'concurrent:test',
+    'stylus',
     'connect:test',
     'mocha'
   ]);
@@ -346,7 +332,10 @@ module.exports = function(grunt) {
     'copy:js',
     'copy:css',
     'useminPrepare',
-    'concurrent:www',
+    'stylus',
+    'imagemin',
+    'svgmin',
+    'htmlmin',
     'concat',
     'cssmin',
     'uglify',
